@@ -1,0 +1,21 @@
+@import "../util";
+
+.btn{
+    &-icon{
+        width: $icon-size-medium;
+        height: $icon-size-medium;
+
+        &.delete{
+
+        }
+        &.search{
+            @include icon('search.svg');
+        }
+        &.cart{
+            @include icon('cart.svg');
+        }
+        &.alarm{
+            @include icon('alarm.svg');
+        }
+    }
+}

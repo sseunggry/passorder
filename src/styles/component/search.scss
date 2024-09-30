@@ -1,0 +1,10 @@
+@import "../util";
+
+.search-wrap{
+    &.bg-white{
+        background-color: $c-white;
+    }
+    input{
+        width: 100%;
+    }
+}

@@ -1,0 +1,48 @@
+@charset "UTF-8";
+@import "../util";
+
+//default
+html{
+    font-size: $body-fz;
+    font-weight: 400;
+    line-height: $line-height;
+    color: $base-color;
+
+    &[lang="ko-KR"], &[lang="ko"]{
+        font-family: $font-family-ko;
+    }
+    &[lang="en"], *[lang="en"]{
+        font-family: $font-family-en;
+    }
+    
+    @media (max-width: 720px) {
+        font-size: $body-fz-mo;
+    }
+}
+
+/* font */
+
+
+/* color */
+.c-point{
+    color: $c-point !important;
+}
+.c-white{
+    color: $c-white !important;
+}
+
+/* font-style */
+.bold{
+    font-weight: 700;
+}
+
+
+/* common */
+img{
+    width: 100%;
+}
+
+/* blind */
+.blind {
+    @include blind();
+}
