@@ -1,0 +1,16 @@
+@import "../util";
+
+
+$icon-size: $icon-size-small;
+$gap: $space-2;
+
+.select-wrap{
+    select{
+        padding-right: $icon-size + $gap;
+        font-size: $font-body-large;
+        font-weight: 600;
+        appearance: none;
+
+        @include bg('icon/icon_arrow.svg', center right, $icon-size $icon-size);
+    }
+}

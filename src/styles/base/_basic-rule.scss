@@ -16,19 +16,48 @@ html{
     }
     
     @media (max-width: 720px) {
-        font-size: $body-fz-mo;
+        //font-size: $body-fz-mo;
     }
 }
 
 /* font */
-
+.title{
+    &-xl{
+        font-size: $font-heading-xlarge;
+        font-weight: 700;
+    }
+    &-l{
+        font-size: $font-heading-large;
+        font-weight: 600;
+    }
+    &-m{
+        font-size: $font-heading-medium;
+        font-weight: 600;
+    }
+    &-s{
+        font-size: $font-heading-small;
+        font-weight: 600;
+    }
+}
+.txt{
+    &-m{
+        font-size: $font-body-medium;
+        font-weight: 600;
+    }
+    &-s{
+        font-size: $font-body-small;
+    }
+    &-xs{
+        font-size: $font-body-xsmall;
+    }
+}
 
 /* color */
 .c-point{
-    color: $c-point !important;
+    color: $color-point !important;
 }
 .c-white{
-    color: $c-white !important;
+    color: $color-white !important;
 }
 
 /* font-style */

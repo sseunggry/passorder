@@ -1,0 +1,15 @@
+@import "../util";
+
+.wrap{
+    width: 100vw;
+    height: 100vh;
+
+    &.bg-gray{
+        //background-color: $color-bg1;
+        background-color: #ddd;
+    }
+}
+
+.container{
+    padding: 0 $padding-layout-x $padding-layout-y;
+}

@@ -15,7 +15,7 @@ $base-url: '../../../public/resource/';
     background: url($base-url +'images/'+ $url) no-repeat $pos / $size;
 }
 
-@mixin icon($name, $pos:center, $size:100% auto, $color: $c-black){
+@mixin icon($name, $pos:center, $size:100% auto, $color: $color-black){
     display: inline-block;
     mask: url($base-url +'images/icon/icon_' + $name) no-repeat $pos / $size;
     background-color: $color;
