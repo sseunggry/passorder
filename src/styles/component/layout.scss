@@ -13,3 +13,7 @@
 .container{
     padding: 0 $padding-layout-x $padding-layout-y;
 }
+
+section{
+    margin-top: var(--gap-8);
+}

@@ -20,4 +20,14 @@
         flex: 1;
         justify-content: flex-end;
     }
+
+    .select-wrap{
+        select{
+            padding-right: calc(var(--icon-size-xsmall) + var(--gap-1));
+            font-size: var(--font-large);
+            font-weight: 600;
+            appearance: none;
+            @include bg('icon/icon_arrow.svg', center right, var(--icon-size-xsmall));
+        }
+    }
 }

@@ -21,6 +21,17 @@ html{
 }
 
 /* font */
+.sec-tit{
+    display: flex;
+    align-items: center;
+    color: var(--color-text-bolder);
+    font-size: var(--typo-heading-h1);
+    font-weight: 700;
+
+    .btn{
+        margin-left: auto;
+    }
+}
 .title{
     &-xl{
         font-size: $font-heading-xlarge;

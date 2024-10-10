@@ -1,6 +1,7 @@
-import Select from "./Select";
-import Search from "./Search";
+import Select from "components/Select";
+import Search from "components/Search";
 import {Link, useNavigate} from "react-router-dom";
+import Button from "../components/Button";
 
 type HeaderProps = {
     select?: boolean;
@@ -24,7 +25,7 @@ function Header({select, alarm, cart, back, title, search} : HeaderProps) {
             {select && (
                 <Select
                     id="select-place"
-                    label="장소 선택"
+                    title="장소 선택"
                     list={{"우리집":"home", "회사": "company"}}
                 />
             )}
@@ -36,9 +37,16 @@ function Header({select, alarm, cart, back, title, search} : HeaderProps) {
             {(alarm || cart) && (
                 <div className="util">
                     {alarm && (
-                        <Link to="/" className="btn-icon alarm">
-                            <span className="blind">알림</span>
-                        </Link>
+                        <>
+                            <Button
+                                url="/"
+                                addClass="btn-icon alarm"
+                                children={<span className="blind">알림</span>}
+                            />
+                            {/*<Link to="/" className="btn-icon alarm">*/}
+                            {/*    <span className="blind">알림</span>*/}
+                            {/*</Link>*/}
+                        </>
                     )}
                     {cart && (
                         <Link to="/cart" className="btn-icon cart">

@@ -6,10 +6,10 @@ $body-fz: 10px;
 $body-fz-mo: 20px;
 
 // 본문(paragraph) 기본 컬러
-$base-color: #000;
+$base-color: var(--color-text-basic);
 
 // 기본 행간 비율
-$line-height: 1.4;
+$line-height: var(--base-line-height);
 
 // 본문 행간 비율
 $base-line: $body-fz * 1.4;

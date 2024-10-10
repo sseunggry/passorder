@@ -1,16 +1,21 @@
 @import "../util";
 
 
-$icon-size: $icon-size-small;
-$gap: $space-2;
-
 .select-wrap{
-    select{
-        padding-right: $icon-size + $gap;
-        font-size: $font-body-large;
-        font-weight: 600;
-        appearance: none;
+    --select-label-text-size: var(--label-text-size);
+    --select-color-placeholder: var(--input-color-placeholder);
 
-        @include bg('icon/icon_arrow.svg', center right, $icon-size $icon-size);
+    label{
+        font-size: var(--select-label-text-size);
+        font-weight: 600;
+    }
+    select{
+        option[value=''] {
+            display: none;
+        }
+
+        &:required:invalid {
+            color: var(--select-color-placeholder);
+        }
     }
 }
