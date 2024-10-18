@@ -1,4 +1,5 @@
 import Input from "components/Input";
+import Button from "components/Button";
 
 type SearchProps = {
     addClass?: string;
@@ -13,9 +14,15 @@ function Search({addClass = '', placeholder} : SearchProps) {
                 title="검색어 입력"
                 placeholder={placeholder ? placeholder : "검색어를 입력해보세요"}
             />
-            <button type="button" className="btn-icon search">
-                <span className="blind">검색</span>
-            </button>
+            <Button
+                addClass="btn-icon"
+                children={
+                    <>
+                        <span className="blind">검색</span>
+                        <i className="icon icon-search"></i>
+                    </>
+                }
+            />
         </div>
     )
 }

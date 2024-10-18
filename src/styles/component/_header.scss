@@ -1,9 +1,9 @@
-@import "../util";
+@charset "UTF-8";
 
 .header{
     display: flex;
     align-items: center;
-    padding: $padding-layout-x;
+    padding: var(--padding-layout-x);
 
     .util{
         justify-items: flex-end;

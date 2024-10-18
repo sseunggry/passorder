@@ -3,7 +3,7 @@ import { Pagination, Navigation } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import "styles/component/swiper.scss";
+import "styles/component/_swiper.scss";
 
 interface optionProps {
     navigation?: boolean;

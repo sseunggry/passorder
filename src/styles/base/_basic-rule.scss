@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import "../util";
 
 //default
 html{
@@ -24,8 +23,9 @@ html{
 .sec-tit{
     display: flex;
     align-items: center;
+    margin-bottom: var(--gap-5);
     color: var(--color-text-bolder);
-    font-size: var(--typo-heading-h1);
+    font-size: var(--typo-title-xlarge);
     font-weight: 700;
 
     .btn{
@@ -34,41 +34,41 @@ html{
 }
 .title{
     &-xl{
-        font-size: $font-heading-xlarge;
+        font-size: var(--typo-title-xlarge);
         font-weight: 700;
     }
     &-l{
-        font-size: $font-heading-large;
+        font-size: var(--typo-title-large);
         font-weight: 600;
     }
     &-m{
-        font-size: $font-heading-medium;
+        font-size: var(--typo-title-medium);
         font-weight: 600;
     }
     &-s{
-        font-size: $font-heading-small;
+        font-size: var(--typo-title-small);
         font-weight: 600;
     }
 }
 .txt{
     &-m{
-        font-size: $font-body-medium;
+        font-size: var(--typo-body-medium);
         font-weight: 600;
     }
     &-s{
-        font-size: $font-body-small;
+        font-size: var(--typo-body-small);
     }
     &-xs{
-        font-size: $font-body-xsmall;
+        font-size: var(--typo-body-xsmall);
     }
 }
 
 /* color */
 .c-point{
-    color: $color-point !important;
+    color: var(--color-text-primary) !important;
 }
 .c-white{
-    color: $color-white !important;
+    color: var(--color-text-white) !important;
 }
 
 /* font-style */

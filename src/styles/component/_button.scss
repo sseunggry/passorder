@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+$btn-wrap-gap: var(--gap-3);
+
+$btn-gap: var(--gap-1);
+$btn-font-size: var(--typo-body-small);
+$btn-font-color: var(--color-text-gray);
+
+//$btn-icon-size-small: var(--icon-size-xsmall);
+//$btn-icon-size-medium: var(--icon-size-small);
+//$btn-icon-size-large: var(--icon-size-medium);
+//
+//$btn-height-small: var(--btn-height-small);
+//$btn-height-medium: var(--btn-height-medium);
+//$btn-height-large: var(--btn-height-large);
+//
+//$btn-font-size-small: var(--btn-font-size-small);
+//$btn-font-size-medium: var(--btn-font-size-medium);
+//$btn-font-size-large: var(--btn-font-size-large);
+
+.btn-wrap{
+    display: flex;
+    gap: $btn-wrap-gap;
+}
+
+.btn{
+    display: inline-flex;
+    align-items: center;
+    gap: $btn-gap;
+    width: 100%;
+    color: $btn-font-color;
+    font-size: $btn-font-size;
+    font-weight: 400;
+    line-height: 1;
+
+    .icon{
+        background-color: $btn-font-color;
+    }
+
+    //size
+    $btn-size: small, medium, large;
+    @each $size in $btn-size {
+        &.#{$size}{
+            height: var(--btn-height-#{$size});
+            font-size: var(--btn-font-size-#{$size});
+
+            .icon{
+                width: var(--btn-icon-size-#{$size});
+                height: var(--btn-icon-size-#{$size});
+            }
+        }
+    }
+
+    //type
+    &.text{
+        width: fit-content;
+        height: auto;
+    }
+    &.line{
+        border: var(--border-width) solid var(--btn-color-line);
+    }
+    &.fill{
+        &.primary{
+            $color: var(--btn-color-font-white);
+            $color-bg: var(--btn-color-fill-primary);
+
+            color: $color;
+            background-color: $color-bg;
+
+            .icon{
+                background-color: $color;
+            }
+            &.disabled{
+                $color: var(--btn-color-font-white-disabled);
+                $color-bg: var(--btn-color-fill-primary-disabled);
+            }
+        }
+    }
+
+    //round
+    &.round{
+        &-s{
+            border-radius: var(--btn-border-radius-small);
+        }
+        &-m{
+            border-radius: var(--btn-border-radius-medium);
+        }
+        &-l{
+            border-radius: var(--btn-border-radius-large);
+        }
+    }
+
+    &-icon{
+        display: inline-flex;
+        width: fit-content;
+        gap: 0;
+
+        $icon-size: small, medium, large;
+        @each $size in $icon-size {
+            &.#{$size}{
+                .icon{
+                    width: var(--icon-size-#{$size});
+                    height: var(--icon-size-#{$size});
+                }
+            }
+        }
+    }
+}

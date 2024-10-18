@@ -1,7 +1,7 @@
 import Select from "components/Select";
 import Search from "components/Search";
 import {Link, useNavigate} from "react-router-dom";
-import Button from "../components/Button";
+import Button from "components/Button";
 
 type HeaderProps = {
     select?: boolean;
@@ -15,7 +15,7 @@ type HeaderProps = {
 function Header({select, alarm, cart, back, title, search} : HeaderProps) {
     const navigate = useNavigate();
     return (
-        <div className="header">
+        <header className="header">
             {back && (
                 <button type="button" className="btn-back" onClick={() => navigate(-1)}>
                     <span className="blind">뒤로 이동</span>
@@ -39,9 +39,14 @@ function Header({select, alarm, cart, back, title, search} : HeaderProps) {
                     {alarm && (
                         <>
                             <Button
-                                url="/"
-                                addClass="btn-icon alarm"
-                                children={<span className="blind">알림</span>}
+                                // url="/"
+                                addClass="btn-icon"
+                                children={
+                                    <>
+                                        <span className="blind">알림</span>
+                                        <i className="icon icon-alarm"></i>
+                                    </>
+                                }
                             />
                             {/*<Link to="/" className="btn-icon alarm">*/}
                             {/*    <span className="blind">알림</span>*/}
@@ -49,13 +54,24 @@ function Header({select, alarm, cart, back, title, search} : HeaderProps) {
                         </>
                     )}
                     {cart && (
-                        <Link to="/cart" className="btn-icon cart">
-                            <span className="blind">장바구니</span>
-                        </Link>
+                        <Button
+                            tag="a"
+                            url="/cart"
+                            addClass="btn-icon"
+                            children={
+                                <>
+                                    <span className="blind">장바구니</span>
+                                    <i className="icon icon-cart"></i>
+                                </>
+                            }
+                        />
+                        // <Link to="/cart" className="btn-icon icon-cart">
+                        //     <span className="blind">장바구니</span>
+                        // </Link>
                     )}
                 </div>
             )}
-        </div>
+        </header>
     )
 }
 

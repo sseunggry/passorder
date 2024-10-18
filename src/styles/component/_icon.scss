@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.icon{
+    &-delete{
+
+    }
+    &-search{
+        @include icon('search.svg');
+    }
+    &-cart{
+        @include icon('cart.svg');
+    }
+    &-alarm{
+        @include icon('alarm.svg');
+    }
+    &-arrow{
+        @include icon('arrow.svg');
+
+        &.right{
+            transform: rotate(-90deg);
+        }
+        &.left{
+            transform: rotate(90deg);
+        }
+        &.top{
+            transform: rotate(180deg);
+        }
+    }
+}
