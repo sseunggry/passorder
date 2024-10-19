@@ -1,11 +1,19 @@
+import {useEventData, useStoreData} from "hooks/queries/useStoreQuery";
 import Header from "templates/Header";
 import BottomMenu from "templates/BottomMenu";
-import Search from "components/Search";
 import SwiperBanner from "templates/SwiperBanner";
-import Button from "components/Button";
 import CardList from "templates/CardList";
+import Search from "components/Search";
+import Button from "components/Button";
+import Loading from "components/Loading";
 
 function Home() {
+    const {data: storeData, isLoading: storeDataIsLoading, isError: storeDataIsError} = useStoreData();
+    const {data: eventData, isLoading: eventDataIsLoading, isError: eventDataIsError} = useEventData();
+    const recentStoreList = storeData?.filter(el => el.recent);
+    const nearbyStoreList = storeData?.filter(el => el.nearby);
+    console.log(eventData);
+    
     return (
         <div className="wrap bg-gray">
             <Header select alarm cart />
@@ -32,17 +40,53 @@ function Home() {
                             children={<i className="icon icon-arrow right"></i>}
                         />
                     </h2>
-                    
-                    <CardList
-                        addClass="row"
-                        itemList={
-                            [
-                                { img: "logo_paris", tit: "파리바게트 수원역점", infoList: [{rating: 4.25, review: 87, distance: "50m"}] },
-                                { img: "logo_tencent", tit: "텐센트 커피", infoList: [{rating: 3.25, review: 50, distance: "82m"}] },
-                                { img: "logo_yogurt", tit: "요거트 아이스크림", infoList: [{rating: 4.5, review: 150, distance: "120m"}] },
-                            ]
-                        }
-                    />
+    
+                    {storeDataIsLoading ? <Loading /> : (
+                        <CardList
+                            addClass="card-row"
+                            itemList={recentStoreList}
+                        />
+                    )}
+                </section>
+                
+                <section>
+                    <h2 className="sec-tit">
+                        <p>현재 가까운 매장이에요</p>
+                        <Button
+                            tag="a"
+                            url="/"
+                            text="전체보기"
+                            addClass="small text"
+                            children={<i className="icon icon-arrow right"></i>}
+                        />
+                    </h2>
+    
+                    {storeDataIsLoading ? <Loading /> : (
+                        <CardList
+                            addClass="card-column"
+                            itemList={nearbyStoreList}
+                        />
+                    )}
+                </section>
+                
+                <section>
+                    <h2 className="sec-tit">
+                        <p>마음을 선물해요</p>
+                        <Button
+                            tag="a"
+                            url="/"
+                            text="전체보기"
+                            addClass="small text"
+                            children={<i className="icon icon-arrow right"></i>}
+                        />
+                    </h2>
+    
+                    {eventDataIsLoading ? <Loading /> : (
+                        <CardList
+                            addClass="card-event"
+                            eventList={eventData}
+                        />
+                    )}
                 </section>
             </div>
             

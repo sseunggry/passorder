@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+@mixin pc-variable(){
+    --badge-list-gap: var(--gap-1);
+    --badge-border-radius: var(--border-radius-small);
+    --badge-padding: var(--space-1) var(--space-2);
+    --badge-color-blue-text: var(--color-text-blue);
+    --badge-color-blue-bg: var(--color-bg-blue);
+    --badge-color-pink-text: var(--color-text-pink);
+    --badge-color-pink-bg: var(--color-bg-pink);
+}
+
+
+.badge{
+    @include pc-variable();
+
+    padding: var(--badge-padding);
+    border-radius: var(--badge-border-radius);
+
+    &.blue{
+        color: var(--badge-color-blue-text);
+        background-color: var(--badge-color-blue-bg);
+    }
+    &.pink{
+        color: var(--badge-color-pink-text);
+        background-color: var(--badge-color-pink-bg);
+    }
+
+    &-wrap{
+        display: flex;
+        gap: var(--badge-list-gap);
+    }
+}

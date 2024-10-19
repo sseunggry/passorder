@@ -3,17 +3,22 @@ import Home from "pages/home";
 import "styles/base/index.scss";
 import "styles/common.scss";
 import "styles/style.scss";
-import Cart from "./pages/cart";
+import Cart from "pages/cart";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-      <BrowserRouter>
-          <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="*" element={<Navigate replace to="/" />} />
-          </Routes>
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+              <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="*" element={<Navigate replace to="/" />} />
+              </Routes>
+          </BrowserRouter>
+      </QueryClientProvider>
   );
 }
 

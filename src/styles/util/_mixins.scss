@@ -60,3 +60,12 @@ $base-url: '../../../public/resource/';
         height: 100%;
     }
 }
+
+@mixin scroll-x(){
+    $padding-layout-x: var(--padding-layout-x);
+    $margin-layout-x: calc(var(--padding-layout-x) * -1);
+
+    overflow: auto;
+    margin: 0 $margin-layout-x;
+    padding: 0 $padding-layout-x;
+}
