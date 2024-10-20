@@ -14,9 +14,14 @@
 }
 
 .container{
+    overflow: auto;
     padding: 0 var(--padding-layout-x) var(--padding-layout-y);
 }
 
 section{
     margin-top: var(--gap-8);
+
+    &:first-child{
+        margin-top: 0;
+    }
 }

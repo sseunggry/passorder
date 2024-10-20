@@ -30,10 +30,17 @@
         padding: 0 var(--bottom-menu-link-padding-x);
         font-size: var(--bottom-menu-text-size);
         text-align: center;
+        color: var(--bottom-menu-color-text);
 
         .icon{
             width: var(--bottom-menu-icon-size);
             height: var(--bottom-menu-icon-size);
+            background-color: var(--bottom-menu-color-icon);
+        }
+
+        &.active{
+            --bottom-menu-color-text: var(--bottom-menu-color-text-active);
+            --bottom-menu-color-icon: var(--bottom-menu-color-icon-active);
         }
     }
 }

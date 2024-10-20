@@ -1,9 +1,16 @@
 @charset "UTF-8";
 
+@mixin variable(){
+    --header-padding: var(--padding-layout-x);
+    --header-tit-size: var(--typo-title-medium);
+}
+
 .header{
+    @include variable();
+
     display: flex;
     align-items: center;
-    padding: var(--padding-layout-x);
+    padding: var(--header-padding);
 
     .util{
         justify-items: flex-end;
@@ -29,5 +36,11 @@
             appearance: none;
             @include bg('icon/icon_arrow.svg', center right, var(--icon-size-xsmall));
         }
+    }
+
+    .tit{
+        font-size: var(--header-tit-size);
+        font-weight: 500;
+        text-align: center;
     }
 }

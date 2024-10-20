@@ -3,7 +3,7 @@ import Search from "components/Search";
 import {Link, useNavigate} from "react-router-dom";
 import Button from "components/Button";
 
-type HeaderProps = {
+export interface HeaderProps{
     select?: boolean;
     alarm?: boolean;
     cart?: boolean;
@@ -32,6 +32,10 @@ function Header({select, alarm, cart, back, title, search} : HeaderProps) {
     
             {search && (
                 <Search />
+            )}
+    
+            {title && (
+                <h2 className="tit">{title}</h2>
             )}
     
             {(alarm || cart) && (

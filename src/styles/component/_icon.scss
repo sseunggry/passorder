@@ -3,21 +3,14 @@
 .icon{
     display: inline-flex;
 
-    &-delete{
+    $names: delete, search, cart, alarm, arrow, home, order, qr, my;
+    @each $name in $names {
+        &-#{$name}{
+            @include icon('#{$name}.svg');
+        }
+    }
 
-    }
-    &-search{
-        @include icon('search.svg');
-    }
-    &-cart{
-        @include icon('cart.svg');
-    }
-    &-alarm{
-        @include icon('alarm.svg');
-    }
     &-arrow{
-        @include icon('arrow.svg');
-
         &.right{
             transform: rotate(-90deg);
         }
