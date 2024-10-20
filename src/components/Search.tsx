@@ -13,14 +13,16 @@ function Search({addClass = '', placeholder} : SearchProps) {
                 id="search"
                 title="검색어 입력"
                 placeholder={placeholder ? placeholder : "검색어를 입력해보세요"}
-            />
-            <Button
-                addClass="btn-icon"
                 children={
-                    <>
-                        <span className="blind">검색</span>
-                        <i className="icon icon-search"></i>
-                    </>
+                    <Button
+                        addClass="btn-icon"
+                        children={
+                            <>
+                                <span className="blind">검색</span>
+                                <i className="icon icon-search"></i>
+                            </>
+                        }
+                    />
                 }
             />
         </div>

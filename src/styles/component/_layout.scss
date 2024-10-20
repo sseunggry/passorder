@@ -2,16 +2,19 @@
 
 .wrap{
     overflow: hidden auto;
+    margin: 0 auto;
+    max-width: 1080px;
     height: 100vh;
 
     &.bg-gray{
-        //background-color: $color-bg1;
-        background-color: #ddd;
+        //추후 삭제
+        --color-bg-gray-light: #ddd;
+        background-color: var(--color-bg-gray-light);
     }
 }
 
 .container{
-    padding: 0 $padding-layout-x $padding-layout-y;
+    padding: 0 var(--padding-layout-x) var(--padding-layout-y);
 }
 
 section{

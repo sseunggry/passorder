@@ -150,6 +150,9 @@
     --btn-icon-size-medium: var(--icon-size-small);
     --btn-icon-size-large: var(--icon-size-medium);
 
+    --btn-icon-color-gray: var(--color-gray-6);
+    --btn-icon-color-primary: var(--color-primary-0);
+
     //input
     --input-font-size: var(--typo-body-large);
     --input-border-radius: var(--border-radius-medium);
@@ -157,7 +160,8 @@
     --input-bg-color-gray: var(--color-bg-gray);
     --input-color-placeholder: var(--color-text-gray-lighter);
 
-    --label-font-size: var(--font-large);
+    --input-gap-label-input: var(--gap-4);
+    --input-label-font-size: var(--font-large);
 
     //gap 4 6 8 10 14 20 30 40
     --gap-1: var(--space-2);  //4

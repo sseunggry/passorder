@@ -6,36 +6,28 @@ $btn-gap: var(--gap-1);
 $btn-font-size: var(--typo-body-small);
 $btn-font-color: var(--color-text-gray);
 
-//$btn-icon-size-small: var(--icon-size-xsmall);
-//$btn-icon-size-medium: var(--icon-size-small);
-//$btn-icon-size-large: var(--icon-size-medium);
-//
-//$btn-height-small: var(--btn-height-small);
-//$btn-height-medium: var(--btn-height-medium);
-//$btn-height-large: var(--btn-height-large);
-//
-//$btn-font-size-small: var(--btn-font-size-small);
-//$btn-font-size-medium: var(--btn-font-size-medium);
-//$btn-font-size-large: var(--btn-font-size-large);
+:root{
+    --btn-wrap-gap: var(--gap-3);
+
+    --btn-gap: var(--gap-1);
+    --btn-font-size: var(--typo-body-small);
+    --btn-font-color: var(--color-text-gray);
+}
 
 .btn-wrap{
     display: flex;
-    gap: $btn-wrap-gap;
+    gap: var(--btn-wrap-gap);
 }
 
 .btn{
     display: inline-flex;
     align-items: center;
-    gap: $btn-gap;
+    gap: var(--btn-gap);
     width: 100%;
-    color: $btn-font-color;
-    font-size: $btn-font-size;
+    color: var(--btn-font-color);
+    font-size: var(--btn-font-size);
     font-weight: 400;
     line-height: 1;
-
-    .icon{
-        background-color: $btn-font-color;
-    }
 
     //size
     $btn-size: small, medium, large;
@@ -55,24 +47,28 @@ $btn-font-color: var(--color-text-gray);
     &.text{
         width: fit-content;
         height: auto;
+
+        .icon{
+            background-color: var(--btn-font-color);
+        }
     }
     &.line{
         border: var(--border-width) solid var(--btn-color-line);
     }
     &.fill{
         &.primary{
-            $color: var(--btn-color-font-white);
-            $color-bg: var(--btn-color-fill-primary);
+            --color: var(--btn-color-font-white);
+            --color-bg: var(--btn-color-fill-primary);
 
-            color: $color;
-            background-color: $color-bg;
+            color: var(--color);
+            background-color: var(--color-bg);
 
             .icon{
-                background-color: $color;
+                background-color: var(--color);
             }
             &.disabled{
-                $color: var(--btn-color-font-white-disabled);
-                $color-bg: var(--btn-color-fill-primary-disabled);
+                --color: var(--btn-color-font-white-disabled);
+                --color-bg: var(--btn-color-fill-primary-disabled);
             }
         }
     }

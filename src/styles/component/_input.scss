@@ -1,24 +1,28 @@
 @charset "UTF-8";
 
 .input-wrap{
-    display: flex;
-    align-items: center;
-    gap: var(--gap-2);
-    padding: var(--space-7) var(--space-9);
-    font-size: var(--input-text-size);
-    border-radius: var(--input-border-radius);
-    background-color: var(--input-bg-color-gray);
-
     &.bg-white{
         background-color: var(--input-bg-color-white);
     }
 
+    label{
+        display: block;
+        margin-bottom: var(--input-gap-label-input);
+        font-size: var(--input-label-font-size);
+        font-weight: 600;
+    }
     .input{
         display: flex;
-        width: 100%;
+        align-items: center;
+        gap: var(--gap-2);
+        padding: var(--space-7) var(--space-9);
+        font-size: var(--input-font-size);
+        border-radius: var(--input-border-radius);
+        background-color: var(--input-bg-color-gray);
 
         input{
             width: 100%;
+            font-size: var(--typo-input-medium);
 
             &::placeholder{
                 color: var(--color-text-gray-lighter);

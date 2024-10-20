@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+@mixin pc-variable(){
+    --bottom-menu-padding-x: var(--space-8);
+    --bottom-menu-padding-y: var(--space-7);
+    --bottom-menu-bg: var(--color-bg-white);
+    --bottom-menu-shadow: 0 -0.1rem 1rem rgba(0, 0, 0, 0.1);
+
+    --bottom-menu-icon-size: var(--icon-size-xlarge);
+    --bottom-menu-text-size: var(--typo-body-xsmall);
+    --bottom-menu-gap-icon-txt: var(--gap-2);
+    --bottom-menu-color-text: var(--color-text-gray);
+    --bottom-menu-color-text-active: var(--color-text-primary);
+    --bottom-menu-color-icon: var(--btn-icon-color-gray);
+    --bottom-menu-color-icon-active: var(--btn-icon-color-primary);
+    --bottom-menu-link-padding-x: var(--space-3);
+}
+
+
+.bottom-menu{
+    @include pc-variable();
+
+    display: flex;
+    justify-content: space-between;
+    padding: var(--bottom-menu-padding-y) var(--bottom-menu-padding-x);
+    background-color: var(--bottom-menu-bg);
+    box-shadow: var(--bottom-menu-shadow);
+
+    a{
+        padding: 0 var(--bottom-menu-link-padding-x);
+        font-size: var(--bottom-menu-text-size);
+        text-align: center;
+
+        .icon{
+            width: var(--bottom-menu-icon-size);
+            height: var(--bottom-menu-icon-size);
+        }
+    }
+}
