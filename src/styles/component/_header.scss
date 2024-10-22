@@ -2,7 +2,9 @@
 
 @mixin variable(){
     --header-padding: var(--padding-layout-x);
+    --haeder-item-gap: var(--gap-3);
     --header-tit-size: var(--typo-title-medium);
+    --header-icon-size: var(--icon-size-large);
 }
 
 .header{
@@ -10,12 +12,21 @@
 
     display: flex;
     align-items: center;
+    gap: var(--haeder-item-gap);
     padding: var(--header-padding);
 
+    .btn-back{
+        width: var(--header-icon-size);
+        height: var(--header-icon-size);
+        .icon{
+        }
+    }
+
     .util{
-        justify-items: flex-end;
+        //justify-items: flex-end;
         display: flex;
         align-items: center;
+        margin-left: auto;
         gap: 1.4rem;
     }
 
@@ -23,10 +34,10 @@
         flex: 1;
     }
 
-    > :last-of-type{
-        flex: 1;
-        justify-content: flex-end;
-    }
+    //> :last-of-type{
+    //    flex: 1;
+    //    justify-content: flex-end;
+    //}
 
     .select-wrap{
         select{
@@ -42,5 +53,9 @@
         font-size: var(--header-tit-size);
         font-weight: 500;
         text-align: center;
+    }
+
+    .input-wrap.search{
+        width: 100%;
     }
 }

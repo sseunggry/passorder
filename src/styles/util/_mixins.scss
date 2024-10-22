@@ -24,7 +24,7 @@ $base-url: '../../../public/resource/';
 
 @mixin blind(){
     overflow: hidden;
-    position: relative;
+    position: absolute;
     display: block;
     width: 1px;
     height: 1px;
@@ -65,7 +65,7 @@ $base-url: '../../../public/resource/';
     $padding-layout-x: var(--padding-layout-x);
     $margin-layout-x: calc(var(--padding-layout-x) * -1);
 
-    overflow: auto;
+    overflow: auto hidden;
     margin: 0 $margin-layout-x;
     padding: 0 $padding-layout-x;
 }

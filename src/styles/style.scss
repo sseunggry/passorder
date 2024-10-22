@@ -1,3 +1,66 @@
 @charset "UTF-8";
-//@import "./util/variables";
+@import "./util";
 
+.main{
+    .container{
+        padding-top: 0;
+    }
+}
+
+//검색page
+.recent-search{
+    .tag-list{
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gap-3);
+        //@include scroll-x();
+        font-size: var(--typo-body-small);
+
+        li{
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: var(--gap-2);
+            padding: var(--space-4) var(--space-5);
+            line-height: 1;
+            background-color: var(--color-bg-gray);
+            border-radius: var(--border-radius-max);
+
+            .btn-icon{
+                .icon{
+                    background-color: var(--btn-icon-color-gray);
+                }
+            }
+        }
+    }
+}
+
+.recommend-list{
+    .list{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--gap-1) var(--gap-6);
+        font-size: var(--typo-body-small);
+
+        li{
+            $length: 10;
+            $start: ($length/2 + 1);
+            @for $i from $start to $length{
+                $row: $i - ($start - 1);
+                &:nth-child(#{$i}){
+                    grid-row: $row;
+                    grid-column: 2;
+                }
+            }
+            a{
+                display: block;
+                padding: var(--space-2) 0;
+            }
+            strong{
+                display: inline-block;
+                margin-right: var(--gap-2);
+                width: 1.6rem;
+            }
+        }
+    }
+}

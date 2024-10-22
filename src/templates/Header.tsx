@@ -2,6 +2,7 @@ import Select from "components/Select";
 import Search from "components/Search";
 import {Link, useNavigate} from "react-router-dom";
 import Button from "components/Button";
+import {MouseEventHandler} from "react";
 
 export interface HeaderProps{
     select?: boolean;
@@ -10,16 +11,24 @@ export interface HeaderProps{
     back?: boolean;
     title?: string;
     search?: boolean;
+    searchOnClick?: MouseEventHandler<HTMLElement>;
 }
 
-function Header({select, alarm, cart, back, title, search} : HeaderProps) {
+function Header({select, alarm, cart, back, title, search, searchOnClick} : HeaderProps) {
     const navigate = useNavigate();
     return (
         <header className="header">
             {back && (
-                <button type="button" className="btn-back" onClick={() => navigate(-1)}>
-                    <span className="blind">뒤로 이동</span>
-                </button>
+                <Button
+                    onClick={() => navigate(-1)}
+                    addClass="btn-back"
+                    children={
+                        <>
+                            <span className="blind">뒤로 이동</span>
+                            <i className="icon icon-back"></i>
+                        </>
+                    }
+                />
             )}
             
             {select && (
@@ -31,7 +40,7 @@ function Header({select, alarm, cart, back, title, search} : HeaderProps) {
             )}
     
             {search && (
-                <Search />
+                <Search onClick={searchOnClick} />
             )}
     
             {title && (

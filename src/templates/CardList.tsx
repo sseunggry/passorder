@@ -11,9 +11,9 @@ function CardList({addClass = '', itemList, eventList}: ListProps){
     if(addClass === "card-event"){
         return (
             <ul className={`card-list ${addClass}`}>
-                {eventList?.map(({txt, img}, idx) => (
+                {eventList?.map(({id, txt, img, link = ''}, idx) => (
                     <li key={idx}>
-                        <Link to="">
+                        <Link to={`/event/${id}`}>
                             {txt && (
                                 <div className="txt-wrap">
                                     <p className="tit">{txt}</p>
@@ -32,9 +32,9 @@ function CardList({addClass = '', itemList, eventList}: ListProps){
     } else{
         return (
             <ul className={`card-list ${addClass}`}>
-                {itemList?.map(({logo, brand, infoList, badge}, idx) => (
+                {itemList?.map(({id, logo, brand, infoList, badge}, idx) => (
                     <li key={idx}>
-                        <Link to="">
+                        <Link to={`/store/${id}`}>
                             {logo && (
                                 <div className="logo">
                                     <img src={`${process.env.PUBLIC_URL}/resource/images/logo/${logo}.png`} alt=""/>

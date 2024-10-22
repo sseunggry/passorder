@@ -18,7 +18,7 @@ function Input({addClass = '', label, title, value, id, placeholder, children} :
             </label>
             <div className={`input ${addClass}`}>
                 <input type="text" id={id} placeholder={placeholder ? placeholder : "입력해 주세요."} value={value} />
-                <button type="button" className="btn-icon delete">
+                <button type="button" className="btn-icon btn-delete-fill">
                     <span className="blind">삭제</span>
                 </button>
                 {children}

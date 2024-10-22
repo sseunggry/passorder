@@ -1,14 +1,16 @@
 import Input from "components/Input";
 import Button from "components/Button";
+import {MouseEventHandler} from "react";
 
 type SearchProps = {
     addClass?: string;
     placeholder?: string;
+    onClick?: MouseEventHandler<HTMLElement>;
 }
 
-function Search({addClass = '', placeholder} : SearchProps) {
+function Search({addClass = '', placeholder, onClick} : SearchProps) {
     return (
-        <div className={`input-wrap search ${addClass}`}>
+        <div className={`input-wrap search ${addClass}`} onClick={onClick}>
             <Input
                 id="search"
                 title="검색어 입력"

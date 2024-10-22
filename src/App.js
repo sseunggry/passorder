@@ -1,13 +1,14 @@
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-import Home from "pages/home";
-import "styles/base/index.scss";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import "styles/common.scss";
 import "styles/style.scss";
+import Home from "pages/home";
 import Cart from "pages/cart";
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import Order from "./pages/order";
-import Qr from "./pages/qr";
-import MyPage from "./pages/mypage";
+import Order from "pages/order";
+import Qr from "pages/qr";
+import MyPage from "pages/mypage";
+import SearchPage from "pages/search";
+import StoreDetail from "pages/store/detail";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,8 @@ function App() {
                   <Route path="/order" element={<Order />} />
                   <Route path="/qr" element={<Qr />} />
                   <Route path="/mypage" element={<MyPage />} />
+                  <Route path="/search" element={<SearchPage />} />
+                  <Route path="/store/:id" element={<StoreDetail />} />
                   <Route path="*" element={<Navigate replace to="/" />} />
               </Routes>
           </BrowserRouter>

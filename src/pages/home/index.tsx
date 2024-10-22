@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import {useEventData, useStoreData} from "hooks/queries/useStoreQuery";
 import SwiperBanner from "templates/SwiperBanner";
 import CardList from "templates/CardList";
@@ -5,23 +6,30 @@ import Search from "components/Search";
 import Button from "components/Button";
 import Loading from "components/Loading";
 import Layout from "templates/Layout";
+import {useNavigate} from "react-router-dom";
 
 function Home() {
+    const navigate = useNavigate();
     const {data: storeData, isLoading: storeDataIsLoading, isError: storeDataIsError} = useStoreData();
     const {data: eventData, isLoading: eventDataIsLoading, isError: eventDataIsError} = useEventData();
     const recentStoreList = storeData?.filter(el => el.recent);
     const nearbyStoreList = storeData?.filter(el => el.nearby);
     
+    const searchOnClick = (e:MouseEvent<HTMLElement>) => {
+        e.preventDefault();
+        navigate('/search');
+    }
+    
     return (
-        <Layout addClass="bg-gray" headerCon={{select:true, alarm:true, cart:true}}>
+        <Layout addClass="bg-gray main" headerCon={{select:true, alarm:true, cart:true}}>
             <section>
-                <Search />
+                <Search onClick={searchOnClick}/>
                 <SwiperBanner
                     addClass="main-swiper"
                     option={{ pagination: {type: 'fraction'}, navigation: true }}
                     itemList={[
-                        {desc: "누구나 참여할 수 있는", tit: "매일 2000원 커피 공짜로 먹는 꿀팁!", date: "06.14 - 06.30", img: "img_banner_01.jpg"},
-                        {desc: "누구나", tit: "커피 공짜로 먹는 꿀팁!", date: "07.20 - 12.30", img: "img_banner_01.jpg"},
+                        {desc: "누구나 참여할 수 있는", tit: "매일 2000원 커피 공짜로 먹는 꿀팁!", date: "06.14 - 06.30", img: "img_banner_01.jpg", link: "/event/1"},
+                        {desc: "누구나", tit: "커피 공짜로 먹는 꿀팁!", date: "07.20 - 12.30", img: "img_banner_01.jpg", link: "/event/2"},
                     ]}
                 />
             </section>

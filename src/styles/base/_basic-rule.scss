@@ -32,7 +32,7 @@ html{
         margin-left: auto;
     }
 }
-.title{
+.tit{
     &-xl{
         font-size: var(--typo-title-xlarge);
         font-weight: 700;
@@ -85,4 +85,9 @@ img{
 /* blind */
 .blind {
     @include blind();
+}
+
+/* scroll */
+.scroll-x{
+    @include scroll-x();
 }

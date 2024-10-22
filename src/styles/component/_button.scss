@@ -94,9 +94,10 @@ $btn-font-color: var(--color-text-gray);
         $icon-size: small, medium, large;
         @each $size in $icon-size {
             &.#{$size}{
+                height: fit-content;
                 .icon{
-                    width: var(--icon-size-#{$size});
-                    height: var(--icon-size-#{$size});
+                    width: var(--btn-icon-size-#{$size});
+                    height: var(--btn-icon-size-#{$size});
                 }
             }
         }

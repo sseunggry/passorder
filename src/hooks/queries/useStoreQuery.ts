@@ -2,6 +2,7 @@ import {useQuery} from "@tanstack/react-query";
 import {fetchData} from "api/api";
 
 export interface storeListDataPros {
+    id?: string;
     logo?: string;
     brand?: string;
     infoList?: {
@@ -18,8 +19,10 @@ export interface storeListDataPros {
 }
 
 export interface EventListDataPros {
+    id?: string;
     txt?: string;
     img?: string;
+    link?: string;
 }
 
 export const useStoreData = () => {
