@@ -91,3 +91,13 @@ img{
 .scroll-x{
     @include scroll-x();
 }
+
+/* hr */
+hr{
+    &.divider{
+        display: block;
+        @include scroll-x();
+        height: var(--border-width-large);
+        background-color: var(--color-border-basic);
+    }
+}

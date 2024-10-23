@@ -8,7 +8,7 @@ import Order from "pages/order";
 import Qr from "pages/qr";
 import MyPage from "pages/mypage";
 import SearchPage from "pages/search";
-import StoreDetail from "pages/store/detail";
+import DetailPage from "pages/sub/detail";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +23,8 @@ function App() {
                   <Route path="/qr" element={<Qr />} />
                   <Route path="/mypage" element={<MyPage />} />
                   <Route path="/search" element={<SearchPage />} />
-                  <Route path="/store/:id" element={<StoreDetail />} />
+                  <Route path="/store/:id" element={<DetailPage />} />
+                  <Route path="/event/:id" element={<DetailPage />} />
                   <Route path="*" element={<Navigate replace to="/" />} />
               </Routes>
           </BrowserRouter>

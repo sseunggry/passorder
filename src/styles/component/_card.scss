@@ -55,31 +55,31 @@
                 margin-top: var(--card-item-gap-tit-info);
             }
         }
-        .info-list{
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: var(--card-item-gap-info-badge);
-            font-size: var(--card-info-font-size);
-            color: var(--card-info-color);
-
-            li{
-                &::after{
-                    content: '';
-                    display: inline-block;
-                    margin: 0 var(--card-info-line-margin-x);
-                    width: var(--card-info-line-width);
-                    height: var(--card-info-line-height);
-                    background-color: var(--card-info-line-color);
-                }
-
-                &:last-child{
-                    &::after{
-                        display: none;
-                    }
-                }
-            }
-        }
+        //.info-list{
+        //    display: flex;
+        //    align-items: center;
+        //    flex-wrap: wrap;
+        //    margin-bottom: var(--card-item-gap-info-badge);
+        //    font-size: var(--card-info-font-size);
+        //    color: var(--card-info-color);
+        //
+        //    li{
+        //        &::after{
+        //            content: '';
+        //            display: inline-block;
+        //            margin: 0 var(--card-info-line-margin-x);
+        //            width: var(--card-info-line-width);
+        //            height: var(--card-info-line-height);
+        //            background-color: var(--card-info-line-color);
+        //        }
+        //
+        //        &:last-child{
+        //            &::after{
+        //                display: none;
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     &.card-row{

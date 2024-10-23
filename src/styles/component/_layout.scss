@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 .wrap{
-    overflow: hidden;
+    //overflow: hidden;
     margin: 0 auto;
-    max-width: 1080px;
-    height: 100vh;
+    max-width: 960px;
+    //height: 100vh;
 
     &.bg-gray{
         //추후 삭제
@@ -16,23 +16,22 @@
 //padding-24, gap: 40px - 기본
 //padding-0, gap: 0
 //gap: 30px , gap: 0
-.container{
-    overflow: hidden auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--layout-gap-large);
+.contents{
+    //display: flex;
+    //flex-direction: column;
+    //gap: var(--layout-gap-large);
     padding: var(--layout-gap-small) var(--padding-layout-x) var(--padding-layout-y);
 
-    .no-spacing{
+    &.no-spacing{
         padding-top: 0;
         gap: 0;
     }
 }
 
-//section{
-//    margin-top: var(--gap-8);
-//
-//    &:first-child{
-//        margin-top: 0;
-//    }
-//}
+section{
+    margin-top: var(--gap-8);
+
+    &:first-child{
+        margin-top: 0;
+    }
+}

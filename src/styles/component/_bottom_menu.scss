@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @mixin pc-variable(){
+    //--bottom-menu-height: 7.5rem;
     --bottom-menu-padding-x: var(--space-8);
     --bottom-menu-padding-y: var(--space-7);
     --bottom-menu-bg: var(--color-bg-white);
@@ -20,9 +21,14 @@
 .bottom-menu{
     @include pc-variable();
 
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     padding: var(--bottom-menu-padding-y) var(--bottom-menu-padding-x);
+    width: 100%;
+    height: var(--bottom-menu-height);
     background-color: var(--bottom-menu-bg);
     box-shadow: var(--bottom-menu-shadow);
 

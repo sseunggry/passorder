@@ -44,7 +44,7 @@ function CardList({addClass = '', itemList, eventList}: ListProps){
                             <div className="txt-wrap">
                                 <p className="tit">{brand}</p>
                                 {infoList && (
-                                    <ul className="info-list">
+                                    <ul className="store-info-list">
                                         {infoList.rating && <li className="rating">{infoList.rating}</li>}
                                         {infoList.review && <li className="review">리뷰 <span>{infoList.review}</span></li>}
                                         {infoList.distance && <li className="distance">{infoList.distance}</li>}

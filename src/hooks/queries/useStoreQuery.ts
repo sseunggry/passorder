@@ -16,6 +16,14 @@ export interface storeListDataPros {
     }[],
     recent?: boolean;
     nearby?: boolean;
+    imgVisual?: string;
+    tel?: string;
+    detailInfo?: {
+        time?: string;
+        location?: string;
+        location2?: string;
+        "businessHours"?: string;
+    };
 }
 
 export interface EventListDataPros {
@@ -34,7 +42,7 @@ export const useStoreData = () => {
 
 export const useEventData = () => {
     return useQuery<EventListDataPros[]>({
-        queryKey: [],
+        queryKey: ['useEventData'],
         queryFn: () => fetchData('event')
     });
 }

@@ -34,6 +34,9 @@
     --icon-size-large: 2.4rem;
     --icon-size-xlarge: 2.8rem;
 
+    //icon-color
+    --icon-color-gray: var(--color-gray-6);
+
     //spacing
     --space-1: 0.2rem;
     --space-2: 0.4rem;
@@ -71,6 +74,7 @@
     //border-width
     --border-width: 0.1rem;
     --border-width-medium: 0.2rem;
+    --border-width-large: 0.8rem;
 
     //line-height
     --base-line-height: 1.4;
@@ -173,7 +177,7 @@
     --gap-7: var(--space-12);  //30
     --gap-8: var(--space-13);  //40
 
-    //layout  4  3  2
+    //layout  40  30  20
     --layout-gap-large: var(--gap-8);
     --layout-gap-medium: var(--gap-7);
     --layout-gap-small: var(--gap-6);
@@ -185,4 +189,8 @@
     //padding
     --padding-layout-x: var(--space-8);
     --padding-layout-y: var(--space-12);
+
+    //
+    --header-height: 5.2rem;
+    --bottom-menu-height: 7.5rem;
 }

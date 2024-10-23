@@ -1,0 +1,150 @@
+{
+    "store": [
+        {
+            "id":  "paris",
+            "logo": "logo_paris",
+            "brand": "파리바게트 수원역점",
+            "infoList": {
+                "rating": 4.25,
+                "review": 87,
+                "distance": "50m"
+            },
+            "badge": [
+                {
+                    "text": "할인",
+                    "color": "blue"
+                },
+                {
+                    "text": "적립",
+                    "color": "pink"
+                }
+            ],
+            "imgVisual": "img_detail_store_visual.jpg",
+            "tel": "02-233-1243",
+            "detailInfo": {
+                "time": "5~10분",
+                "location": "경기 수원시 팔달구 경수대로604번길 19",
+                "location2": "경기도 수원시 팔달구 우만동 559-17",
+                "businessHours": "매일 10:00 ~ 23:00"
+            },
+            "recent": true
+        },
+        {
+            "id":  "tencent",
+            "logo": "logo_tencent",
+            "brand": "텐센트 커피",
+            "infoList": {
+                "rating": 3.25,
+                "review": 50,
+                "distance": "82m"
+            },
+            "badge": [
+                {
+                    "text": "할인",
+                    "color": "blue"
+                }
+            ],
+            "recent": true
+        },
+        {
+            "id":  "yogurt",
+            "logo": "logo_yogurt",
+            "brand": "요거트 아이스크림",
+            "infoList": {
+                "rating": 4.5,
+                "review": 150,
+                "distance": "120m"
+            },
+            "badge": [
+                {
+                    "text": "적립",
+                    "color": "pink"
+                }
+            ],
+            "recent": true
+        },
+        {
+            "id":  "mammoth",
+            "logo": "logo_mammoth",
+            "brand": "매머드 익스프레스 우만점",
+            "infoList": {
+                "rating": 4.25,
+                "review": 87,
+                "distance": "10m"
+            },
+            "badge": [
+                {
+                    "text": "할인",
+                    "color": "blue"
+                },
+                {
+                    "text": "적립",
+                    "color": "pink"
+                }
+            ],
+            "nearby": true
+        },
+        {
+            "id": "banapresso",
+            "logo": "logo_banapresso",
+            "brand": "바나프레소 동수원점",
+            "infoList": {
+                "rating": 3.25,
+                "review": 50,
+                "distance": "12m"
+            },
+            "badge": [
+                {
+                    "text": "할인",
+                    "color": "blue"
+                }
+            ],
+            "nearby": true
+        },
+        {
+            "id": "theventi",
+            "logo": "logo_theventi",
+            "brand": "더벤티 아주대 입구점",
+            "infoList": {
+                "rating": 4.5,
+                "review": 150,
+                "distance": "25m"
+            },
+            "badge": [
+                {
+                    "text": "적립",
+                    "color": "pink"
+                }
+            ],
+            "nearby": true
+        },
+        {
+            "id": "tomntoms",
+            "logo": "logo_tomntoms",
+            "brand": "탐앤탐스 아주대 입구점",
+            "infoList": {
+                "rating": 4.5,
+                "review": 150,
+                "distance": "32m"
+            },
+            "nearby": true
+        }
+    ],
+    "event": [
+        {
+            "id":  "1",
+            "txt": "취향을 담은 \n브랜드 상품권",
+            "img": "img_event_01.png"
+        },
+        {
+            "id":  "2",
+            "txt": "생일인 친구에게 \n마음을 표현해요",
+            "img": "img_event_02.png"
+        },
+        {
+            "id":  "3",
+            "txt": "취향을 담은 \n브랜드 상품권",
+            "img": "img_event_03.png"
+        }
+    ]
+}

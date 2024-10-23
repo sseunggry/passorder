@@ -1,7 +1,7 @@
 import Layout from "templates/Layout";
 import Button from "components/Button";
 
-function StoreList() {
+function ListPage() {
     return (
         <Layout headerCon={{back: true, cart: true}}>
             name
@@ -9,4 +9,4 @@ function StoreList() {
     )
 }
 
-export default StoreList;
+export default ListPage;

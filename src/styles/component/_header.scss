@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @mixin variable(){
+    //--header-height: 5.2rem;
     --header-padding: var(--padding-layout-x);
     --haeder-item-gap: var(--gap-3);
     --header-tit-size: var(--typo-title-medium);
@@ -10,9 +11,14 @@
 .header{
     @include variable();
 
+    position: fixed;
+    top: 0;
+    z-index: 10;
     display: flex;
     align-items: center;
     gap: var(--haeder-item-gap);
+    width: 100%;
+    height: var(--header-height);
     padding: var(--header-padding);
 
     .btn-back{

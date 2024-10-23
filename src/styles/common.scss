@@ -1,2 +1,36 @@
 @import "./base/index.scss";
 @import "./component";
+
+//store-info-list
+.store-info-list{
+    --store-info-font-size: var(--typo-body-xsmall);
+    --store-info-color: var(--color-text-gray-light);
+    --store-info-line-margin-x: var(--gap-2);
+    --store-info-line-width: var(--border-width);
+    --store-info-line-height: 0.8rem;
+    --store-info-line-color: var(--color-border-dark);
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--store-item-gap-info-badge);
+    font-size: var(--store-info-font-size);
+    color: var(--store-info-color);
+
+    li{
+        &::after{
+            content: '';
+            display: inline-block;
+            margin: 0 var(--store-info-line-margin-x);
+            width: var(--store-info-line-width);
+            height: var(--store-info-line-height);
+            background-color: var(--store-info-line-color);
+        }
+
+        &:last-child{
+            &::after{
+                display: none;
+            }
+        }
+    }
+}
