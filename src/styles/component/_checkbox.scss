@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+@mixin variable(){
+
+}
+
+
+.checkbox{
+    @include variable();
+
+    input[type="checkbox"]{
+        @include blind();
+    }
+
+    label{
+        display: flex;
+        align-items: center;
+        gap: var(--gap-2);
+        font-size: var(--input-label-font-size);
+
+        &::before{
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: var(--border-radius-small);
+            border: var(--border-width) solid var(--color-border-dark);
+        }
+    }
+}
