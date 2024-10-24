@@ -22,34 +22,40 @@
             "imgVisual": "img_detail_store_visual.jpg",
             "tel": "02-233-1243",
             "detailInfo": {
-                "time": "5~10분",
+                "delivery": "5~10분",
                 "location": "경기 수원시 팔달구 경수대로604번길 19",
                 "location2": "경기도 수원시 팔달구 우만동 559-17",
-                "businessHours": "매일 10:00 ~ 23:00"
+                "time": "매일 10:00 ~ 23:00"
             },
             "productList": [
                 {
+                    "categoryId": "coffee",
                     "category": "커피",
                     "list": [
                         {
+                            "productId": "1",
                             "name": "아메리카노(ICED)",
                             "desc": "진하게 로스팅한 커피 원두에서 에스프레소를 추출하여 원두 풍미를 느낄 수 있습니다.",
                             "price": 4000,
-                            "thumbImg": "img_detail_thumb_1.png"
+                            "thumbImg": "img_detail_thumb_1.png",
+                            "visualImg": "img_detail_visual_1.png"
                         },
                         {
+                            "productId": "2",
                             "name": "아메리카노(HOT)",
                             "desc": "진하게 로스팅한 커피 원두에서 에스프레소를 추출하여 원두 풍미를 느낄 수 있습니다.",
                             "price": 4000,
                             "thumbImg": "img_detail_thumb_2.png"
                         },
                         {
+                            "productId": "3",
                             "name": "카페모카(ICED)",
                             "desc": "진한 초콜릿 모카 시럽과 풍부하고 진한 농도의 에스프레소를 혼합하여 달달하게 즐길 수 있습니다.",
                             "price": 5600,
                             "thumbImg": "img_detail_thumb_3.png"
                         },
                         {
+                            "productId": "4",
                             "name": "카페모카(HOT)",
                             "desc": "진한 초콜릿 모카 시럽과 풍부하고 진한 농도의 에스프레소를 혼합하여 달달하게 즐길 수 있습니다.",
                             "price": 5600,
@@ -58,15 +64,18 @@
                     ]
                 },
                 {
+                    "categoryId": "bakery",
                     "category": "베이커리",
                     "list": [
                         {
+                            "productId": "1",
                             "name": "크랜베리 크림치즈 스콘",
                             "desc": "진한 크림치즈와 크랜베리의 새콤달콤 풍미가 조화롭게 어울리는 스콘",
                             "price": 5600,
                             "thumbImg": "img_detail_thumb_5.png"
                         },
                         {
+                            "productId": "2",
                             "name": "데니쉬 큐브식빵 플레인",
                             "desc": "바삭하고 부드러운 페스츄리 식빵",
                             "price": 5500,
@@ -74,12 +83,14 @@
                             "remainCount": 5
                         },
                         {
+                            "productId": "3",
                             "name": "클래식 초코 머핀",
                             "desc": "겹겹이 쌓인 결 사이로 고소한 버터 풍미가 가득차 겉은 바삭하고 속은 부드러운 머핀",
                             "price": 4300,
                             "thumbImg": "img_detail_thumb_7.png"
                         },
                         {
+                            "productId": "4",
                             "name": "올리브 바질 베이글",
                             "desc": "은은한 바질향이 산뜻하게 풍기는 베이글",
                             "price": 4800,

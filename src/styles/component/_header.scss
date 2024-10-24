@@ -22,9 +22,13 @@
     padding: var(--header-padding);
 
     .btn-back{
+        flex-shrink: 0;
         width: var(--header-icon-size);
         height: var(--header-icon-size);
-        .icon{
+
+        ~ .tit{
+            margin-left: calc(var(--header-icon-size) * -1);
+            width: 100%;
         }
     }
 

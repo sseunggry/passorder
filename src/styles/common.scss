@@ -10,6 +10,9 @@
     --store-info-line-height: 0.8rem;
     --store-info-line-color: var(--color-border-dark);
 
+    --store-info-rating-size: var(--icon-size-xsmall);
+    --store-info-rating-color: var(--icon-color-gray);
+
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -18,6 +21,8 @@
     color: var(--store-info-color);
 
     li{
+        display: flex;
+        align-items: center;
         &::after{
             content: '';
             display: inline-block;
@@ -26,11 +31,17 @@
             height: var(--store-info-line-height);
             background-color: var(--store-info-line-color);
         }
-
         &:last-child{
             &::after{
                 display: none;
             }
+        }
+    }
+    .rating{
+        &::before{
+            content: '';
+            display: inline-block;
+            @include icon('star_fill.svg', $size: var(--store-info-rating-size), $color: var(--store-info-rating-color));
         }
     }
 }

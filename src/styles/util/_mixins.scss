@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
-$base-url: '../../../public/resource/';
+$base-url: '../../../public/resource';
 
 @mixin font($family, $name, $type, $weight){
-    $url: $base-url + 'fonts/' + $name + '.' + $type;
+    $url: "#{$base-url}/fonts/#{$name}.#{$type}";
 
     font-family: $family;
     src: url($url) format($type);
@@ -11,14 +11,14 @@ $base-url: '../../../public/resource/';
 }
 
 @mixin bg($url, $pos:center, $size:cover){
-    background: url($base-url +'images/'+ $url) no-repeat $pos / $size;
+    background: url("#{$base-url}/images/#{$url}") no-repeat $pos / $size;
 }
 
 @mixin icon($name, $pos:center, $size: var(--icon-size-medium), $color: $color-black){
     display: inline-flex;
     width: $size;
     height: $size;
-    mask: url($base-url +'images/icon/icon_' + $name) no-repeat $pos / 100% auto;
+    mask: url("#{$base-url}/images/icon/icon_#{$name}") no-repeat $pos / 100% auto;
     background-color: $color;
 }
 

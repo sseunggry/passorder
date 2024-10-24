@@ -1,6 +1,7 @@
 import Header, {HeaderProps} from "./Header";
 import BottomMenu from "./BottomMenu";
 import {ReactNode, useEffect, useState} from "react";
+import Button from "../components/Button";
 
 interface LayoutPros{
     addClass?: string;
@@ -8,9 +9,13 @@ interface LayoutPros{
     headerCon?: HeaderProps;
     children?: ReactNode;
     bottomMenu?: boolean;
+    pageBtn?: {
+        text: string;
+        addClass?: string;
+    };
 }
 
-function Layout({addClass = '', header = true, headerCon, children, bottomMenu = true}: LayoutPros) {
+function Layout({addClass = '', header = true, headerCon, children, bottomMenu = true, pageBtn}: LayoutPros) {
     // const [containerHeight, setContainerHeight] = useState<number>(0);
     const [headerHeight, setHeaderHeight] = useState<number>(0);
     const [bottomMenuHeight, setBottomMenuHeight] = useState<number>(0);
@@ -48,6 +53,15 @@ function Layout({addClass = '', header = true, headerCon, children, bottomMenu =
             </div>
     
             {bottomMenu && <BottomMenu />}
+            {pageBtn && (
+                <div className="btn-page-wrap">
+                    <Button
+                        tag="a"
+                        text={pageBtn.text}
+                        addClass={`fill large round-m primary disabled`}
+                    />
+                </div>
+            )}
         </div>
     )
 }

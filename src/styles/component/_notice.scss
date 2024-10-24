@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+@mixin variable(){
+    --notice-margin-x: calc(var(--padding-layout-x) * -1);
+    --notice-padding-x: var(--padding-layout-x);
+    --notice-padding-y: var(--space-11);
+    --notice-bg-color: var(--color-bg-gray-light);
+    --notice-border-top-width: var(--border-width);
+    --notice-border-top-color: var(--color-border-dark);
+
+    --notice-tit-color: var(--color-text-gray);
+    --notice-tit-size: var(--typo-title-xsmall);
+    --notice-gap-tit-list: var(--gap-5);
+}
+
+
+.notice-wrap{
+    @include variable();
+
+    margin: 0 var(--notice-margin-x);
+    padding: var(--notice-padding-y) var(--notice-padding-x);
+    background-color: var(--notice-bg-color);
+    border-top: var(--notice-border-top-width) solid var(--notice-border-top-color);
+
+    .tit{
+        margin-bottom: var(--notice-gap-tit-list);
+        font-size: var(--notice-tit-size);
+        font-weight: 600;
+        color: var(--notice-tit-color);
+    }
+
+}
+.notice-list{
+    --notice-list-txt-size: var(--typo-body-xsmall);
+    --notice-list-color: var(--color-text-gray-light);
+    --notice-list-gap: var(--gap-2);
+
+    --notice-list-dot-size: 0.2rem;
+    --notice-list-gap-dot-txt: var(--gap-2);
+    --notice-list-dot-radius: var(--border-radius-max);
+    --notice-list-dot-pos-top: calc((var(--notice-list-txt-size) * var(--base-line-height) - var(--notice-list-dot-size)) / 2);
+    --notice-list-dot-color: var(--notice-list-color);
+    --notice-list-padding-left: calc(var(--notice-list-dot-size) + var(--notice-list-gap-dot-txt));
+
+    li{
+        position: relative;
+        margin-bottom: var(--notice-list-gap);
+        padding-left: var(--notice-list-padding-left);
+        font-size: var(--notice-list-txt-size);
+        color: var(--notice-list-color);
+
+        &:last-child{
+            margin-bottom: 0;
+        }
+
+        //기본형 - dot
+        &::before{
+            content: '';
+            position: absolute;
+            top: var(--notice-list-dot-pos-top);
+            left: 0;
+            display: block;
+            width: var(--notice-list-dot-size);
+            height: var(--notice-list-dot-size);
+            background-color: var(--notice-list-dot-color);
+            border-radius: var(--notice-list-dot-radius);
+        }
+    }
+}

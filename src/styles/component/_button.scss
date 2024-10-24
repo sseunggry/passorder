@@ -18,6 +18,13 @@ $btn-font-color: var(--color-text-gray);
     display: flex;
     gap: var(--btn-wrap-gap);
 }
+.btn-page-wrap{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: var(--space-11) var(--padding-layout-x);
+    width: 100%;
+}
 
 .btn{
     display: inline-flex;
@@ -70,6 +77,7 @@ $btn-font-color: var(--color-text-gray);
             &.disabled{
                 --color: var(--btn-color-font-white-disabled);
                 --color-bg: var(--btn-color-fill-primary-disabled);
+                pointer-events: none;
             }
         }
     }

@@ -1,5 +1,5 @@
 import { MouseEvent } from "react";
-import {useEventData, useStoreData} from "hooks/queries/useStoreQuery";
+import {useEventListData, useStoreListData} from "hooks/queries/useStoreQuery";
 import SwiperBanner from "templates/SwiperBanner";
 import CardList from "templates/CardList";
 import Search from "components/Search";
@@ -10,8 +10,8 @@ import {useNavigate} from "react-router-dom";
 
 function Home() {
     const navigate = useNavigate();
-    const {data: storeData, isLoading: storeDataIsLoading, isError: storeDataIsError} = useStoreData();
-    const {data: eventData, isLoading: eventDataIsLoading, isError: eventDataIsError} = useEventData();
+    const {data: storeData, isLoading: storeDataIsLoading, isError: storeDataIsError} = useStoreListData();
+    const {data: eventData, isLoading: eventDataIsLoading, isError: eventDataIsError} = useEventListData();
     const recentStoreList = storeData?.filter(el => el.recent);
     const nearbyStoreList = storeData?.filter(el => el.nearby);
     
