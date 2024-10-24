@@ -77,24 +77,19 @@
             @include img-response(70%);
         }
         .txt-wrap{
-            padding-top: 2.4rem;
+            margin: var(--gap-6) 0 var(--gap-5);
             text-align: center;
             .store-info-list{
                 margin-top: var(--gap-3);
                 justify-content: center;
             }
         }
-        .btn-wrap{
-            margin: var(--gap-5) 0;
-        }
         .detail-info{
+            margin: var(--gap-5) 0;
             $icon-more-size: var(--icon-size-small);
             li{
                 position: relative;
                 padding-left: calc(#{$icon-more-size} + var(--gap-2));
-                //display: flex;
-                //align-items: center;
-                //gap: var(--gap-2);
                 margin-bottom: var(--gap-5);
                 &:last-child{
                     margin-bottom: 0;
@@ -130,7 +125,65 @@
                     display: block;
                 }
             }
-
+        }
+        .btn-more-wrap{
+            .btn{
+                padding: var(--space-9) 0;
+                width: 100%;
+                border-top: var(--border-width) solid var(--color-border-basic);
+            }
+        }
+    }
+    .product-list{
+        .product{
+            .product-tit{
+                padding-top: var(--gap-6);
+                font-size: var(--typo-title-xlarge);
+                font-weight: 700;
+            }
+            .list{
+                li{
+                    border-bottom: var(--border-width) solid var(--color-border-basic);
+                    a{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: var(--gap-4);
+                        padding: var(--gap-6) 0;
+                    }
+                    &:last-child{
+                        border-bottom-width: 0;
+                    }
+                }
+                .tit{
+                    font-size: var(--typo-title-large);
+                    font-weight: 500;
+                    ~ .desc{
+                        margin-top: var(--gap-2);
+                    }
+                }
+                .desc{
+                    font-size: var(--typo-body-small);
+                    color: var(--color-text-gray-light);
+                    @include ellipsis(2);
+                }
+                .price{
+                    margin-top: var(--gap-4);
+                    font-size: var(--typo-body-medium);
+                    font-weight: 600;
+                }
+                .badge{
+                    display: inline-block;
+                    margin-top: var(--gap-2);
+                }
+                .img-wrap{
+                    @include img-response(100%);
+                    flex-shrink: 0;
+                    width: 10rem;
+                    height: 100%;
+                    border-radius: var(--border-radius-large);
+                }
+            }
         }
     }
 }

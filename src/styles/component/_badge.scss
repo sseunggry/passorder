@@ -8,6 +8,10 @@
     --badge-color-blue-bg: var(--color-bg-blue);
     --badge-color-pink-text: var(--color-text-pink);
     --badge-color-pink-bg: var(--color-bg-pink);
+    --badge-color-default-text: var(--color-text-gray);
+    --badge-color-default-bg: var(--color-bg-gray);
+    --badge-color-orange-text: var(--color-bg-primary);
+    --badge-color-orange-bg: var(--color-bg-primary-light);
 }
 
 
@@ -16,6 +20,8 @@
 
     padding: var(--badge-padding);
     border-radius: var(--badge-border-radius);
+    color: var(--badge-color-default-text);
+    background-color: var(--badge-color-default-bg);
 
     &.blue{
         color: var(--badge-color-blue-text);
@@ -25,7 +31,10 @@
         color: var(--badge-color-pink-text);
         background-color: var(--badge-color-pink-bg);
     }
-
+    &.orange{
+        color: var(--badge-color-orange-text);
+        background-color: var(--badge-color-orange-bg);
+    }
     &-wrap{
         display: flex;
         gap: var(--badge-list-gap);

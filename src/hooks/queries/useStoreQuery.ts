@@ -22,8 +22,18 @@ export interface storeListDataPros {
         time?: string;
         location?: string;
         location2?: string;
-        "businessHours"?: string;
+        businessHours?: string;
     };
+    productList? : {
+        category: string;
+        list: {
+            name: string;
+            desc?: string;
+            price: number;
+            remainCount?: number;
+            thumbImg?: string;
+        }[];
+    }[];
 }
 
 export interface EventListDataPros {

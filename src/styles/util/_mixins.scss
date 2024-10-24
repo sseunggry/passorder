@@ -45,6 +45,8 @@ $base-url: '../../../public/resource/';
 
 @mixin img-response($padding-top: 50%){
     position: relative;
+    overflow: hidden;
+
     &::before{
         content: '';
         display: block;

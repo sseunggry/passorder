@@ -8,7 +8,7 @@ import Order from "pages/order";
 import Qr from "pages/qr";
 import MyPage from "pages/mypage";
 import SearchPage from "pages/search";
-import DetailPage from "pages/sub/detail";
+import DetailPage from "pages/sub/Detail";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +25,7 @@ function App() {
                   <Route path="/search" element={<SearchPage />} />
                   <Route path="/store/:id" element={<DetailPage />} />
                   <Route path="/event/:id" element={<DetailPage />} />
-                  <Route path="*" element={<Navigate replace to="/" />} />
+                  {/*<Route path="*" element={<Navigate replace to="/" />} />*/}
               </Routes>
           </BrowserRouter>
       </QueryClientProvider>
