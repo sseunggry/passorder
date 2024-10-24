@@ -2,23 +2,28 @@ import {useParams} from "react-router-dom";
 import Layout from "templates/Layout";
 import NoticeList from "../../templates/NoticeList";
 import {useStoreData} from "../../hooks/queries/useStoreQuery";
+import Loading from "../../components/Loading";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
     const {data, isLoading, isError} = useStoreData(id ?? '');
-    // console.log(data?.productList, id, productId, data?.productList);
-    const productItem = data?.productList?.filter(el => el.categoryId === categoryId);
+    // const productList = data?.productList?.find(el => el.categoryId === categoryId);
+    // const productItem = productList?.list.find(item => item.productId === productId);
+    const productItem = data?.productList?.find(el => el.categoryId === categoryId)?.list.find(item => item.productId === productId);
+    console.log(productItem);
+    
+    if(isLoading) return <Loading />
     
     return (
         <Layout headerCon={{back: true, cart: true}} bottomMenu={false} pageBtn={{text: "주문하기"}}>
             {data && (
                 <>
                     <div className="img-wrap">
-                        {/*<img src={`${process.env.PUBLIC_URL}/resource/images/sub/${id}/${imgVisual}`} alt=""/>*/}
+                        <img src={`${process.env.PUBLIC_URL}/resource/images/sub/${id}/${productItem?.visualImg}`} alt=""/>
                     </div>
                     <div className="txt-wrap">
-                        <h2 className="tit-m"></h2>
-                        <p className="desc"></p>
+                        <h2 className="tit-m">{productItem?.name}</h2>
+                        <p className="desc">{productItem?.desc}</p>
                     </div>
                     <div className="option-list">
                         <dl>
