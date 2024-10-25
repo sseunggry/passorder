@@ -212,7 +212,7 @@
         }
     }
     .option-list{
-        > li{
+        > .item{
             &:last-child::after{
                 display: none;
             }
@@ -240,12 +240,14 @@
             font-weight: 600;
         }
 
-        .check-list{
-            > li{
+        .select-list, .radio-list{
+            label{
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                padding: var(--gap-2) 0 var(--gap-5);
+                padding: var(--gap-5) 0;
+            }
+            .price{
+                margin-left: auto;
             }
         }
     }

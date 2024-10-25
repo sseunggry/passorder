@@ -1,32 +1,28 @@
 @charset "UTF-8";
-
-$btn-wrap-gap: var(--gap-3);
-
-$btn-gap: var(--gap-1);
-$btn-font-size: var(--typo-body-small);
-$btn-font-color: var(--color-text-gray);
-
-:root{
-    --btn-wrap-gap: var(--gap-3);
-
-    --btn-gap: var(--gap-1);
-    --btn-font-size: var(--typo-body-small);
-    --btn-font-color: var(--color-text-gray);
-}
+@import "../util";
 
 .btn-wrap{
+    --btn-wrap-gap: var(--gap-3);
+
     display: flex;
     gap: var(--btn-wrap-gap);
 }
 .btn-page-wrap{
     position: fixed;
-    left: 0;
     bottom: 0;
+    display: flex;
+    gap: var(--gap-5);
     padding: var(--space-11) var(--padding-layout-x);
     width: 100%;
+    max-width: $max-width;
+    background-color: var(--color-bg-white);
 }
 
 .btn{
+    --btn-gap: var(--gap-1);
+    --btn-font-size: var(--typo-body-small);
+    --btn-font-color: var(--color-text-gray);
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -116,7 +112,7 @@ $btn-font-color: var(--color-text-gray);
 //수량 버튼
 .btn-count{
     display: flex;
-    align-items: center;
+    //align-items: center;
     border: var(--border-width) solid var(--color-border-basic);
     border-radius: var(--border-radius-small);
 

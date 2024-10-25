@@ -7,6 +7,9 @@
     --checkbox-icon-color-active: var(--color-bg-white);
     --checkbox-icon-bg: var(--color-bg-white);
     --checkbox-icon-bg-active: var(--color-bg-primary);
+    --checkbox-icon-radius: var(--border-radius-small);
+    --checkbox-icon-border-width: var(--border-width);
+    --checkbox-icon-border-color: var(--color-border-dark);
 }
 
 
@@ -41,8 +44,8 @@
             display: inline-block;
             width: var(--checkbox-icon-size);
             height: var(--checkbox-icon-size);
-            border-radius: var(--border-radius-small);
-            border: var(--border-width) solid var(--color-border-dark);
+            border-radius: var(--checkbox-icon-radius);
+            border: var(--checkbox-icon-border-width) solid var(--checkbox-icon-border-color);
             background-color: var(--checkbox-icon-bg);
             box-sizing: border-box;
         }
@@ -50,8 +53,9 @@
         &::after{
             content: '';
             position: absolute;
-            top: 0;
+            top: 50%;
             left: 0;
+            transform: translateY(-50%);
             display: inline-block;
             @include icon('check.svg', $size: var(--checkbox-icon-size), $color: var(--checkbox-icon-color));
         }

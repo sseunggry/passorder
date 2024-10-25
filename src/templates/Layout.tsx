@@ -16,22 +16,27 @@ interface LayoutPros{
 }
 
 function Layout({addClass = '', header = true, headerCon, children, bottomMenu = true, pageBtn}: LayoutPros) {
-    // const [containerHeight, setContainerHeight] = useState<number>(0);
-    const [headerHeight, setHeaderHeight] = useState<number>(0);
-    const [bottomMenuHeight, setBottomMenuHeight] = useState<number>(0);
+    const [paddingTop, setPaddingTop] = useState<number>(0);
+    const [paddingBottom, setPaddingBottom] = useState<number>(0);
     
     useEffect(() => {
         const updateContainerHeight = () => {
             const $header = document.querySelector(".header") as HTMLElement | null;
             const $bottomMenu = document.querySelector(".bottom-menu") as HTMLElement | null;
-            // const windowHeight = window.innerHeight;
+            const $pageBtn = document.querySelector(".btn-page-wrap") as HTMLElement | null;
             
             const headerHeight = $header?.offsetHeight ?? 0;
             const bottomMenuHeight = $bottomMenu?.offsetHeight ?? 0;
+            const pageBtnHeight = $pageBtn?.offsetHeight ?? 0;
     
             // setContainerHeight(windowHeight - headerHeight - bottomMenuHeight);
-            setHeaderHeight(headerHeight);
-            setBottomMenuHeight(bottomMenuHeight);
+            setPaddingTop(headerHeight);
+            if($bottomMenu) {
+                setPaddingBottom(bottomMenuHeight);
+            }
+            if($pageBtn) {
+                setPaddingBottom(pageBtnHeight);
+            }
         };
     
         updateContainerHeight();
@@ -46,14 +51,13 @@ function Layout({addClass = '', header = true, headerCon, children, bottomMenu =
         <div className={`wrap ${addClass}`}>
             {header && <Header {...headerCon}/>}
             
-            <div className="container" style={{paddingTop: (headerHeight * 0.1)+ 'rem', paddingBottom: (bottomMenuHeight * 0.1)+ 'rem'}}>
+            <div className="container" style={{paddingTop: `${paddingTop * 0.1}rem`, paddingBottom: `${paddingBottom * 0.1}rem`}}>
                 <div className="contents">
                     {children}
                 </div>
             </div>
-    
-            {bottomMenu && <BottomMenu />}
-            {pageBtn && (
+            
+            {pageBtn ? (
                 <div className="btn-page-wrap">
                     <Button
                         tag="a"
@@ -61,7 +65,7 @@ function Layout({addClass = '', header = true, headerCon, children, bottomMenu =
                         addClass={`fill large round-m primary disabled`}
                     />
                 </div>
-            )}
+            ) : bottomMenu ? <BottomMenu /> : ''}
         </div>
     )
 }

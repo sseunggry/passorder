@@ -4,19 +4,19 @@ import NoticeList from "../../templates/NoticeList";
 import {useStoreData} from "../../hooks/queries/useStoreQuery";
 import Loading from "../../components/Loading";
 import Checkbox from "../../components/Checkbox";
+import {numberComma} from "../../hooks/common";
+import OptionList from "../../templates/OptionList";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
     const {data, isLoading, isError} = useStoreData(id ?? '');
-    // const productList = data?.productList?.find(el => el.categoryId === categoryId);
-    // const productItem = productList?.list.find(item => item.productId === productId);
     const productItem = data?.productList?.find(el => el.categoryId === categoryId)?.list.find(item => item.productId === productId);
-    console.log(productItem);
+    // console.log(productItem?.optionList);
     
     if(isLoading) return <Loading />
     
     return (
-        <Layout headerCon={{back: true, cart: true}} bottomMenu={false} pageBtn={{text: "주문하기"}} addClass="menu-select">
+        <Layout headerCon={{back: true, cart: true}} pageBtn={{text: "주문하기"}} addClass="menu-select">
             {data && (
                 <>
                     <div className="img-wrap">
@@ -26,51 +26,13 @@ function MenuSelect() {
                         <h2 className="tit-m">{productItem?.name}</h2>
                         <p className="desc">{productItem?.desc}</p>
                     </div>
-                    <div className="option-list">
-                        <li>
-                            <div className="tit-wrap">
-                                <p className="tit">가격</p>
-                                <div className="price">13,400원</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="tit-wrap">
-                                <p className="tit">샷양</p>
-                                <span className="badge">선택</span>
-                            </div>
-                            <ul className="check-list">
-                                <li>
-                                    <Checkbox label="샷 추가"/>
-                                    <p className="price">+500원</p>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div className="tit-wrap">
-                                <p className="tit">시럽추가</p>
-                                <span className="badge">선택</span>
-                            </div>
-                            <ul className="check-list">
-                                <li>
-                                    <Checkbox label="헤이즐럿 시럽추가"/>
-                                    <p className="price">+500원</p>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div className="tit-wrap">
-                                <p className="tit">수량</p>
-                                <div className="btn-count">
-                                    <button type="button" className="minus"><span className="blind">-</span></button>
-                                    <input type="text" disabled value="1" className="count"/>
-                                    <button type="button" className="plus"><span className="blind">+</span></button>
-                                </div>
-                            </div>
-                        </li>
-                    </div>
+                    <OptionList
+                        price={productItem?.price ?? 0}
+                        optionList={productItem?.optionList}
+                    />
                     <NoticeList
                         title={false}
-                        addClass="line"
+                        addClass="line bg-gray"
                         list={["메뉴 사진은 연출된 이미지로 실제 음식과 다를 수 있습니다."]}
                     />
                 </>

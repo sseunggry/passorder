@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+@mixin variable(){
+    --radio-label-typo-size: var(--input-label-font-size);
+    --radio-icon-size: 2rem;
+    --radio-icon-small-size: calc(var(--radio-icon-size) / 2);
+    --radio-icon-color: var(--icon-color-gray);
+    --radio-icon-color-active: var(--color-bg-white);
+    --radio-icon-bg: var(--color-bg-white);
+    --radio-icon-bg-active: var(--color-bg-primary);
+    --radio-icon-radius: var(--border-radius-max);
+    --radio-icon-border-width: var(--border-width);
+    --radio-icon-border-color: var(--color-border-dark);
+    --radio-icon-pos-left: calc((var(--radio-icon-size) - var(--radio-icon-small-size)) /2 );
+}
+
+
+.radio{
+    @include variable();
+
+    input[type="radio"]{
+        @include blind();
+
+        &:checked{
+            ~ label{
+                &::before{
+                    border-color: var(--radio-icon-bg-active);
+                    background-color: var(--radio-icon-bg-active);
+                }
+                &::after{
+                    background-color: var(--radio-icon-color-active);
+                }
+            }
+        }
+    }
+
+    label{
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--gap-2);
+        font-size: var(--radio-label-typo-size);
+
+        &::before{
+            content: '';
+            display: inline-block;
+            width: var(--radio-icon-size);
+            height: var(--radio-icon-size);
+            border-radius: var(--radio-icon-radius);
+            border: var(--radio-icon-border-width) solid var(--radio-icon-border-color);
+            background-color: var(--radio-icon-bg);
+            box-sizing: border-box;
+        }
+
+        &::after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: var(--radio-icon-pos-left);
+            transform: translateY(-50%);
+            display: inline-block;
+            width: var(--radio-icon-small-size);
+            height: var(--radio-icon-small-size);
+            border-radius: var(--radio-icon-radius);
+        }
+    }
+}

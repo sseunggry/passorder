@@ -1,6 +1,20 @@
 import {useQuery} from "@tanstack/react-query";
 import {fetchData} from "api/api";
 
+export interface ProductOptionList {
+    id: string;
+    tit: string;
+    required?: boolean;
+    radioList?: {
+        option: string;
+        price: number;
+    }[];
+    selectList?: {
+        option: string;
+        price: number;
+    }[];
+}
+
 export interface storeProductList {
     categoryId: string;
     category: string;
@@ -12,6 +26,7 @@ export interface storeProductList {
         remainCount?: number;
         thumbImg?: string;
         visualImg?: string;
+        optionList?: ProductOptionList[];
     }[];
 }
 

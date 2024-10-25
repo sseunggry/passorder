@@ -1,9 +1,10 @@
 @charset "UTF-8";
+@import "../util";
 
 .wrap{
     //overflow: hidden;
     margin: 0 auto;
-    max-width: 960px;
+    max-width: $max-width;
     //height: 100vh;
 
     &.bg-gray{
@@ -11,6 +12,10 @@
         --color-bg-gray-light: #ddd;
         background-color: var(--color-bg-gray-light);
     }
+}
+
+.container{
+    min-height: 100vh;
 }
 
 //padding-24, gap: 40px - 기본

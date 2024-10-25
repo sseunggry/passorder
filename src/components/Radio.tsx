@@ -1,22 +1,24 @@
 import {ReactNode} from "react";
 
-interface CheckboxProps {
+interface RadioProps {
     addClass?: string;
     label?: string;
-    dataLabel?: number;
+    dataLabel?: string;
+    dataPrice?: number;
     labelChildren?: ReactNode;
     id?: string;
+    name?: string;
     value?: string;
     checked?: boolean;
     children?: ReactNode;
     onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-function Checkbox({addClass = '', label, dataLabel, labelChildren, id, value, checked, onChange, children} : CheckboxProps){
+function Radio({addClass = '', label, dataLabel, dataPrice, labelChildren, id, name, value, checked, onChange, children} : RadioProps){
     return (
         <>
-            <div className={`checkbox ${addClass}`}>
-                <input type="checkbox"  id={id} value={value} checked={checked} onChange={onChange} data-label={dataLabel} />
+            <div className={`radio ${addClass}`}>
+                <input type="radio" id={id} name={name} value={value} checked={checked} onChange={onChange} data-label={dataLabel} data-price={dataPrice}/>
                 <label htmlFor={id}>
                     <span>{label}</span>
                     {labelChildren}
@@ -27,4 +29,4 @@ function Checkbox({addClass = '', label, dataLabel, labelChildren, id, value, ch
     )
 }
 
-export default Checkbox;
+export default Radio;
