@@ -112,3 +112,43 @@ $btn-font-color: var(--color-text-gray);
         }
     }
 }
+
+//수량 버튼
+.btn-count{
+    display: flex;
+    align-items: center;
+    border: var(--border-width) solid var(--color-border-basic);
+    border-radius: var(--border-radius-small);
+
+    button{
+        display: inline-flex;
+        padding: 0.6rem;
+
+        &.disabled{
+            background-color: var(--color-bg-gray-light);
+            &::before{
+                background-color: var(--btn-icon-color-gray);
+            }
+        }
+
+        &::before{
+            content: '';
+            display: inline-block;
+        }
+    }
+    .minus::before{
+        @include icon('minus.svg', $size: var(--icon-size-xsmall), $color: var(--btn-icon-color-gray-dark));
+    }
+    .plus::before{
+        @include icon('plus.svg', $size: var(--icon-size-xsmall), $color: var(--btn-icon-color-gray-dark));
+    }
+
+    .count{
+        display: inline-flex;
+        text-align: center;
+        width: 3.6rem;
+        font-size: var(--typo-body-small);
+        border-left: var(--border-width) solid var(--color-border-basic);
+        border-right: var(--border-width) solid var(--color-border-basic);
+    }
+}

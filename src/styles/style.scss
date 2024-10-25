@@ -220,7 +220,6 @@
                 content: '';
                 display: block;
                 margin: 0 calc(var(--padding-layout-x) * -1);
-                width: 100%;
                 height: var(--border-width-large);
                 background-color: var(--color-border-basic);
             }
@@ -228,7 +227,7 @@
 
         .tit-wrap{
             display: flex;
-            align-content: center;
+            align-items: center;
             justify-content: space-between;
             padding: var(--gap-5) 0;
         }
@@ -246,7 +245,12 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                padding: var(--gap-2) 0 var(--gap-5);
             }
         }
     }
+}
+
+.together-order{
+
 }

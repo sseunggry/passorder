@@ -61,14 +61,18 @@ function MenuSelect() {
                             <div className="tit-wrap">
                                 <p className="tit">수량</p>
                                 <div className="btn-count">
-                                    <button type="button"><span className="blind">-</span></button>
-                                    <button type="button"><span className="count">1</span></button>
-                                    <button type="button"><span className="blind">+</span></button>
+                                    <button type="button" className="minus"><span className="blind">-</span></button>
+                                    <input type="text" disabled value="1" className="count"/>
+                                    <button type="button" className="plus"><span className="blind">+</span></button>
                                 </div>
                             </div>
                         </li>
                     </div>
-                    <NoticeList list={["메뉴 사진은 연출된 이미지로 실제 음식과 다를 수 있습니다."]} title={false} />
+                    <NoticeList
+                        title={false}
+                        addClass="line"
+                        list={["메뉴 사진은 연출된 이미지로 실제 음식과 다를 수 있습니다."]}
+                    />
                 </>
             )}
         </Layout>

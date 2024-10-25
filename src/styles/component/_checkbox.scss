@@ -1,7 +1,12 @@
 @charset "UTF-8";
 
 @mixin variable(){
-
+    --checkbox-label-typo-size: var(--input-label-font-size);
+    --checkbox-icon-size: 2rem;
+    --checkbox-icon-color: var(--icon-color-gray);
+    --checkbox-icon-color-active: var(--color-bg-white);
+    --checkbox-icon-bg: var(--color-bg-white);
+    --checkbox-icon-bg-active: var(--color-bg-primary);
 }
 
 
@@ -10,21 +15,45 @@
 
     input[type="checkbox"]{
         @include blind();
+
+        &:checked{
+            ~ label{
+                &::before{
+                    border-color: var(--checkbox-icon-bg-active);
+                    background-color: var(--checkbox-icon-bg-active);
+                }
+                &::after{
+                    background-color: var(--checkbox-icon-color-active);
+                }
+            }
+        }
     }
 
     label{
+        position: relative;
         display: flex;
         align-items: center;
         gap: var(--gap-2);
-        font-size: var(--input-label-font-size);
+        font-size: var(--checkbox-label-typo-size);
 
         &::before{
             content: '';
             display: inline-block;
-            width: 20px;
-            height: 20px;
+            width: var(--checkbox-icon-size);
+            height: var(--checkbox-icon-size);
             border-radius: var(--border-radius-small);
             border: var(--border-width) solid var(--color-border-dark);
+            background-color: var(--checkbox-icon-bg);
+            box-sizing: border-box;
+        }
+
+        &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: inline-block;
+            @include icon('check.svg', $size: var(--checkbox-icon-size), $color: var(--checkbox-icon-color));
         }
     }
 }

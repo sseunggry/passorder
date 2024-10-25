@@ -42,6 +42,11 @@
     --notice-list-dot-color: var(--notice-list-color);
     --notice-list-padding-left: calc(var(--notice-list-dot-size) + var(--notice-list-gap-dot-txt));
 
+    --notice-list-line-margin-x: calc(var(--padding-layout-x) * -1);
+    --notice-list-line-padding-y: 2rem;
+    --notice-list-line-border-top-width: var(--border-width);
+    --notice-list-line-border-top-color: var(--color-border-dark);
+
     li{
         position: relative;
         margin-bottom: var(--notice-list-gap);
@@ -65,5 +70,11 @@
             background-color: var(--notice-list-dot-color);
             border-radius: var(--notice-list-dot-radius);
         }
+    }
+
+    &.line{
+        margin: 0 var(--notice-list-line-margin-x);
+        padding: var(--notice-list-line-padding-y) var(--padding-layout-x);
+        border-top: var(--notice-list-line-border-top-width) solid var(--notice-list-line-border-top-color);
     }
 }
