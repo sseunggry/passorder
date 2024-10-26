@@ -11,7 +11,7 @@ interface RadioProps {
     value?: string;
     checked?: boolean;
     children?: ReactNode;
-    onChange?: React.ChangeEventHandler<HTMLInputElement>;
+    onChange?: () => void;
 }
 
 function Radio({addClass = '', label, dataLabel, dataPrice, labelChildren, id, name, value, checked, onChange, children} : RadioProps){

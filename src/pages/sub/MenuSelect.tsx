@@ -6,15 +6,17 @@ import Loading from "components/Loading";
 import OptionList from "templates/OptionList";
 import {useSelector} from "react-redux";
 import {selectorCount} from "../../reducer/counter";
+import {selectorOptionList} from "../../reducer/optionSelect";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
     const {data, isLoading, isError} = useStoreData(id ?? '');
     const productItem = data?.productList?.find(el => el.categoryId === categoryId)?.list.find(item => item.productId === productId);
     const count = useSelector(selectorCount);
+    const selectList = useSelector(selectorOptionList);
     
     const pageBtnOnClick = () => {
-        console.log(count);
+        console.log(count, selectList);
     }
     
     if(isLoading) return <Loading />;

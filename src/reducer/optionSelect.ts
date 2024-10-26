@@ -1,81 +1,66 @@
-interface OptionsInfoTypeProps {
+export interface OptionsInfoTypeProps {
     option:string;
     price: number;
 }
-interface InputOptionsTypeProps {
-    type?: string;
+export interface InputOptionsTypeProps {
+    inputType?: string;
     tit: string;
     info: OptionsInfoTypeProps[];
 }
 
 //초기 상태
-const initialState:InputOptionsTypeProps[] = [
-    {
-        tit: '',
-        type: '',
-        info: []
-    }
-];
+const initialState:InputOptionsTypeProps[] = [];
 
 //액션 타입
-export const RADIO_CHECK = 'optionSelect/RADIO_CHECK' as const;
-export const CHECKBOX_CHECK = 'optionSelect/CHECKBOX_CHECK' as const;
+export const OPTION_CHECK = 'optionSelect/OPTION_CHECK' as const;
 
 //액션 인터페이스
-interface RadioAction {
-    type: typeof RADIO_CHECK;
+export interface ActionTypeProps {
+    type: typeof OPTION_CHECK;
     tit: string;
     info: OptionsInfoTypeProps[];
+    inputType?: string;
 }
-interface CheckboxAction {
-    type: typeof CHECKBOX_CHECK;
-    tit: string;
-    info: OptionsInfoTypeProps[];
+
+//특정 타이틀의 옵션을 업데이트하는 체크박스 함수
+const updateOption = (state: InputOptionsTypeProps[], action: ActionTypeProps, type= '') => {
+    const existsIdx = state.findIndex(el => el.tit === action.tit);
+    const infoArray = Array.isArray(action.info) ? action.info : [action.info];
+    
+    // type = radio: info 덮어씌우고 새로운 항목을 추가
+    if(type === 'radio'){
+        return (existsIdx === -1)
+            ? [...state, { tit: action.tit, info: infoArray }]
+            : state.map(el => (el.tit === action.tit ? { ...el, info: infoArray } : el));
+    }
+    
+    // type = checkbox: option 존재하면 제거, 없으면 추가
+    if(existsIdx === -1) return [...state, { tit: action.tit, info: infoArray }];
+    
+    const targetItem = state[existsIdx] || { tit: action.tit, info: [] };
+    const optionExists = targetItem.info.some(
+        el => el.option === infoArray[0]?.option && el.price === infoArray[0]?.price
+    );
+    
+    const updateInfo = optionExists
+        ? targetItem.info.filter(el => el.option !== infoArray[0]?.option || el.price !== infoArray[0]?.price)
+        : [...targetItem.info, action.info];
+    
+    return updateInfo.length > 0
+        ? state.map((el, idx) => (idx === existsIdx ? {...el, info: updateInfo } : el))
+        : state.filter((_, idx) => idx !== existsIdx);
 }
-type ActionTypeProps = RadioAction | CheckboxAction;
 
 //리듀서 함수 정의
-const optionSelectReducer = (state = initialState, action: ActionTypeProps): InputOptionsTypeProps[] => {
-    console.log('현재상태', state);
-    console.log('디스패치된 액션: ', action);
-    
+const optionSelectReducer = (state = initialState, action: ActionTypeProps) => {
     switch (action.type) {
-        case RADIO_CHECK:
-            return state.some(el => el.tit === action.tit)
-                ? state.map(el => (el.tit === action.tit ? { ...el, info: action.info } : el))
-                : [...state, { tit: action.tit, info: action.info }];
-        case CHECKBOX_CHECK:
-            const existsIdx = state.findIndex(el => el.tit === action.tit);
-            if(existsIdx === -1) {
-                return [...state, { tit: action.tit, info: action.info }];
-            } else{
-                const existsInfoIdx = state[existsIdx].info.findIndex(
-                    el => el.option === action.info[0]?.option && el.price === action.info[0]?.price
-                );
-                
-                if(existsInfoIdx === -1){
-                    const updateList = [...state];
-                    updateList[existsIdx] = {
-                        ...updateList[existsIdx],
-                        info: [...updateList[existsIdx].info, ...action.info]
-                    };
-                    return updateList;
-                } else{
-                    const updateList = [...state];
-                    updateList[existsIdx] = {
-                        ...updateList[existsIdx],
-                        info: updateList[existsIdx].info.filter((_, idx) => idx !== existsInfoIdx)
-                    };
-                    
-                    if(updateList[existsIdx].info.length === 0){
-                        return updateList.filter((_, idx) => idx !== existsIdx);
-                    }
-                    return updateList;
-                }
-            }
+        case OPTION_CHECK:
+            return updateOption(state, action, action.inputType);
         default:
             return state;
     }
 };
 
 export default optionSelectReducer;
+
+export const selectorOptionList = (state: {optionSelect: InputOptionsTypeProps[]}) => state.optionSelect;

@@ -9,7 +9,7 @@ interface CheckboxProps {
     value?: string;
     checked?: boolean;
     children?: ReactNode;
-    onChange?: React.ChangeEventHandler<HTMLInputElement>;
+    onChange?: () => void;
 }
 
 function Checkbox({addClass = '', label, dataLabel, labelChildren, id, value, checked, onChange, children} : CheckboxProps){
