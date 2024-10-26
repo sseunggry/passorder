@@ -1,6 +1,6 @@
 import Header, {HeaderProps} from "./Header";
 import BottomMenu from "./BottomMenu";
-import {ReactNode, useEffect, useState} from "react";
+import React, {MouseEventHandler, ReactNode, useEffect, useState} from "react";
 import Button from "../components/Button";
 
 interface LayoutPros{
@@ -12,6 +12,7 @@ interface LayoutPros{
     pageBtn?: {
         text: string;
         addClass?: string;
+        onClick?: () => void;
     };
 }
 
@@ -62,7 +63,8 @@ function Layout({addClass = '', header = true, headerCon, children, bottomMenu =
                     <Button
                         tag="a"
                         text={pageBtn.text}
-                        addClass={`fill large round-m primary disabled`}
+                        addClass={`fill large round-m primary`}
+                        onClick={pageBtn.onClick}
                     />
                 </div>
             ) : bottomMenu ? <BottomMenu /> : ''}

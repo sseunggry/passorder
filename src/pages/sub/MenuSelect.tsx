@@ -1,22 +1,26 @@
 import {useParams} from "react-router-dom";
 import Layout from "templates/Layout";
-import NoticeList from "../../templates/NoticeList";
-import {useStoreData} from "../../hooks/queries/useStoreQuery";
-import Loading from "../../components/Loading";
-import Checkbox from "../../components/Checkbox";
-import {numberComma} from "../../hooks/common";
-import OptionList from "../../templates/OptionList";
+import NoticeList from "templates/NoticeList";
+import {useStoreData} from "hooks/queries/useStoreQuery";
+import Loading from "components/Loading";
+import OptionList from "templates/OptionList";
+import {useSelector} from "react-redux";
+import {selectorCount} from "../../reducer/counter";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
     const {data, isLoading, isError} = useStoreData(id ?? '');
     const productItem = data?.productList?.find(el => el.categoryId === categoryId)?.list.find(item => item.productId === productId);
-    // console.log(productItem?.optionList);
+    const count = useSelector(selectorCount);
     
-    if(isLoading) return <Loading />
+    const pageBtnOnClick = () => {
+        console.log(count);
+    }
+    
+    if(isLoading) return <Loading />;
     
     return (
-        <Layout headerCon={{back: true, cart: true}} pageBtn={{text: "주문하기"}} addClass="menu-select">
+        <Layout headerCon={{back: true, cart: true}} pageBtn={{text: "주문하기", onClick: pageBtnOnClick}} addClass="menu-select">
             {data && (
                 <>
                     <div className="img-wrap">

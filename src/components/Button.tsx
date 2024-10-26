@@ -1,5 +1,4 @@
 import {Link} from "react-router-dom";
-import {MouseEventHandler} from "react";
 
 interface ButtonProps {
     tag?: string;
@@ -8,7 +7,7 @@ interface ButtonProps {
     text?: string;
     preChildren?: React.ReactNode;
     children?: React.ReactNode;
-    onClick?: MouseEventHandler<HTMLElement>
+    onClick?: () => void;
 }
 
 function Button({tag = 'button', url = '', addClass = '', text, onClick, preChildren, children} : ButtonProps){

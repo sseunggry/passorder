@@ -26,27 +26,6 @@ interface selectOptionsProps {
 
 function OptionList({price, optionList} : OptionListProps) {
     const [totalPrice, setTotalPrice] = useState<number>(price);
-    const [count, setCount] = useState<number>(1);
-    const btnCountOnClick = {
-        minus: () => {
-            setCount(prev => {
-                if(prev > 1) {
-                    const newCount = prev - 1;
-                    setTotalPrice(price * newCount);
-                    return newCount;
-                }
-                return prev;
-            });
-        },
-        plus: () => {
-            setCount(prev => {
-                const newCount = prev + 1;
-                setTotalPrice(price * newCount);
-                return newCount;
-            });
-        }
-    }
-    console.log(totalPrice, price, count);
     const [radioOptions, setRadioOptions] = useState<inputOptionsProps[]>([]);
     const [checkOptions, setCheckOptions] = useState<inputOptionsProps[]>([]);
     const [selectOptions, setSelectOptions] = useState<selectOptionsProps | {}>({});
@@ -95,11 +74,10 @@ function OptionList({price, optionList} : OptionListProps) {
             }
         });
     }
-    
     const btnOrderOnClick = () => {
-        setSelectOptions({ selectList: [...radioOptions, ...checkOptions] , count, totalPrice, price});
+        setSelectOptions({ selectList: [...radioOptions, ...checkOptions] , totalPrice, price});
     }
-    console.log(selectOptions);
+    
     return (
         <div className="option-list">
             <div className="item">
@@ -149,15 +127,6 @@ function OptionList({price, optionList} : OptionListProps) {
                 <div className="tit-wrap">
                     <p className="tit">수량</p>
                     <Counter />
-                    {/*<div className="btn-count">*/}
-                    {/*    <button type="button" className="minus" onClick={btnCountOnClick.minus}>*/}
-                    {/*        <span className="blind">-</span>*/}
-                    {/*    </button>*/}
-                    {/*    <input type="text" className="count" value={count} disabled />*/}
-                    {/*    <button type="button" className="plus" onClick={btnCountOnClick.plus}>*/}
-                    {/*        <span className="blind">+</span>*/}
-                    {/*    </button>*/}
-                    {/*</div>*/}
                 </div>
             </div>
         </div>
