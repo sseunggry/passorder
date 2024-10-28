@@ -1,11 +1,12 @@
-import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import Checkbox from "components/Checkbox";
 import Radio from "components/Radio";
 import Counter from "components/Counter";
 import {numberComma} from "hooks/common";
 import {ProductOptionList} from "hooks/queries/useStoreQuery";
-import {OptionsInfoTypeProps, OPTION_CHECK} from "reducer/optionSelect";
+import {OptionsInfoTypeProps, OPTION_CHECK, selectorTotalPrice} from "reducer/optionSelect";
+import {selectorCount} from "../reducer/counter";
 
 interface OptionListProps {
     price: number;
@@ -13,16 +14,18 @@ interface OptionListProps {
 }
 
 function OptionList({price, optionList} : OptionListProps) {
-    const [totalPrice, setTotalPrice] = useState<number>(price);
+    const count = useSelector(selectorCount);
+    
     const dispatch = useDispatch();
-    const onUpdateSelectList = (tit: string, info: OptionsInfoTypeProps, inputType?: string) => dispatch({ type: OPTION_CHECK, tit, info, inputType });
+    const onUpdateSelectList = (optionTit: string, optionList: OptionsInfoTypeProps, inputType: string, productPrice: number, count: number) =>
+        dispatch({ type: OPTION_CHECK, optionTit, optionList, inputType, productPrice, count });
     
     return (
         <div className="option-list">
             <div className="item">
                 <div className="tit-wrap">
                     <p className="tit">가격</p>
-                    <div className="price">{numberComma(totalPrice)}원</div>
+                    <div className="price">{numberComma(price)}원</div>
                 </div>
             </div>
             {optionList?.map((item, idx) => (
@@ -36,7 +39,7 @@ function OptionList({price, optionList} : OptionListProps) {
                             {item.radioList.map((list, idx) => (
                                 <li key={idx}>
                                     <Radio
-                                        onChange={() => onUpdateSelectList(item.tit, list, 'radio')}
+                                        onChange={() => onUpdateSelectList(item.tit, list, 'radio', price, count)}
                                         id={`radio_${item.id}_${idx}`}
                                         name={`radio_${item.id}`}
                                         label={list.option}
@@ -51,7 +54,7 @@ function OptionList({price, optionList} : OptionListProps) {
                             {item.selectList.map((list, idx) => (
                                 <li key={idx}>
                                     <Checkbox
-                                        onChange={() => onUpdateSelectList(item.tit, list, 'checkbox')}
+                                        onChange={() => onUpdateSelectList(item.tit, list, 'checkbox', price, count)}
                                         id={`chk_${item.id}_${idx}`}
                                         label={list.option}
                                         labelChildren={<span className="price">+{numberComma(list.price)}원</span>}

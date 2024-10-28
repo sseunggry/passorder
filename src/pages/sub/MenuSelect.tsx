@@ -1,28 +1,50 @@
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import Layout from "templates/Layout";
 import NoticeList from "templates/NoticeList";
 import {useStoreData} from "hooks/queries/useStoreQuery";
 import Loading from "components/Loading";
 import OptionList from "templates/OptionList";
-import {useSelector} from "react-redux";
-import {selectorCount} from "../../reducer/counter";
-import {selectorOptionList} from "../../reducer/optionSelect";
+import {useDispatch, useSelector} from "react-redux";
+import {selectorCount} from "reducer/counter";
+import {InputOptionsTypeProps, selectorOptionList, selectorTotalPrice} from "reducer/optionSelect";
+import {numberComma} from "hooks/common";
+import {PRODUCT_SELECT, selectorProductInfo} from "../../reducer/productSelect";
+import React, {useEffect} from "react";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
     const {data, isLoading, isError} = useStoreData(id ?? '');
     const productItem = data?.productList?.find(el => el.categoryId === categoryId)?.list.find(item => item.productId === productId);
     const count = useSelector(selectorCount);
-    const selectList = useSelector(selectorOptionList);
+    const optionList = useSelector(selectorOptionList);
+    const totalPrice = useSelector(selectorTotalPrice);
     
-    const pageBtnOnClick = () => {
-        console.log(count, selectList);
+    const dispatch = useDispatch();
+    const onselectInfo = (url: string, name: string, thumbImg: string, price: number, totalPrice: number, count: number, optionList: InputOptionsTypeProps[]) => {
+        dispatch({ type: PRODUCT_SELECT, url, name, thumbImg, price, totalPrice, count, optionList });
     }
-    
+    const selectProductInfo = useSelector(selectorProductInfo);
+    // console.log(selectProductInfo);
+
     if(isLoading) return <Loading />;
     
     return (
-        <Layout headerCon={{back: true, cart: true}} pageBtn={{text: "주문하기", onClick: pageBtnOnClick}} addClass="menu-select">
+        <Layout
+            headerCon={{back: true, cart: true}}
+            pageBtn={{
+                text: `${numberComma(totalPrice)} 주문하기`,
+                onClick: () => onselectInfo(
+                    `store/${id}`,
+                    productItem?.name ?? '',
+                    productItem?.thumbImg ?? '',
+                    productItem?.price ?? 0,
+                    totalPrice,
+                    count,
+                    optionList
+                )
+            }}
+            addClass="menu-select"
+        >
             {data && (
                 <>
                     <div className="img-wrap">

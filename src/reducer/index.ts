@@ -1,11 +1,13 @@
 import {combineReducers} from "redux";
 import counter from "./counter";
 import optionSelect from "./optionSelect";
+import productSelect from "./productSelect";
 
 
 const rootReducer = combineReducers({
     counter,
-    optionSelect
+    optionSelect,
+    productSelect
 });
 
 export default rootReducer;
