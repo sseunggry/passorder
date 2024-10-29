@@ -2,8 +2,8 @@
 const initialState:number = 1;
 
 //액션 타입
-export const INCREASE = 'counter/INCREASE' as const;
-export const DECREASE = 'counter/DECREASE' as const;
+export const INCREASE = 'counter/INCREASE';
+export const DECREASE = 'counter/DECREASE';
 
 //액션 인터페이스
 interface IncreaseAction {
@@ -29,5 +29,3 @@ const counterReducer = (state = initialState, action: CounterAction) => {
 };
 
 export default counterReducer;
-
-export const selectorCount = (state: {counter: number}) => state.counter;

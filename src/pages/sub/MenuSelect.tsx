@@ -5,11 +5,11 @@ import {useStoreData} from "hooks/queries/useStoreQuery";
 import Loading from "components/Loading";
 import OptionList from "templates/OptionList";
 import {useDispatch, useSelector} from "react-redux";
-import {selectorCount} from "reducer/counter";
-import {InputOptionsTypeProps, selectorOptionList, selectorTotalPrice} from "reducer/optionSelect";
+import {InputOptionsTypeProps} from "reducer/optionSelect";
 import {numberComma} from "hooks/common";
-import {PRODUCT_SELECT, selectorProductInfo} from "../../reducer/productSelect";
-import React, {useEffect} from "react";
+import {addToCart} from "../../reducer/cartList";
+import React, {useEffect, useState} from "react";
+import {selectorCount, selectorOptionList, selectorCartList, AppDispatch} from "../../reducer";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
@@ -17,14 +17,34 @@ function MenuSelect() {
     const productItem = data?.productList?.find(el => el.categoryId === categoryId)?.list.find(item => item.productId === productId);
     const count = useSelector(selectorCount);
     const optionList = useSelector(selectorOptionList);
-    const totalPrice = useSelector(selectorTotalPrice);
     
-    const dispatch = useDispatch();
-    const onselectInfo = (url: string, name: string, thumbImg: string, price: number, totalPrice: number, count: number, optionList: InputOptionsTypeProps[]) => {
-        dispatch({ type: PRODUCT_SELECT, url, name, thumbImg, price, totalPrice, count, optionList });
-    }
-    const selectProductInfo = useSelector(selectorProductInfo);
-    // console.log(selectProductInfo);
+    const calcOptionsPrice = (array: InputOptionsTypeProps[]):number => {
+        return array.reduce((acc, item) => {
+            return acc + item.optionList.reduce((sum, option) => sum + option.price, 0);
+        }, 0);
+    };
+    
+    const [totalPrice, setTotalPrice] = useState<number>(productItem?.price ?? 0);
+    useEffect(() => {
+        setTotalPrice(((productItem?.price ?? 0) + calcOptionsPrice(optionList)) * count);
+    }, [productItem?.price, count, optionList]);
+    
+    const dispatch = useDispatch<AppDispatch>();
+    const handleAddToCart = () => {
+        dispatch(
+            addToCart({
+                id: id ?? '',
+                url: `store/${id}`,
+                name: productItem?.name ?? '',
+                img: productItem?.thumbImg ?? '',
+                count,
+                options: optionList,
+                price: totalPrice
+            })
+        );
+        
+        
+    };
 
     if(isLoading) return <Loading />;
     
@@ -33,15 +53,7 @@ function MenuSelect() {
             headerCon={{back: true, cart: true}}
             pageBtn={{
                 text: `${numberComma(totalPrice)} 주문하기`,
-                onClick: () => onselectInfo(
-                    `store/${id}`,
-                    productItem?.name ?? '',
-                    productItem?.thumbImg ?? '',
-                    productItem?.price ?? 0,
-                    totalPrice,
-                    count,
-                    optionList
-                )
+                onClick: handleAddToCart
             }}
             addClass="menu-select"
         >

@@ -1,5 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
-import {INCREASE, DECREASE, selectorCount} from "reducer/counter";
+import {INCREASE, DECREASE} from "reducer/counter";
+import {selectorCount} from "../reducer";
 
 function Counter() {
     const count = useSelector(selectorCount);

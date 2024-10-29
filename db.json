@@ -42,21 +42,6 @@
                             "optionList": [
                                 {
                                     "id": "1",
-                                    "tit": "샷양",
-                                    "required": true,
-                                    "radioList": [
-                                        {
-                                            "option": "샷 추가",
-                                            "price": 500
-                                        },
-                                        {
-                                            "option": "샷 추가(2번)",
-                                            "price": 800
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "2",
                                     "tit": "얼음 양",
                                     "required": true,
                                     "radioList": [
@@ -71,6 +56,25 @@
                                         {
                                             "option": "많이",
                                             "price": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "2",
+                                    "tit": "샷양",
+                                    "required": true,
+                                    "radioList": [
+                                        {
+                                            "option": "기본",
+                                            "price": 0
+                                        },
+                                        {
+                                            "option": "샷 추가",
+                                            "price": 500
+                                        },
+                                        {
+                                            "option": "샷 추가(2번)",
+                                            "price": 800
                                         }
                                     ]
                                 },
