@@ -23,7 +23,7 @@
     --btn-font-size: var(--typo-body-small);
     --btn-font-color: var(--color-text-gray);
 
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--btn-gap);
@@ -37,6 +37,7 @@
     $btn-size: small, medium, large;
     @each $size in $btn-size {
         &.#{$size}{
+            padding: 0 var(--btn-padding-x-#{$size});
             height: var(--btn-height-#{$size});
             font-size: var(--btn-font-size-#{$size});
 

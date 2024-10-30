@@ -37,7 +37,7 @@
 section{
     margin-top: var(--gap-8);
 
-    &:first-child{
+    &:first-of-type{
         margin-top: 0;
     }
 }

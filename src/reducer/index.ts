@@ -20,7 +20,6 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
 
-
-export const selectorCount = (state: RootState) => state.counter;
-export const selectorOptionList = (state: RootState) => state.optionSelect.options;
-export const selectorCartList = (state: RootState) => state.cartList.cartItems;
+export const selectorCount = (state: RootState, productId: string) => state.optionSelect[productId]?.count ?? 1;
+export const selectorOptionList = (state: RootState, productId: string) => state.optionSelect[productId]?.options ?? [];
+export const selectorCartList = (state: RootState) => state.cartList;

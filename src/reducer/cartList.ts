@@ -1,5 +1,4 @@
 import {InputOptionsTypeProps} from "./optionSelect";
-import {RootState} from "./index";
 
 //types
 interface productTypeProps {
@@ -53,19 +52,20 @@ const initialState: CartStateTypeProps = {
 const cartReducer = (state = initialState, action: CartActionTypes): CartStateTypeProps => {
     // console.log("디스패치", state);
     // console.log("action", action);
+    // console.log("data", action.payload);
     
     switch (action.type) {
         case ADD_TO_CART:
             const item = action.payload;
             const existItem = state.cartItems.find(
-                (el) => el.id === item.id && el.options === item.options
+                (el) => el.id === item.id && JSON.stringify(el.options) === JSON.stringify(item.options)
             );
             
             if(existItem) {
                 return {
                     ...state,
                     cartItems: state.cartItems.map((el) =>
-                        el.id === existItem.id && el.options === el.options ? {...el, count: el.count + item.count} : el
+                        el.id === existItem.id && JSON.stringify(el.options) === JSON.stringify(el.options) ? {...el, count: el.count + item.count} : el
                     )
                 };
             }

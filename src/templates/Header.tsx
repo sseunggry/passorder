@@ -2,7 +2,7 @@ import Select from "components/Select";
 import Search from "components/Search";
 import {Link, useNavigate} from "react-router-dom";
 import Button from "components/Button";
-import {MouseEventHandler} from "react";
+import {MouseEvent, MouseEventHandler} from "react";
 
 export interface HeaderProps{
     select?: boolean;
@@ -16,11 +16,14 @@ export interface HeaderProps{
 
 function Header({select, alarm, cart, back, title, search, searchOnClick} : HeaderProps) {
     const navigate = useNavigate();
+    const backBtnOnClick = () => {
+        navigate(-1);
+    };
     return (
         <header className="header">
             {back && (
                 <Button
-                    onClick={() => navigate(-1)}
+                    onClick={backBtnOnClick}
                     addClass="btn-back"
                     children={
                         <>

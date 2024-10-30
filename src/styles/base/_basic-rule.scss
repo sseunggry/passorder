@@ -20,13 +20,25 @@ html{
 }
 
 /* font */
+.page-tit{
+    display: flex;
+    align-items: center;
+    margin: var(--space-11) 0 var(--gap-5);
+    color: var(--color-text-bolder);
+    font-size: var(--typo-title-xlarge);
+    font-weight: 600;
+
+    .btn{
+        margin-left: auto;
+    }
+}
 .sec-tit{
     display: flex;
     align-items: center;
     margin-bottom: var(--gap-5);
     color: var(--color-text-bolder);
-    font-size: var(--typo-title-xlarge);
-    font-weight: 700;
+    font-size: var(--typo-title-medium);
+    font-weight: 600;
 
     .btn{
         margin-left: auto;
@@ -104,4 +116,14 @@ hr{
 
 .bg-gray{
     background-color: var(--color-bg-gray-light);
+
+    .header{
+        background-color: var(--color-bg-gray-light);
+    }
+}
+
+.box-line{
+    //padding: 2rem;
+    border: var(--border-width) solid var(--color-border-dark);
+    border-radius: var(--border-radius-large);
 }

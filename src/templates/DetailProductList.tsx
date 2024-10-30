@@ -1,10 +1,9 @@
-import Tab from "../components/Tab";
+import Tab from "components/Tab";
 import {Link} from "react-router-dom";
-import {numberComma} from "../hooks/common";
-import {storeListDataPros, storeProductList} from "../hooks/queries/useStoreQuery";
+import {numberComma} from "hooks/common";
+import {storeProductList} from "hooks/queries/useStoreQuery";
 
 interface DetailProductListProps {
-    // data: storeListDataPros;
     id: string;
     productList: storeProductList[];
 }

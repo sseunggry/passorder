@@ -138,6 +138,10 @@
     --btn-height-medium: 3.6rem;
     --btn-height-large: 4.8rem;
 
+    --btn-padding-x-small: 0.8rem;
+    --btn-padding-x-medium: 1.4rem;
+    --btn-padding-x-large: 2rem;
+
     --btn-color-line: var(--color-border-dark);
     --btn-color-line-disabled: var(--color-border-light);
     --btn-color-fill-primary: var(--color-bg-primary);
@@ -164,6 +168,7 @@
     //input
     --input-font-size: var(--typo-body-large);
     --input-border-radius: var(--border-radius-medium);
+    --input-border-color: var(--color-border-dark);
     --input-bg-color-white: var(--color-bg-white);
     --input-bg-color-gray: var(--color-bg-gray);
     --input-color-placeholder: var(--color-text-gray-lighter);

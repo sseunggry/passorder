@@ -3,7 +3,7 @@
 .icon{
     display: inline-flex;
 
-    $names: back, delete, delete-fill, search, cart, alarm, arrow, home, order, qr, my, call, together;
+    $names: back, delete, delete-fill, search, cart, alarm, arrow, home, order, qr, my, call, together, plus;
     @each $name in $names {
         &-#{$name}{
             @include icon('#{$name}.svg');

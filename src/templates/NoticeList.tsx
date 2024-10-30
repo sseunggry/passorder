@@ -1,6 +1,6 @@
 interface NoticeProps {
     title?: boolean;
-    list: string[];
+    list?: string[];
     addClass?: string;
 }
 
@@ -10,7 +10,7 @@ function NoticeList({title = true, list, addClass = ''} : NoticeProps) {
             <div className="notice-wrap">
                 <p className="tit">유의사항</p>
                 <ul className={`notice-list ${addClass}`}>
-                    {list.map((text, idx) => (
+                    {list?.map((text, idx) => (
                         <li key={idx}>{text}</li>
                     ))}
                 </ul>
@@ -19,7 +19,7 @@ function NoticeList({title = true, list, addClass = ''} : NoticeProps) {
     } else{
         return (
             <ul className={`notice-list ${addClass}`}>
-                {list.map((text, idx) => (
+                {list?.map((text, idx) => (
                     <li key={idx}>{text}</li>
                 ))}
             </ul>

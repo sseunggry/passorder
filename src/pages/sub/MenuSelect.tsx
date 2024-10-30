@@ -1,49 +1,65 @@
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import Layout from "templates/Layout";
 import NoticeList from "templates/NoticeList";
 import {useStoreData} from "hooks/queries/useStoreQuery";
 import Loading from "components/Loading";
 import OptionList from "templates/OptionList";
 import {useDispatch, useSelector} from "react-redux";
-import {InputOptionsTypeProps} from "reducer/optionSelect";
+import {checkOption, InputOptionsTypeProps, updateCount} from "reducer/optionSelect";
 import {numberComma} from "hooks/common";
 import {addToCart} from "../../reducer/cartList";
 import React, {useEffect, useState} from "react";
-import {selectorCount, selectorOptionList, selectorCartList, AppDispatch} from "../../reducer";
+import {selectorCartList, AppDispatch, RootState} from "../../reducer";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
+    const dispatch = useDispatch<AppDispatch>();
+    const optionsState = useSelector((state:RootState) => state.optionSelect[`${id}_${categoryId}_${productId}`] || {options: [], count: 1});
+    const { options, count } = optionsState;
+    
+    const {cartItems} = useSelector(selectorCartList);
+    
+    console.log(`${id}_${categoryId}_${productId}`, optionsState, options, count, "cartItems: ", cartItems);
+    
+    const navigate = useNavigate();
     const {data, isLoading, isError} = useStoreData(id ?? '');
     const productItem = data?.productList?.find(el => el.categoryId === categoryId)?.list.find(item => item.productId === productId);
-    const count = useSelector(selectorCount);
-    const optionList = useSelector(selectorOptionList);
-    
+
     const calcOptionsPrice = (array: InputOptionsTypeProps[]):number => {
         return array.reduce((acc, item) => {
             return acc + item.optionList.reduce((sum, option) => sum + option.price, 0);
         }, 0);
     };
     
-    const [totalPrice, setTotalPrice] = useState<number>(productItem?.price ?? 0);
+    const [totalPrice, setTotalPrice] = useState<number>(0);
     useEffect(() => {
-        setTotalPrice(((productItem?.price ?? 0) + calcOptionsPrice(optionList)) * count);
-    }, [productItem?.price, count, optionList]);
+        if(productItem?.price) {
+            setTotalPrice(((productItem?.price) + calcOptionsPrice(options)) * count);
+        }
+    }, [categoryId, productId, productItem]);
     
-    const dispatch = useDispatch<AppDispatch>();
-    const handleAddToCart = () => {
-        dispatch(
-            addToCart({
-                id: id ?? '',
-                url: `store/${id}`,
-                name: productItem?.name ?? '',
-                img: productItem?.thumbImg ?? '',
-                count,
-                options: optionList,
-                price: totalPrice
-            })
-        );
-        
-        
+    const [url, setUrl] = useState<string>('');
+    useEffect(() => {
+        setUrl(`/store/${id}`);
+    }, [id]);
+    
+    const [cartProductId, setCartProductId] = useState<string>('');
+    useEffect(() => {
+        setCartProductId(`${id}_${categoryId}_${productId}`);
+    }, [id, categoryId, productId]);
+    
+    const addToCartOnClick = () => {
+        const cartData = {
+            id: cartProductId,
+            url,
+            name: productItem?.name ?? '',
+            img: productItem?.thumbImg ?? '',
+            count,
+            options,
+            price: totalPrice
+        }
+        dispatch(addToCart(cartData));
+        navigate(url);
     };
 
     if(isLoading) return <Loading />;
@@ -53,7 +69,7 @@ function MenuSelect() {
             headerCon={{back: true, cart: true}}
             pageBtn={{
                 text: `${numberComma(totalPrice)} 주문하기`,
-                onClick: handleAddToCart
+                onClick: addToCartOnClick
             }}
             addClass="menu-select"
         >
@@ -67,6 +83,7 @@ function MenuSelect() {
                         <p className="desc">{productItem?.desc}</p>
                     </div>
                     <OptionList
+                        productId={`${id}_${categoryId}_${productId}`}
                         price={productItem?.price ?? 0}
                         optionList={productItem?.optionList}
                     />

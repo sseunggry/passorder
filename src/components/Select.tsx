@@ -1,27 +1,38 @@
+import NoticeList from "../templates/NoticeList";
+
 interface SelectProps {
     id?: string;
     label?: string;
     title?: string;
     list?: object;
     placeholder?: string;
+    noticeList?: string[];
 }
 
-function Select({id = '', label, title, list = {}, placeholder = ''} : SelectProps){
+function Select({id = '', label, title, list = {}, placeholder = '', noticeList} : SelectProps){
     const names = Object.keys(list);
     const values = Object.values(list);
     
     return (
-        <div className="select-wrap">
-            <label htmlFor={id}>{label ? label : <span className="blind">{title}</span>}</label>
-            <select name="role" id={id}>
-                {placeholder && (
-                    <option value="" disabled selected>{placeholder}</option>
-                )}
-                {names.map((name, idx) => (
-                    <option key={idx} value={values[idx]}>{name}</option>
-                ))}
-            </select>
-        </div>
+        <>
+            <div className="select-wrap">
+                <label htmlFor={id}>{label ? label : <span className="blind">{title}</span>}</label>
+                <select name="role" id={id}>
+                    {placeholder && (
+                        <option value="" disabled selected>{placeholder}</option>
+                    )}
+                    {names.map((name, idx) => (
+                        <option key={idx} value={values[idx]}>{name}</option>
+                    ))}
+                </select>
+            </div>
+            {noticeList?.length !== 0 && (
+                <NoticeList
+                    title={false}
+                    list={noticeList}
+                />
+            )}
+        </>
     )
 }
 

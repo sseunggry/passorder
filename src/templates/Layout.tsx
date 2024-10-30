@@ -1,6 +1,6 @@
 import Header, {HeaderProps} from "./Header";
 import BottomMenu from "./BottomMenu";
-import React, {MouseEventHandler, ReactNode, useEffect, useState} from "react";
+import React, {ReactNode, useEffect, useState} from "react";
 import Button from "../components/Button";
 
 interface LayoutPros{
@@ -61,7 +61,6 @@ function Layout({addClass = '', header = true, headerCon, children, bottomMenu =
             {pageBtn ? (
                 <div className="btn-page-wrap">
                     <Button
-                        tag="a"
                         text={pageBtn.text}
                         addClass={`fill large round-m primary`}
                         onClick={pageBtn.onClick}

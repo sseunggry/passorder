@@ -15,11 +15,11 @@ function SearchPage() {
     }, []);
     
     return (
-        <Layout headerCon={{back: true, search: true}}>
+        <Layout headerCon={{back: true, search: true}} bottomMenu={false}>
             {recentSearchList.length !== 0 && (
-                <div className="recent-search">
+                <section className="recent-search">
                     <div className="sec-tit">
-                        <p className="tit-m">최근 검색어</p>
+                        <h2>최근 검색어</h2>
                         <Button
                             url="/"
                             text="전체 삭제"
@@ -27,28 +27,28 @@ function SearchPage() {
                             onClick={allDeleteBtnOnClick}
                         />
                     </div>
-                        <ul className="tag-list">
-                            {recentSearchList?.map((item, idx) => (
-                                <li key={idx}>
-                                    {item}
-                                    <Button
-                                        addClass="btn-icon small"
-                                        // onClick={}
-                                        children={
-                                            <>
-                                                <span className="blind">삭제</span>
-                                                <i className="icon icon-delete"></i>
-                                            </>
-                                        }
-                                    />
-                                </li>
-                            ))}
-                        </ul>
-                </div>
+                    <ul className="tag-list">
+                        {recentSearchList?.map((item, idx) => (
+                            <li key={idx}>
+                                {item}
+                                <Button
+                                    addClass="btn-icon small"
+                                    // onClick={}
+                                    children={
+                                        <>
+                                            <span className="blind">삭제</span>
+                                            <i className="icon icon-delete"></i>
+                                        </>
+                                    }
+                                />
+                            </li>
+                        ))}
+                    </ul>
+                </section>
             )}
-            <div className="recommend-list">
+            <section className="recommend-list">
                 <div className="sec-tit">
-                    <p className="tit-m"><span className="name c-point">이재희</span>님을 위한 추천</p>
+                    <h2><span className="name c-point">이재희</span>님을 위한 추천</h2>
                 </div>
                 <ul className="list">
                     {recommendList?.map((item, idx) => (
@@ -57,7 +57,7 @@ function SearchPage() {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </section>
         </Layout>
     )
 }
