@@ -2,7 +2,7 @@ import {combineReducers} from "redux";
 import counter from "reducer/counter";
 import optionSelect from "reducer/optionSelect";
 import cartList from "reducer/cartList";
-import {configureStore} from "@reduxjs/toolkit";
+import {configureStore, createSelector} from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
     counter,
@@ -20,6 +20,12 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
 
-export const selectorCount = (state: RootState, id: string) => state.counter[id]?.count ?? 1;
-export const selectorInfo = (state: RootState, id: string) => state.optionSelect[id] ?? {options: [], optionPrice: 0};
+export const selectorCount = createSelector(
+    [(state: RootState, id: string) => state.counter[id]?.count],
+    (count) => count > 0 ? count : 1
+);
+export const selectorInfo = createSelector(
+    [(state: RootState, id: string) => state.optionSelect[id]],
+    (info) => info ? info : {options: [], optionPrice: 0}
+);
 export const selectorCartList = (state: RootState) => state.cartList;
