@@ -1,8 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
-import {onInCreaseCount, onDecreaseCount, updateCount} from "reducer/counter";
-import {AppDispatch, RootState, selectorCartList, selectorCount, updateCartItemCount} from "../reducer";
-import {useEffect, useState} from "react";
-import {updateCartCount} from "../reducer/cartList";
+import {AppDispatch, RootState, selectorCount} from "../reducer";
+import {updateCartItemCount} from "../reducer/cartList";
 
 interface CounterProps {
     id: string;

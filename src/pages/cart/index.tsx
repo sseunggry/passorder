@@ -1,28 +1,24 @@
 import Layout from "templates/Layout";
-import {useSelector} from "react-redux";
-import {RootState, selectorCartList, selectorCount} from "reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, selectorCartList} from "reducer";
 import React, {useEffect, useState} from "react";
 import {numberComma} from "hooks/common";
 import Counter from "components/Counter";
 import Button from "components/Button";
 import NoticeList from "templates/NoticeList";
 import Select from "components/Select";
+import {removeFromCart} from "reducer/cartList";
 
 function Cart() {
     const { cartItems, storeUrl, storeName } = useSelector(selectorCartList);
+    const dispatch = useDispatch<AppDispatch>();
+
+    const onDeleteClick = (id:string) => {
+        dispatch(removeFromCart(id));
+    }
+    const onOptionChangeClick = () => {
     
-    console.log(cartItems);
-    
-    // const [itemId, setItemId] = useState(0);
-    // useEffect(() => {
-    //     setItemId()
-    // }, []);
-    // const count = useSelector((state:RootState) => selectorCount(state, id));
-    
-    // console.log(count);
-    
-    // const [count, setCount] = useState<number>(0);
-    // console.log(cartItems);
+    }
     
     return (
         <Layout
@@ -77,6 +73,7 @@ function Cart() {
                                             <Button
                                                 addClass="line small round-s"
                                                 text="옵션변경"
+                                                // onClick={() => onOptionChangeClick()}
                                             />
                                         </div>
                                         <div className="price">{numberComma(item.totalPrice)}원</div>
@@ -89,6 +86,7 @@ function Cart() {
                                                     <i className="icon icon-delete"></i>
                                                 </>
                                             )}
+                                            onClick={() => onDeleteClick(item.id)}
                                         />
                                     </div>
                                 </li>

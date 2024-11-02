@@ -1,6 +1,6 @@
-import {InputOptionsTypeProps} from "./optionSelect";
-import {AppDispatch, RootState, updateCartItemCount} from "./index";
-import {updateCount} from "./counter";
+import {InputOptionsTypeProps} from "reducer/optionSelect";
+import {AppDispatch, RootState} from "reducer/index";
+import {UPDATE_COUNTER} from "reducer/counter";
 
 //types
 interface ProductType {
@@ -59,52 +59,9 @@ interface UpdateCartOptionAction {
 
 export type CartActionTypes = AddCartAction | RemoveCartAction | UpdateCartCountAction | UpdateCartOptionAction;
 
-export const addToCart = (cartItems: Omit<ProductType, 'totalPrice'>, storeUrl: string, storeName: string): AddCartAction => ({
-    type: ADD_TO_CART,
-    payload: {
-        cartItems: {
-            ...cartItems,
-            totalPrice: (cartItems.price + cartItems.optionPrice) * cartItems.count
-        },
-        storeUrl,
-        storeName
-    }
-});
-
-export const addToCart2 = (cartData: Omit<ProductType, 'totalPrice'>, storeUrl: string, storeName: string) => (dispatch: AppDispatch, getState: () => RootState) => {
-    const state = getState().cartList;
-    
-    const existItem = state.cartItems.find(
-        (item) => item.id === cartData.id && JSON.stringify(item.options) === JSON.stringify(cartData.options)
-    );
-    
-    if (existItem) {
-        const newCount = existItem.count + cartData.count;
-        dispatch(updateCartItemCount(cartData.id, newCount)); // cart count 업데이트
-        dispatch(updateCount(cartData.id, newCount)); // counter 리덕스에 count 업데이트
-    } else {
-        // 새로운 항목일 경우 장바구니에 추가
-        const newItem = { ...cartData, totalPrice: (cartData.price + cartData.optionPrice) * cartData.count };
-        dispatch({
-            type: ADD_TO_CART,
-            payload: { cartItems: newItem, storeUrl, storeName },
-        });
-    }
-}
-
-// export const addToCart = (cartItems: ProductType, storeUrl: string, storeName: string): AddCartAction => ({
-//     type: ADD_TO_CART,
-//     payload: {cartItems, storeUrl, storeName}
-// });
-
 export const removeFromCart = (id: string): RemoveCartAction => ({
     type: REMOVE_FROM_CART,
     payload: id
-});
-
-export const updateCartCount = (id: string, count: number): UpdateCartCountAction => ({
-    type: UPDATE_TO_COUNT,
-    payload: { id, count }
 });
 
 export const updateCartOptions = (id: string, options: InputOptionsTypeProps[]): UpdateCartOptionAction => ({
@@ -125,32 +82,20 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartStateTy
     
     switch (action.type) {
         case ADD_TO_CART: {
-            const { cartItems: newItem, storeUrl, storeName } = action.payload;
-            const existItem = state.cartItems.find(
-                (el) => el.name === newItem.name && JSON.stringify(el.options) === JSON.stringify(newItem.options)
-            );
-    
-            if(existItem) {
-                return {
-                    ...state,
-                    cartItems: state.cartItems.map((el) =>
-                        (el.name === newItem.name) && (JSON.stringify(el.options) === JSON.stringify(el.options)) ? {...el, count: el.count + newItem.count} : el
-                    )
-                };
-            }
-    
+            const { cartItems: newCartItem, storeUrl, storeName } = action.payload;
             return {
                 ...state,
-                cartItems: [...state.cartItems, newItem],
+                cartItems: [...state.cartItems, newCartItem],
                 storeUrl,
                 storeName
-            };
+            }
         }
-        case REMOVE_FROM_CART:
+        case REMOVE_FROM_CART: {
             return {
                 ...state,
                 cartItems: state.cartItems.filter((el) => el.id !== action.payload)
             };
+        }
         case UPDATE_TO_COUNT: {
             const { id, count } = action.payload;
             return {
@@ -175,3 +120,45 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartStateTy
 };
 
 export default cartReducer;
+
+//cartData 추가
+export const addToCart = (cartData: Omit<ProductType, 'totalPrice'>, storeUrl: string, storeName: string) => (dispatch: AppDispatch, getState: () => RootState) => {
+    const state = getState().cartList;
+    
+    const existItem = state.cartItems.find(
+        (item) => item.name === cartData.name && JSON.stringify(item.options) === JSON.stringify(cartData.options)
+    );
+    
+    if (existItem) {
+        const newCount = existItem.count + cartData.count;
+        dispatch(updateCartItemCount(existItem.id, newCount)); // cart count 업데이트
+    } else {
+        // 새로운 항목일 경우 장바구니에 추가
+        const newItem = { ...cartData, totalPrice: (cartData.price + cartData.optionPrice) * cartData.count };
+        dispatch({
+            type: ADD_TO_CART,
+            payload: {
+                cartItems: newItem,
+                storeUrl,
+                storeName
+            }
+        });
+    }
+};
+
+//수량 업데이트하는 thunk 액션
+export const updateCartItemCount = (id: string, count: number) => (dispatch: AppDispatch, getState: () => RootState) => {
+    dispatch({
+        type: UPDATE_TO_COUNT,
+        payload: { id, count }
+    });
+    dispatch({
+        type: UPDATE_COUNTER,
+        payload: { id, count }
+    });
+}
+
+//옵션을 업데이트 하는 thunk 액션
+export const updateCartItemOptions = (id: string, options: InputOptionsTypeProps[]) => (dispatch: AppDispatch, getState: () => RootState) => {
+    dispatch(updateCartOptions(id, options));
+}

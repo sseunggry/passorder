@@ -1,4 +1,4 @@
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Layout from "templates/Layout";
 import NoticeList from "templates/NoticeList";
 import {useStoreData} from "hooks/queries/useStoreQuery";
@@ -6,9 +6,9 @@ import Loading from "components/Loading";
 import OptionList from "templates/OptionList";
 import {useDispatch, useSelector} from "react-redux";
 import {generateRandomId, numberComma} from "hooks/common";
-import {addToCart, addToCart2} from "../../reducer/cartList";
+import {addToCart} from "reducer/cartList";
 import React, {useEffect, useState} from "react";
-import {AppDispatch, RootState, selectorCount, selectorInfo} from "../../reducer";
+import {AppDispatch, RootState, selectorCount, selectorInfo} from "reducer";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
@@ -35,7 +35,6 @@ function MenuSelect() {
         setTotalPrice(((productItem?.price ?? 0) + optionPrice) * count );
     }, [count, optionPrice]);
     
-    
     const addToCartOnClick = () => {
         const cartData = {
             id: cartId,
@@ -47,8 +46,7 @@ function MenuSelect() {
             optionPrice,
             price: productItem?.price ?? 0,
         }
-        dispatch(addToCart2(cartData, url, data?.brand ?? ''));
-        
+        dispatch(addToCart(cartData, url, data?.brand ?? ''));
         navigate(url);
     };
 
