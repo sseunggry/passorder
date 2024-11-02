@@ -5,60 +5,50 @@ import {useStoreData} from "hooks/queries/useStoreQuery";
 import Loading from "components/Loading";
 import OptionList from "templates/OptionList";
 import {useDispatch, useSelector} from "react-redux";
-import {checkOption, InputOptionsTypeProps, updateCount} from "reducer/optionSelect";
-import {numberComma} from "hooks/common";
-import {addToCart} from "../../reducer/cartList";
+import {generateRandomId, numberComma} from "hooks/common";
+import {addToCart, addToCart2} from "../../reducer/cartList";
 import React, {useEffect, useState} from "react";
-import {selectorCartList, AppDispatch, RootState} from "../../reducer";
+import {AppDispatch, RootState, selectorCount, selectorInfo} from "../../reducer";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
-    const dispatch = useDispatch<AppDispatch>();
-    const optionsState = useSelector((state:RootState) => state.optionSelect[`${id}_${categoryId}_${productId}`] || {options: [], count: 1});
-    const { options, count } = optionsState;
-    
-    const {cartItems} = useSelector(selectorCartList);
-    
-    console.log(`${id}_${categoryId}_${productId}`, optionsState, options, count, "cartItems: ", cartItems);
-    
     const navigate = useNavigate();
     const {data, isLoading, isError} = useStoreData(id ?? '');
     const productItem = data?.productList?.find(el => el.categoryId === categoryId)?.list.find(item => item.productId === productId);
-
-    const calcOptionsPrice = (array: InputOptionsTypeProps[]):number => {
-        return array.reduce((acc, item) => {
-            return acc + item.optionList.reduce((sum, option) => sum + option.price, 0);
-        }, 0);
-    };
-    
-    const [totalPrice, setTotalPrice] = useState<number>(0);
-    useEffect(() => {
-        if(productItem?.price) {
-            setTotalPrice(((productItem?.price) + calcOptionsPrice(options)) * count);
-        }
-    }, [categoryId, productId, productItem]);
     
     const [url, setUrl] = useState<string>('');
     useEffect(() => {
         setUrl(`/store/${id}`);
     }, [id]);
     
-    const [cartProductId, setCartProductId] = useState<string>('');
+    const [cartId, setCartId] = useState<string>('');
     useEffect(() => {
-        setCartProductId(`${id}_${categoryId}_${productId}`);
+        setCartId(generateRandomId(`${id}_${categoryId}_${productId}`));
     }, [id, categoryId, productId]);
+    
+    const dispatch = useDispatch<AppDispatch>();
+    const count = useSelector((state: RootState) => selectorCount(state, cartId ?? ''));
+    const { options, optionPrice } = useSelector((state:RootState) => selectorInfo(state, cartId ?? ''));
+    
+    const [totalPrice, setTotalPrice] = useState<number>(0);
+    useEffect(() => {
+        setTotalPrice(((productItem?.price ?? 0) + optionPrice) * count );
+    }, [count, optionPrice]);
+    
     
     const addToCartOnClick = () => {
         const cartData = {
-            id: cartProductId,
+            id: cartId,
             url,
             name: productItem?.name ?? '',
             img: productItem?.thumbImg ?? '',
             count,
             options,
-            price: totalPrice
+            optionPrice,
+            price: productItem?.price ?? 0,
         }
-        dispatch(addToCart(cartData));
+        dispatch(addToCart2(cartData, url, data?.brand ?? ''));
+        
         navigate(url);
     };
 
@@ -69,6 +59,7 @@ function MenuSelect() {
             headerCon={{back: true, cart: true}}
             pageBtn={{
                 text: `${numberComma(totalPrice)} 주문하기`,
+                // text: '주문하기',
                 onClick: addToCartOnClick
             }}
             addClass="menu-select"
@@ -83,7 +74,7 @@ function MenuSelect() {
                         <p className="desc">{productItem?.desc}</p>
                     </div>
                     <OptionList
-                        productId={`${id}_${categoryId}_${productId}`}
+                        id={cartId}
                         price={productItem?.price ?? 0}
                         optionList={productItem?.optionList}
                     />

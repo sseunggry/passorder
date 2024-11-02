@@ -19,7 +19,7 @@ function Select({id = '', label, title, list = {}, placeholder = '', noticeList}
                 <label htmlFor={id}>{label ? label : <span className="blind">{title}</span>}</label>
                 <select name="role" id={id}>
                     {placeholder && (
-                        <option value="" disabled selected>{placeholder}</option>
+                        <option value="" disabled defaultValue={placeholder}>{placeholder}</option>
                     )}
                     {names.map((name, idx) => (
                         <option key={idx} value={values[idx]}>{name}</option>

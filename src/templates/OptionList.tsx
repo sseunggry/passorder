@@ -1,24 +1,24 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Checkbox from "components/Checkbox";
 import Radio from "components/Radio";
 import Counter from "components/Counter";
 import {numberComma} from "hooks/common";
 import {ProductOptionList} from "hooks/queries/useStoreQuery";
 import {OptionsInfoTypeProps, checkOption} from "reducer/optionSelect";
-import {AppDispatch} from "../reducer";
+import {AppDispatch, RootState, selectorCount, selectorInfo} from "../reducer";
 
 interface OptionListProps {
-    productId: string;
+    id: string;
     price: number;
     optionList?: ProductOptionList[];
 }
 
-function OptionList({productId, price, optionList} : OptionListProps) {
+function OptionList({id, price, optionList} : OptionListProps) {
     const dispatch = useDispatch<AppDispatch>();
-    const onUpdateSelectList = (productId: string, inputType: string, optionTit: string, optionList: OptionsInfoTypeProps, required: boolean) => {
+    const onUpdateSelectList = (id: string, inputType: string, optionTit: string, optionList: OptionsInfoTypeProps, required: boolean) => {
         dispatch(
             checkOption(
-                productId, {inputType, optionTit, optionList: [optionList], required: required}
+                id, {inputType, optionTit, optionList: [optionList], required: required}
         ));
     }
     
@@ -41,7 +41,7 @@ function OptionList({productId, price, optionList} : OptionListProps) {
                             {item.radioList.map((list, idx) => (
                                 <li key={idx}>
                                     <Radio
-                                        onChange={() => onUpdateSelectList(productId, 'radio', item.tit, list, item.required ?? false)}
+                                        onChange={() => onUpdateSelectList(id, 'radio', item.tit, list, item.required ?? false)}
                                         id={`radio_${item.id}_${idx}`}
                                         name={`radio_${item.id}`}
                                         label={list.option}
@@ -56,7 +56,7 @@ function OptionList({productId, price, optionList} : OptionListProps) {
                             {item.selectList.map((list, idx) => (
                                 <li key={idx}>
                                     <Checkbox
-                                        onChange={() => onUpdateSelectList(productId, 'checkbox', item.tit, list, item.required ?? false )}
+                                        onChange={() => onUpdateSelectList(id, 'checkbox', item.tit, list, item.required ?? false )}
                                         id={`chk_${item.id}_${idx}`}
                                         label={list.option}
                                         labelChildren={<span className="price">+{numberComma(list.price)}원</span>}
@@ -70,7 +70,7 @@ function OptionList({productId, price, optionList} : OptionListProps) {
             <div className="item">
                 <div className="tit-wrap">
                     <p className="tit">수량</p>
-                    <Counter productId={productId} />
+                    <Counter id={id} />
                 </div>
             </div>
         </div>

@@ -62,7 +62,7 @@ function Layout({addClass = '', header = true, headerCon, children, bottomMenu =
                 <div className="btn-page-wrap">
                     <Button
                         text={pageBtn.text}
-                        addClass={`fill large round-m primary`}
+                        addClass={`fill large round-m primary ${pageBtn.addClass}`}
                         onClick={pageBtn.onClick}
                     />
                 </div>

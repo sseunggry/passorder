@@ -1,29 +1,35 @@
-import Layout from "../../templates/Layout";
+import Layout from "templates/Layout";
 import {useSelector} from "react-redux";
-import {selectorCartList} from "../../reducer";
+import {RootState, selectorCartList, selectorCount} from "reducer";
 import React, {useEffect, useState} from "react";
-import {numberComma} from "../../hooks/common";
-import Counter from "../../components/Counter";
-import Button from "../../components/Button";
-import NoticeList from "../../templates/NoticeList";
-import Select from "../../components/Select";
-import {useParams} from "react-router-dom";
+import {numberComma} from "hooks/common";
+import Counter from "components/Counter";
+import Button from "components/Button";
+import NoticeList from "templates/NoticeList";
+import Select from "components/Select";
 
 function Cart() {
-    const {cartItems} = useSelector(selectorCartList);
-    console.log(cartItems,cartItems);
+    const { cartItems, storeUrl, storeName } = useSelector(selectorCartList);
     
-    // const [pageBtn, setPageBtn] = useState({});
+    console.log(cartItems);
+    
+    // const [itemId, setItemId] = useState(0);
     // useEffect(() => {
-    //     if(cartItems.length === 0){
-    //         setPageBtn({});
-    //     } else{
-    //         setPageBtn({text: '주문하기'});
-    //     }
-    // }, [cartItems]);
+    //     setItemId()
+    // }, []);
+    // const count = useSelector((state:RootState) => selectorCount(state, id));
+    
+    // console.log(count);
+    
+    // const [count, setCount] = useState<number>(0);
+    // console.log(cartItems);
     
     return (
-        <Layout headerCon={{back: true, title: '장바구니'}} pageBtn={{text: '주문하기'}} addClass="cart">
+        <Layout
+            headerCon={{back: true, title: '장바구니'}}
+            addClass="cart"
+            pageBtn={cartItems.length === 0 ? {text: '주문하기', addClass: 'disabled'} : {text: '주문하기'}}
+        >
             {cartItems.length === 0 ? (
                 <div className="box-line nodata">
                     <p>담은 메뉴가 없습니다. 메뉴를 담아주세요.</p>
@@ -37,7 +43,7 @@ function Cart() {
                 </div>
             ) : (
                 <>
-                    <h2 className="page-tit">파리바게트 수원메르디앙</h2>
+                    <h2 className="page-tit">{storeName}</h2>
                     <section>
                         <h3 className="sec-tit">나의 메뉴</h3>
                         <ul className="box-line cart-list">
@@ -67,13 +73,13 @@ function Cart() {
                                             </ul>
                                         )}
                                         <div className="btn-wrap">
-                                            <Counter productId={item.id}/>
+                                            <Counter id={item.id} />
                                             <Button
                                                 addClass="line small round-s"
                                                 text="옵션변경"
                                             />
                                         </div>
-                                        <div className="price">{numberComma(item.price)}원</div>
+                                        <div className="price">{numberComma(item.totalPrice)}원</div>
                                     </div>
                                     <div className="btn-delete">
                                         <Button
@@ -90,7 +96,8 @@ function Cart() {
                         </ul>
                         <div className="btn-wrap btn-menu-add">
                             <Button
-                                url={""}
+                                tag="a"
+                                url={storeUrl}
                                 addClass="line large round-m"
                                 text="메뉴추가"
                                 preChildren={<i className="icon icon-plus"></i>}

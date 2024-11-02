@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 @mixin pc-variable(){
-    --badge-list-gap: var(--gap-1);
     --badge-border-radius: var(--border-radius-small);
     --badge-padding: var(--space-1) var(--space-2);
     --badge-color-blue-text: var(--color-text-blue);
@@ -14,6 +13,12 @@
     --badge-color-orange-bg: var(--color-bg-primary-light);
 }
 
+.badge-wrap{
+    --badge-list-gap: var(--gap-1);
+
+    display: flex;
+    gap: var(--badge-list-gap);
+}
 
 .badge{
     @include pc-variable();
@@ -34,9 +39,5 @@
     &.orange{
         color: var(--badge-color-orange-text);
         background-color: var(--badge-color-orange-bg);
-    }
-    &-wrap{
-        display: flex;
-        gap: var(--badge-list-gap);
     }
 }

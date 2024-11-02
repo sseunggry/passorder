@@ -13,11 +13,9 @@ export interface InputOptionsTypeProps {
 interface OptionStateTypeProps {
     [productId: string]: {
         options: InputOptionsTypeProps[];
-        count: number;
+        optionPrice: number;
     };
-    // options: InputOptionsTypeProps[];
 }
-
 
 //action type
 export const CHECK_OPTION = 'optionSelect/CHECK_OPTION';
@@ -25,37 +23,20 @@ export const UPDATE_COUNT = 'optionSelect/UPDATE_COUNT';
 
 interface CheckOptionAction {
     type: typeof CHECK_OPTION;
-    // payload: InputOptionsTypeProps;
     payload: {
-        productId: string;
+        id: string;
         option: InputOptionsTypeProps;
     }
 }
 
-interface UpdateCountAction {
-    type: typeof UPDATE_COUNT;
-    payload: {
-        productId: string;
-        count: number;
-    };
-}
-
-export type OptionActionTypes = CheckOptionAction | UpdateCountAction;
-
 //action 생성함수
-export const checkOption = (productId: string, option: InputOptionsTypeProps): CheckOptionAction => ({
+export const checkOption = (id: string, option: InputOptionsTypeProps): CheckOptionAction => ({
     type: CHECK_OPTION,
-    payload: { productId, option }
-});
-export const updateCount = (productId: string, count: number): UpdateCountAction => ({
-    type: UPDATE_COUNT,
-    payload: { productId, count }
+    payload: { id, option }
 });
 
-//초기값 type
-const initialState: OptionStateTypeProps = {
-    // options: []
-};
+//초기값
+const initialState: OptionStateTypeProps = {};
 
 
 //특정 타이틀의 옵션을 업데이트하는 체크박스 함수
@@ -93,33 +74,31 @@ const updateOption = (state: InputOptionsTypeProps[], option: InputOptionsTypePr
     return newState;
 }
 
+//총 가격 합산
+const calcOptionsPrice = (array: InputOptionsTypeProps[]):number => {
+    return array.reduce((acc, item) => {
+        return acc + item.optionList.reduce((sum, option) => sum + option.price, 0);
+    }, 0);
+};
+
 //리듀서 함수 정의
-const optionSelectReducer = (state = initialState, action: OptionActionTypes): OptionStateTypeProps => {
-    console.log("디스패치", state);
-    console.log("action", action);
+const optionSelectReducer = (state = initialState, action: CheckOptionAction): OptionStateTypeProps => {
+    // console.log("디스패치", state);
+    // console.log("action", action);
     
     switch (action.type) {
         case CHECK_OPTION:
-            const { productId, option } = action.payload;
-            const productOptions = state[productId]?.options ?? [];
+            const { id, option } = action.payload;
+            const options = updateOption(state[id]?.options ?? [], option);
             
             return {
                 ...state,
-                [productId]: {
-                    ...state[productId],
-                    options: updateOption(productOptions, option),
+                [id]: {
+                    ...state[id],
+                    options: options,
+                    optionPrice: calcOptionsPrice(options)
                 }
             };
-        case UPDATE_COUNT: {
-            const { productId, count } = action.payload;
-            return {
-                ...state,
-                [productId]: {
-                    ...state[productId],
-                    count: count
-                },
-            };
-        }
         default:
             return state;
     }

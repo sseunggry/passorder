@@ -1,18 +1,25 @@
 import {useDispatch, useSelector} from "react-redux";
-import {INCREASE, DECREASE} from "reducer/counter";
-import {AppDispatch, RootState, selectorCount} from "../reducer";
-import {updateCount} from "../reducer/optionSelect";
+import {onInCreaseCount, onDecreaseCount, updateCount} from "reducer/counter";
+import {AppDispatch, RootState, selectorCartList, selectorCount, updateCartItemCount} from "../reducer";
+import {useEffect, useState} from "react";
+import {updateCartCount} from "../reducer/cartList";
 
 interface CounterProps {
-    productId: string;
+    id: string;
 }
 
-function Counter({ productId }: CounterProps) {
-    const count =  useSelector((state: RootState) => selectorCount(state, productId));
+function Counter({ id }: CounterProps) {
     const dispatch = useDispatch<AppDispatch>();
+    const count =  useSelector((state: RootState) => selectorCount(state, id));
     
-    const onIncrease = () => dispatch(updateCount(productId, count + 1));
-    const onDecrease = () => dispatch(updateCount(productId, Math.max(count - 1, 1)));
+    const onIncrease = () => {
+        const newCount = count + 1;
+        dispatch(updateCartItemCount(id, newCount));
+    };
+    const onDecrease = () => {
+        const newCount = Math.max(count - 1, 1);
+        dispatch(updateCartItemCount(id, newCount));
+    };
     
     return (
         <div className="btn-count">
