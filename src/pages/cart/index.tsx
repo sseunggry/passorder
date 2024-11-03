@@ -1,7 +1,7 @@
 import Layout from "templates/Layout";
 import {useDispatch, useSelector} from "react-redux";
-import {AppDispatch, selectorCartList} from "reducer";
-import React, {useEffect, useState} from "react";
+import {AppDispatch, RootState, selectorCartList, selectorInfo} from "reducer";
+import React, {useContext, useEffect, useState} from "react";
 import {numberComma} from "hooks/common";
 import Counter from "components/Counter";
 import Button from "components/Button";
@@ -9,19 +9,20 @@ import NoticeList from "templates/NoticeList";
 import Select from "components/Select";
 import {removeFromCart} from "reducer/cartList";
 import BottomSheet from "../../templates/BottomSheet";
-import {checkOption, InputOptionsTypeProps, OptionsInfoTypeProps} from "../../reducer/optionSelect";
-import Radio from "../../components/Radio";
-import Checkbox from "../../components/Checkbox";
 import {ProductOptionList} from "../../hooks/queries/useStoreQuery";
+import OptionListInput from "../../templates/OptionListInput";
+import OptionListContext, {OptionListProvider} from "../../context/OptionListContext";
 
 function Cart() {
+    const [productId, setProductId] = useState('');
     const { cartItems, storeUrl, storeName } = useSelector(selectorCartList);
     const dispatch = useDispatch<AppDispatch>();
-
+    
     const [cartTotalPrice, setCartTotalPrice] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
     const [popId, setPopId] = useState('');
     const [popOptions, setPopOptions] = useState<ProductOptionList[]>([]);
+    
     useEffect(() => {
         const totalPrice = cartItems.reduce((acc, cur) => acc + cur.totalPrice, 0);
         setCartTotalPrice(totalPrice);
@@ -31,7 +32,8 @@ function Cart() {
         dispatch(removeFromCart(id));
     }
     const onOptionChangeClick = (id: string, options: ProductOptionList[]) => {
-        setPopId(id);
+        setPopId(`pop_${id}`);
+        setProductId(id);
         setPopOptions(options);
         setIsOpen(true);
     }
@@ -40,12 +42,14 @@ function Cart() {
         console.log(item.options);
     })
     
-    const onUpdateSelectList = (id: string, inputType: string, optionTit: string, optionList: OptionsInfoTypeProps, required: boolean) => {
-        dispatch(
-            checkOption(
-                id, {inputType, optionTit, optionList: [optionList], required: required}
-            ));
-    }
+    // const optionListContext = useContext(OptionListContext);
+    // if(!optionListContext) throw console.log(new Error);
+    //
+    // const { productOptionList, setProductOptionList } = optionListContext;
+    // console.log(productOptionList);
+    // useEffect(() => {
+    //     setProductOptionList(optionList ?? []);
+    // }, [optionList]);
     
     return (
         <>
@@ -101,7 +105,7 @@ function Cart() {
                                                 <Button
                                                     addClass="line small round-s"
                                                     text="옵션변경"
-                                                    // onClick={() => onOptionChangeClick(item.id, item.options)}
+                                                    onClick={() => onOptionChangeClick(item.id, [])}
                                                 />
                                             </div>
                                             <div className="price">{numberComma(item.totalPrice)}원</div>
@@ -159,43 +163,12 @@ function Cart() {
                 )}
             </Layout>
             <BottomSheet id={popId} isOpen={isOpen}>
-                {popOptions?.map((item, itemIdx) => (
-                    <div className="item" key={`${itemIdx}`}>
-                        <div className="tit-wrap">
-                            <p className="tit">{item.tit}</p>
-                            {item.required ? <span className="badge orange">필수</span> : <span className="badge">선택</span>}
-                        </div>
-                        {item.radioList && (
-                            <ul className="radio-list">
-                                {item.radioList.map((list, idx) => (
-                                    <li key={idx}>
-                                        <Radio
-                                            onChange={() => onUpdateSelectList(popId, 'radio', item.tit, list, item.required ?? false)}
-                                            id={`radio_${item.id}_${idx}`}
-                                            name={`radio_${item.id}`}
-                                            label={list.option}
-                                            labelChildren={<span className="price">+{numberComma(list.price)}원</span>}
-                                        />
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                        {item.selectList && (
-                            <ul className="select-list">
-                                {item.selectList.map((list, idx) => (
-                                    <li key={idx}>
-                                        <Checkbox
-                                            onChange={() => onUpdateSelectList(popId, 'checkbox', item.tit, list, item.required ?? false )}
-                                            id={`chk_${item.id}_${idx}`}
-                                            label={list.option}
-                                            labelChildren={<span className="price">+{numberComma(list.price)}원</span>}
-                                        />
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                ))}
+                <OptionListProvider>
+                    <OptionListInput
+                        id={productId}
+                        optionList={[]}
+                    />
+                </OptionListProvider>
             </BottomSheet>
         </>
     )

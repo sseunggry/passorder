@@ -9,6 +9,7 @@ import {generateRandomId, numberComma} from "hooks/common";
 import {addToCart} from "reducer/cartList";
 import React, {useEffect, useState} from "react";
 import {AppDispatch, RootState, selectorCount, selectorInfo} from "reducer";
+import {OptionListProvider} from "../../context/OptionListContext";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
@@ -71,11 +72,13 @@ function MenuSelect() {
                         <h2 className="tit-m">{productItem?.name}</h2>
                         <p className="desc">{productItem?.desc}</p>
                     </div>
-                    <OptionList
-                        id={cartId}
-                        price={productItem?.price ?? 0}
-                        optionList={productItem?.optionList}
-                    />
+                    <OptionListProvider>
+                        <OptionList
+                            id={cartId}
+                            price={productItem?.price ?? 0}
+                            optionList={productItem?.optionList}
+                        />
+                    </OptionListProvider>
                     <NoticeList
                         title={false}
                         addClass="line bg-gray"

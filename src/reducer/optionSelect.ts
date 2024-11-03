@@ -19,7 +19,6 @@ interface OptionStateTypeProps {
 
 //action type
 export const CHECK_OPTION = 'optionSelect/CHECK_OPTION';
-export const UPDATE_COUNT = 'optionSelect/UPDATE_COUNT';
 
 interface CheckOptionAction {
     type: typeof CHECK_OPTION;
