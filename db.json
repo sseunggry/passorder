@@ -82,7 +82,7 @@
                                     "id": "3",
                                     "tit": "시럽추가",
                                     "required": false,
-                                    "selectList": [
+                                    "checkList": [
                                         {
                                             "option": "헤이즐럿 시럽추가",
                                             "price": 800
@@ -97,7 +97,7 @@
                                     "id": "4",
                                     "tit": "우유변경",
                                     "required": false,
-                                    "selectList": [
+                                    "checkList": [
                                         {
                                             "option": "저지방우유",
                                             "price": 500
@@ -163,7 +163,7 @@
                                     "id": "3",
                                     "tit": "시럽추가",
                                     "required": false,
-                                    "selectList": [
+                                    "checkList": [
                                         {
                                             "option": "헤이즐럿 시럽추가",
                                             "price": 800
@@ -178,7 +178,7 @@
                                     "id": "4",
                                     "tit": "우유변경",
                                     "required": false,
-                                    "selectList": [
+                                    "checkList": [
                                         {
                                             "option": "저지방우유",
                                             "price": 500

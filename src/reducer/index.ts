@@ -8,6 +8,7 @@ import {ProductOptionList} from "../hooks/queries/useStoreQuery";
 
 const rootReducer = combineReducers({
     counter,
+    optionSetList,
     optionSelect,
     cartList
 });
@@ -31,3 +32,7 @@ export const selectorInfo = createSelector(
     (info) => info ? info : {options: [], optionPrice: 0}
 );
 export const selectorCartList = (state: RootState) => state.cartList;
+export const selectorSetOptionList = createSelector(
+    [(state: RootState, id: string) => state.optionSetList],
+    (list) => list ? list : {id: '', optionList: []}
+);

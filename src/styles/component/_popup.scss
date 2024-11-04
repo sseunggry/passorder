@@ -51,10 +51,34 @@
             width: 100%;
             height: 80%;
             bottom: -100%;
-            border-radius: 4rem 4rem 0 0;
+            border-radius: 2rem 2rem 0 0;
         }
         .pop-tit{
+            padding: 2rem var(--padding-layout-x);
+            font-weight: 700;
+            font-size: var(--typo-title-xlarge);
+        }
+        .pop-con{
+            overflow: auto;
+            padding: 0 var(--padding-layout-x);
+            height: calc(100% - 7.6rem - 6.8rem);
+        }
+        .pop-btn{
+            position: absolute;
+            bottom: 0;
+            padding: var(--padding-layout-x);
+            width: 100%;
+            background-color: var(--color-bg-white);
+        }
+        .pop-close-btn{
+            position: absolute;
+            top: 2rem;
+            right: var(--padding-layout-x);
 
+            .btn{
+                width: calc(var(--typo-title-xlarge) * var(--base-line-height));
+                height: calc(var(--typo-title-xlarge) * var(--base-line-height));
+            }
         }
     }
 }

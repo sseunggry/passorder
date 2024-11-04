@@ -48,12 +48,12 @@ const updateOption = (state: InputOptionsTypeProps[], option: InputOptionsTypePr
     // type = radio: optionList 덮어씌우고 새로운 항목을 추가
     if(inputType === 'radio'){
         newState = (existsIdx === -1)
-            ? [...state, { required, optionTit, optionList }]
+            ? [...state, { inputType, required, optionTit, optionList }]
             : state.map(el => (el.optionTit === optionTit ? { ...el, optionList } : el));
         
     } else if(inputType === 'checkbox'){
         // type = checkbox: option 존재하면 제거, 없으면 추가
-        if(existsIdx === -1) return [...state, { required, optionTit, optionList }];
+        if(existsIdx === -1) return [...state, { inputType, required, optionTit, optionList }];
         
         const targetItem = state[existsIdx];
         const optionExists = targetItem.optionList.some(

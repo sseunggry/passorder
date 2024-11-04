@@ -17,13 +17,14 @@ interface OptionListProps {
 }
 
 function OptionList({id, price, optionList} : OptionListProps) {
-    const optionListContext = useContext(OptionListContext);
-    if(!optionListContext) throw console.log(new Error);
-    
-    const { productOptionList, setProductOptionList } = optionListContext;
-    useEffect(() => {
-        setProductOptionList(optionList ?? []);
-    }, [optionList]);
+    // const optionListContext = useContext(OptionListContext);
+    // if(!optionListContext) throw console.log(new Error);
+    //
+    // const { productOptionList, setProductOptionList } = optionListContext;
+    // useEffect(() => {
+    //     setProductOptionList(optionList ?? []);
+    // }, [optionList]);
+    // console.log(optionList);
     
     return (
         <div className="option-list">
@@ -35,7 +36,7 @@ function OptionList({id, price, optionList} : OptionListProps) {
             </div>
             <OptionListInput
                 id={id}
-                optionList={productOptionList}
+                optionList={optionList}
             />
             <div className="item">
                 <div className="tit-wrap">

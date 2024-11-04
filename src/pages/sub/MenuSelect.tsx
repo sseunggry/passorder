@@ -10,6 +10,7 @@ import {addToCart} from "reducer/cartList";
 import React, {useEffect, useState} from "react";
 import {AppDispatch, RootState, selectorCount, selectorInfo} from "reducer";
 import {OptionListProvider} from "../../context/OptionListContext";
+import {setOptionList} from "../../reducer/optionList";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
@@ -48,6 +49,7 @@ function MenuSelect() {
             price: productItem?.price ?? 0,
         }
         dispatch(addToCart(cartData, url, data?.brand ?? ''));
+        dispatch(setOptionList(id ?? '', productItem?.optionList ?? []))
         navigate(url);
     };
 
@@ -72,13 +74,11 @@ function MenuSelect() {
                         <h2 className="tit-m">{productItem?.name}</h2>
                         <p className="desc">{productItem?.desc}</p>
                     </div>
-                    <OptionListProvider>
-                        <OptionList
-                            id={cartId}
-                            price={productItem?.price ?? 0}
-                            optionList={productItem?.optionList}
-                        />
-                    </OptionListProvider>
+                    <OptionList
+                        id={cartId}
+                        price={productItem?.price ?? 0}
+                        optionList={productItem?.optionList}
+                    />
                     <NoticeList
                         title={false}
                         addClass="line bg-gray"

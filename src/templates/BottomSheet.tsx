@@ -19,7 +19,7 @@ function BottomSheet({isOpen, id, addClass = '', title, closeBtn, children, popu
     const popRef = useRef(null);
     const [popOpen, setPopOpen] = useState(false);
     const onPopupClose = () => {
-        setPopOpen(prev => !prev);
+        setPopOpen(false);
     }
     useEffect(() => {
         if(isOpen) {
@@ -30,7 +30,7 @@ function BottomSheet({isOpen, id, addClass = '', title, closeBtn, children, popu
     return (
         <div id={id} className={`pop-wrap bottom-sheet ${addClass} ${popOpen ? 'open' : ''}`} ref={popRef}>
             <div className="pop-inner">
-                {title ?? (
+                {title && (
                     <div className="pop-tit">
                         <p>{title}</p>
                     </div>
@@ -44,13 +44,13 @@ function BottomSheet({isOpen, id, addClass = '', title, closeBtn, children, popu
                     <div className="pop-btn">
                         <Button
                             text={popupBtn.text}
-                            addClass={`fill large round-m primary ${popupBtn.addClass}`}
+                            addClass={`fill large round-m primary ${popupBtn.addClass ?? ''}`}
                             onClick={popupBtn.onClick}
                         />
                     </div>
                 ) : ''}
         
-                {closeBtn ?? (
+                {closeBtn && (
                     <div className="pop-close-btn">
                         {/*<button className={`btn ${addClass}`} onClick={(e) => onPopupClose(e)}>*/}
                         {/*    <span className="blind">닫기</span>*/}

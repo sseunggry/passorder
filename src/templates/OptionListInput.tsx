@@ -3,22 +3,95 @@ import Checkbox from "components/Checkbox";
 import Radio from "components/Radio";
 import {numberComma} from "hooks/common";
 import {ProductOptionList} from "hooks/queries/useStoreQuery";
-import {OptionsInfoTypeProps, checkOption} from "reducer/optionSelect";
+import {OptionsInfoTypeProps, checkOption, InputOptionsTypeProps} from "reducer/optionSelect";
 import {AppDispatch} from "reducer";
+import {useEffect, useState} from "react";
 
 interface OptionListProps {
     id: string;
     optionList?: ProductOptionList[];
+    optionSelect?: InputOptionsTypeProps[];
 }
 
-function OptionListInput({id, optionList} : OptionListProps) {
+function OptionListInput({id, optionList, optionSelect} : OptionListProps) {
     const dispatch = useDispatch<AppDispatch>();
+    const [checkedOptions, setCheckedOptions] = useState<Record<string, string[] | string>>({});
+    
+    useEffect(() => {
+        if(optionSelect) {
+            const initialCheckedState = optionList?.reduce((acc, item) => {
+                item.radioList?.forEach((radioOption) => {
+                    const isRadioChecked = optionSelect.some(
+                        (select) =>
+                            select.optionTit === item.tit &&
+                            select.optionList.some((el) => el.option === radioOption.option)
+                    );
+                    acc[`radio/${item.tit}`] = isRadioChecked ? radioOption.option : '';
+                });
+                item.checkList?.forEach((checkOption) => {
+                    const isCheckChecked = optionSelect.some(
+                        (select) =>
+                            select.optionTit === item.tit &&
+                            select.optionList.some((el) => el.option === checkOption.option)
+                    );
+                    if(isCheckChecked) {
+                        acc[`check/${item.tit}`] = [...(acc[`check/${item.tit}`] as string[] || []), checkOption.option];
+                    }
+                });
+                return acc;
+            }, {} as Record<string, string[] | string>) || {};
+            setCheckedOptions(initialCheckedState);
+        }
+    }, [optionList, optionSelect]);
+    
     const onUpdateSelectList = (id: string, inputType: string, optionTit: string, optionList: OptionsInfoTypeProps, required: boolean) => {
         dispatch(
             checkOption(
                 id, {inputType, optionTit, optionList: [optionList], required: required}
         ));
     }
+    
+    const handleRadioChange = (id: string, optionTit: string, option: string, optionList: OptionsInfoTypeProps, required: boolean) => {
+      setCheckedOptions((prev) => ({
+          ...prev,
+          [`radio/${optionTit}`] : option
+      }));
+      onUpdateSelectList(id, 'radio', optionTit, optionList, required);
+    };
+    
+    const handleCheckboxChange = (id: string, optionTit: string, option: string, optionList: OptionsInfoTypeProps, required: boolean) => {
+        setCheckedOptions((prev) => {
+           const currentCheckedOptions = Array.isArray(prev[`check/${optionTit}`]) ? prev[`check/${optionTit}`] as string[] : [];
+           const isChecked = currentCheckedOptions.includes(option);
+           
+           return {
+               ...prev,
+               [`check/${optionTit}`]: isChecked
+                   ? currentCheckedOptions.filter((opt) => opt !== option)
+                   : [...currentCheckedOptions, option]
+           };
+        });
+        onUpdateSelectList(id, 'checkbox', optionTit, optionList, required);
+    }
+    
+    // const handleOptionChange = (id: string, inputType: string, optionTit: string, option: string, optionList: OptionsInfoTypeProps, required: boolean) => {
+    //     setCheckedOptions((prev) => {
+    //         const newCheckedOptions = {...prev};
+    //
+    //         if(inputType === 'radio'){
+    //             Object.keys(newCheckedOptions).forEach(key => {
+    //                if(key.startsWith(`radio/${optionTit}`)){
+    //                    newCheckedOptions[key] = false;
+    //                }
+    //             });
+    //         }
+    //
+    //         newCheckedOptions[`${inputType}/${optionTit}/${option}`] = true;
+    //
+    //         return newCheckedOptions;
+    //     });
+    //     onUpdateSelectList(id, inputType, optionTit, optionList, required);
+    // }
     
     return (
         <>
@@ -34,24 +107,26 @@ function OptionListInput({id, optionList} : OptionListProps) {
                                 {item.radioList.map((list, idx) => (
                                     <li key={idx}>
                                         <Radio
-                                            onChange={() => onUpdateSelectList(id, 'radio', item.tit, list, item.required ?? false)}
+                                            onChange={() => handleRadioChange(id, item.tit, list.option, list, item.required ?? false)}
                                             id={`radio_${item.id}_${idx}`}
                                             name={`radio_${item.id}`}
                                             label={list.option}
+                                            checked={checkedOptions[`radio/${item.tit}`] === list.option}
                                             labelChildren={<span className="price">+{numberComma(list.price)}원</span>}
                                         />
                                     </li>
                                 ))}
                             </ul>
                         )}
-                        {item.selectList && (
+                        {item.checkList && (
                             <ul className="select-list">
-                                {item.selectList.map((list, idx) => (
+                                {item.checkList.map((list, idx) => (
                                     <li key={idx}>
                                         <Checkbox
-                                            onChange={() => onUpdateSelectList(id, 'checkbox', item.tit, list, item.required ?? false )}
+                                            onChange={() => handleCheckboxChange(id, item.tit, list.option, list, item.required ?? false )}
                                             id={`chk_${item.id}_${idx}`}
                                             label={list.option}
+                                            checked={Array.isArray(checkedOptions[`check/${item.tit}`]) && checkedOptions[`check/${item.tit}`].includes(list.option)}
                                             labelChildren={<span className="price">+{numberComma(list.price)}원</span>}
                                         />
                                     </li>

@@ -9,7 +9,7 @@ export interface ProductOptionList {
         option: string;
         price: number;
     }[];
-    selectList?: {
+    checkList?: {
         option: string;
         price: number;
     }[];

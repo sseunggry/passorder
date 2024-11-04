@@ -4,6 +4,7 @@ import {ProductOptionList} from "hooks/queries/useStoreQuery";
 //상태와 함수타입 정의
 interface OptionListContextType {
     // id: string | null;
+    // setId:
     productOptionList: ProductOptionList[];
     setProductOptionList: (optionList: ProductOptionList[]) => void;
 }

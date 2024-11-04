@@ -227,44 +227,45 @@
             color: var(--color-text-gray);
         }
     }
-    .option-list{
-        > .item{
-            &:last-child::after{
-                display: none;
-            }
-            &::after{
-                content: '';
-                display: block;
-                margin: 0 calc(var(--padding-layout-x) * -1);
-                height: var(--border-width-large);
-                background-color: var(--color-border-basic);
-            }
-        }
+}
 
-        .tit-wrap{
+.option-list{
+    > .item{
+        &:last-child::after{
+            display: none;
+        }
+        &::after{
+            content: '';
+            display: block;
+            margin: 0 calc(var(--padding-layout-x) * -1);
+            height: var(--border-width-large);
+            background-color: var(--color-border-basic);
+        }
+    }
+
+    .tit-wrap{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--gap-5) 0;
+    }
+    .tit{
+        font-size: var(--typo-body-large);
+        font-weight: 600;
+    }
+    .price{
+        font-size: var(--typo-body-medium);
+        font-weight: 600;
+    }
+
+    .select-list, .radio-list{
+        label{
             display: flex;
             align-items: center;
-            justify-content: space-between;
             padding: var(--gap-5) 0;
         }
-        .tit{
-            font-size: var(--typo-body-large);
-            font-weight: 600;
-        }
         .price{
-            font-size: var(--typo-body-medium);
-            font-weight: 600;
-        }
-
-        .select-list, .radio-list{
-            label{
-                display: flex;
-                align-items: center;
-                padding: var(--gap-5) 0;
-            }
-            .price{
-                margin-left: auto;
-            }
+            margin-left: auto;
         }
     }
 }
@@ -342,6 +343,8 @@
                         color: var(--color-text-gray-light);
                     }
                     .tit{
+                        font-size: var(--typo-body-xsmall);
+                        font-weight: 400;
                         &::after{
                             content: '';
                             display: inline-block;

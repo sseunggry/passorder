@@ -1,6 +1,6 @@
 import Layout from "templates/Layout";
 import {useDispatch, useSelector} from "react-redux";
-import {AppDispatch, RootState, selectorCartList, selectorInfo} from "reducer";
+import {AppDispatch, RootState, selectorCartList, selectorInfo, selectorSetOptionList} from "reducer";
 import React, {useContext, useEffect, useState} from "react";
 import {numberComma} from "hooks/common";
 import Counter from "components/Counter";
@@ -12,16 +12,19 @@ import BottomSheet from "../../templates/BottomSheet";
 import {ProductOptionList} from "../../hooks/queries/useStoreQuery";
 import OptionListInput from "../../templates/OptionListInput";
 import OptionListContext, {OptionListProvider} from "../../context/OptionListContext";
+import {InputOptionsTypeProps} from "../../reducer/optionSelect";
+import PopOptionChange from "../../templates/PopOptionChange";
 
 function Cart() {
     const [productId, setProductId] = useState('');
     const { cartItems, storeUrl, storeName } = useSelector(selectorCartList);
+    const { optionList } = useSelector((state: RootState) => selectorSetOptionList(state, productId));
     const dispatch = useDispatch<AppDispatch>();
     
     const [cartTotalPrice, setCartTotalPrice] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
     const [popId, setPopId] = useState('');
-    const [popOptions, setPopOptions] = useState<ProductOptionList[]>([]);
+    const [selectOptions, setSelectOptions] = useState<InputOptionsTypeProps[]>([]);
     
     useEffect(() => {
         const totalPrice = cartItems.reduce((acc, cur) => acc + cur.totalPrice, 0);
@@ -31,25 +34,13 @@ function Cart() {
     const onDeleteClick = (id:string) => {
         dispatch(removeFromCart(id));
     }
-    const onOptionChangeClick = (id: string, options: ProductOptionList[]) => {
+    const onOptionChangeClick = (id: string, options: InputOptionsTypeProps[]) => {
         setPopId(`pop_${id}`);
         setProductId(id);
-        setPopOptions(options);
-        setIsOpen(true);
+        setSelectOptions(options);
+        setIsOpen(prev => !prev);
+        // console.log(isOpen);
     }
-    
-    cartItems.map(item => {
-        console.log(item.options);
-    })
-    
-    // const optionListContext = useContext(OptionListContext);
-    // if(!optionListContext) throw console.log(new Error);
-    //
-    // const { productOptionList, setProductOptionList } = optionListContext;
-    // console.log(productOptionList);
-    // useEffect(() => {
-    //     setProductOptionList(optionList ?? []);
-    // }, [optionList]);
     
     return (
         <>
@@ -105,7 +96,7 @@ function Cart() {
                                                 <Button
                                                     addClass="line small round-s"
                                                     text="옵션변경"
-                                                    onClick={() => onOptionChangeClick(item.id, [])}
+                                                    onClick={() => onOptionChangeClick(item.id, item.options)}
                                                 />
                                             </div>
                                             <div className="price">{numberComma(item.totalPrice)}원</div>
@@ -162,13 +153,14 @@ function Cart() {
                     </>
                 )}
             </Layout>
-            <BottomSheet id={popId} isOpen={isOpen}>
-                <OptionListProvider>
+            <BottomSheet id={popId} isOpen={isOpen} title="옵션 변경" closeBtn={true} popupBtn={{text: "옵션 변경하기"}}>
+                <div className="option-list">
                     <OptionListInput
                         id={productId}
-                        optionList={[]}
+                        optionList={optionList}
+                        optionSelect={selectOptions}
                     />
-                </OptionListProvider>
+                </div>
             </BottomSheet>
         </>
     )
