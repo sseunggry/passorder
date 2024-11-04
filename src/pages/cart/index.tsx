@@ -1,24 +1,22 @@
 import Layout from "templates/Layout";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState, selectorCartList, selectorInfo, selectorSetOptionList} from "reducer";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {numberComma} from "hooks/common";
 import Counter from "components/Counter";
 import Button from "components/Button";
 import NoticeList from "templates/NoticeList";
 import Select from "components/Select";
-import {removeFromCart} from "reducer/cartList";
+import {removeFromCart, updateCartItemOptions} from "reducer/cartList";
 import BottomSheet from "../../templates/BottomSheet";
-import {ProductOptionList} from "../../hooks/queries/useStoreQuery";
 import OptionListInput from "../../templates/OptionListInput";
-import OptionListContext, {OptionListProvider} from "../../context/OptionListContext";
 import {InputOptionsTypeProps} from "../../reducer/optionSelect";
-import PopOptionChange from "../../templates/PopOptionChange";
 
 function Cart() {
     const [productId, setProductId] = useState('');
     const { cartItems, storeUrl, storeName } = useSelector(selectorCartList);
     const { optionList } = useSelector((state: RootState) => selectorSetOptionList(state, productId));
+    const { options, optionPrice } = useSelector((state:RootState) => selectorInfo(state, productId));
     const dispatch = useDispatch<AppDispatch>();
     
     const [cartTotalPrice, setCartTotalPrice] = useState(0);
@@ -39,7 +37,11 @@ function Cart() {
         setProductId(id);
         setSelectOptions(options);
         setIsOpen(prev => !prev);
-        // console.log(isOpen);
+    }
+    
+    const onPopOptionChangeClick = () => {
+        dispatch(updateCartItemOptions(productId, options));
+        setIsOpen(prev => !prev);
     }
     
     return (
@@ -153,7 +155,13 @@ function Cart() {
                     </>
                 )}
             </Layout>
-            <BottomSheet id={popId} isOpen={isOpen} title="옵션 변경" closeBtn={true} popupBtn={{text: "옵션 변경하기"}}>
+            <BottomSheet
+                id={popId}
+                isOpen={isOpen}
+                title="옵션 변경"
+                closeBtn={true}
+                popupBtn={{text: "옵션 변경하기", onClick: onPopOptionChangeClick}}
+            >
                 <div className="option-list">
                     <OptionListInput
                         id={productId}

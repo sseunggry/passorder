@@ -26,7 +26,9 @@ function OptionListInput({id, optionList, optionSelect} : OptionListProps) {
                             select.optionTit === item.tit &&
                             select.optionList.some((el) => el.option === radioOption.option)
                     );
-                    acc[`radio/${item.tit}`] = isRadioChecked ? radioOption.option : '';
+                    if(isRadioChecked){
+                        acc[`radio/${item.tit}`] = isRadioChecked ? radioOption.option : '';
+                    }
                 });
                 item.checkList?.forEach((checkOption) => {
                     const isCheckChecked = optionSelect.some(

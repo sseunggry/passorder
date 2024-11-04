@@ -17,15 +17,6 @@ interface OptionListProps {
 }
 
 function OptionList({id, price, optionList} : OptionListProps) {
-    // const optionListContext = useContext(OptionListContext);
-    // if(!optionListContext) throw console.log(new Error);
-    //
-    // const { productOptionList, setProductOptionList } = optionListContext;
-    // useEffect(() => {
-    //     setProductOptionList(optionList ?? []);
-    // }, [optionList]);
-    // console.log(optionList);
-    
     return (
         <div className="option-list">
             <div className="item">
