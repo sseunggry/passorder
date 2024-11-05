@@ -1,3 +1,6 @@
+import {calcOptionsPrice} from "hooks/common";
+import {ProductOptionList} from "../hooks/queries/useStoreQuery";
+
 //type
 export interface OptionsInfoTypeProps {
     option: string;
@@ -19,6 +22,7 @@ interface OptionStateTypeProps {
 
 //action type
 export const CHECK_OPTION = 'optionSelect/CHECK_OPTION';
+export const UPDATE_OPTION = 'optionSelect/UPDATE_OPTION';
 
 interface CheckOptionAction {
     type: typeof CHECK_OPTION;
@@ -73,20 +77,13 @@ const updateOption = (state: InputOptionsTypeProps[], option: InputOptionsTypePr
     return newState;
 }
 
-//총 가격 합산
-const calcOptionsPrice = (array: InputOptionsTypeProps[]):number => {
-    return array.reduce((acc, item) => {
-        return acc + item.optionList.reduce((sum, option) => sum + option.price, 0);
-    }, 0);
-};
-
 //리듀서 함수 정의
 const optionSelectReducer = (state = initialState, action: CheckOptionAction): OptionStateTypeProps => {
     // console.log("디스패치", state);
     // console.log("action", action);
     
     switch (action.type) {
-        case CHECK_OPTION:
+        case CHECK_OPTION: {
             const { id, option } = action.payload;
             const options = updateOption(state[id]?.options ?? [], option);
             
@@ -98,6 +95,7 @@ const optionSelectReducer = (state = initialState, action: CheckOptionAction): O
                     optionPrice: calcOptionsPrice(options)
                 }
             };
+        }
         default:
             return state;
     }

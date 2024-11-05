@@ -1,6 +1,7 @@
 import {InputOptionsTypeProps} from "reducer/optionSelect";
 import {AppDispatch, RootState} from "reducer/index";
 import {UPDATE_COUNTER} from "reducer/counter";
+import {calcOptionsPrice} from "hooks/common";
 
 //types
 interface ProductType {
@@ -110,7 +111,7 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartStateTy
             return {
                 ...state,
                 cartItems: state.cartItems.map((el) =>
-                    el.id === id ? {...el, options, totalPrice: (el.price + el.optionPrice) * el.count} : el
+                    el.id === id ? {...el, options, optionPrice: calcOptionsPrice(options), totalPrice: (el.price + calcOptionsPrice(options)) * el.count} : el
                 )
             }
         }
@@ -160,5 +161,8 @@ export const updateCartItemCount = (id: string, count: number) => (dispatch: App
 
 //옵션을 업데이트 하는 thunk 액션
 export const updateCartItemOptions = (id: string, options: InputOptionsTypeProps[]) => (dispatch: AppDispatch, getState: () => RootState) => {
-    dispatch(updateCartOptions(id, options));
+    dispatch({
+        type: UPDATE_TO_OPTIONS,
+        payload: { id, options }
+    });
 }

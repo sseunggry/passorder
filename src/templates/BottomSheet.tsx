@@ -24,6 +24,8 @@ function BottomSheet({isOpen, id, addClass = '', title, closeBtn, children, popu
     useEffect(() => {
         if(isOpen) {
             setPopOpen(true);
+        } else{
+            setPopOpen(false);
         }
     }, [isOpen]);
     

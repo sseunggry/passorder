@@ -36,12 +36,12 @@ function Cart() {
         setPopId(`pop_${id}`);
         setProductId(id);
         setSelectOptions(options);
-        setIsOpen(prev => !prev);
+        setIsOpen(true);
     }
     
     const onPopOptionChangeClick = () => {
         dispatch(updateCartItemOptions(productId, options));
-        setIsOpen(prev => !prev);
+        setIsOpen(false);
     }
     
     return (
@@ -159,7 +159,6 @@ function Cart() {
                 id={popId}
                 isOpen={isOpen}
                 title="옵션 변경"
-                closeBtn={true}
                 popupBtn={{text: "옵션 변경하기", onClick: onPopOptionChangeClick}}
             >
                 <div className="option-list">
