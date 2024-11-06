@@ -4,7 +4,7 @@ import {UPDATE_COUNTER} from "reducer/counter";
 import {calcOptionsPrice} from "hooks/common";
 
 //types
-interface ProductType {
+export interface ProductType {
     id: string;
     url: string;
     name: string;
@@ -103,7 +103,7 @@ const cartReducer = (state = initialState, action: CartActionTypes): CartStateTy
                 ...state,
                 cartItems: state.cartItems.map((el) =>
                     el.id === id ? {...el, count, totalPrice: (el.price + el.optionPrice) * count} : el
-                )
+            )
             };
         }
         case UPDATE_TO_OPTIONS: {

@@ -1,5 +1,4 @@
 import {Link} from "react-router-dom";
-import {MouseEvent} from "react";
 
 interface ButtonProps {
     tag?: string;
@@ -9,9 +8,12 @@ interface ButtonProps {
     preChildren?: React.ReactNode;
     children?: React.ReactNode;
     onClick?: () => void;
+    popup?: boolean;
 }
 
-function Button({tag = 'button', url = '', addClass = '', text, onClick, preChildren, children} : ButtonProps){
+function Button({tag = 'button', url = '', addClass = '', text, onClick, preChildren, children, popup} : ButtonProps){
+    // let hasPopup;
+    // if(popup) hasPopup = `aria-haspopup="true"`
     return (
         <>
             {(tag === 'a') ? (

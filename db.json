@@ -355,17 +355,23 @@
         {
             "id":  "1",
             "txt": "취향을 담은 \n브랜드 상품권",
-            "img": "img_event_01.png"
+            "img": "img_event_01.png",
+            "period": "2024.11.01 ~ 2024.11.30",
+            "detailImg": "img_event_detail_01.png"
         },
         {
             "id":  "2",
             "txt": "생일인 친구에게 \n마음을 표현해요",
-            "img": "img_event_02.png"
+            "img": "img_event_02.png",
+            "period": "2024.10.20 ~ 2024.12.30",
+            "detailImg": "img_event_detail_02.png"
         },
         {
             "id":  "3",
             "txt": "취향을 담은 \n브랜드 상품권",
-            "img": "img_event_03.png"
+            "img": "img_event_03.png",
+            "period": "2024.09.20 ~ 2024.10.30",
+            "detailImg": "img_event_detail_03.png"
         }
     ]
 }

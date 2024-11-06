@@ -50,7 +50,6 @@
         }
     }
 }
-
 .recommend-list{
     .list{
         display: grid;
@@ -411,6 +410,60 @@
                 font-weight: 700;
                 color: var(--color-text-primary);
             }
+        }
+    }
+}
+
+//event
+.event{
+    .tit{
+        font-size: var(--typo-title-medium);
+        font-weight: 600;
+    }
+    .period{
+        margin-top: var(--gap-2);
+        font-size: var(--typo-body-small);
+        color: var(--color-text-gray-light);
+    }
+
+    .event-list{
+        li{
+            padding: 2.4rem 0;
+            border-bottom: var(--border-width) solid var(--color-border-basic);
+            a{
+                position: relative;
+                gap: var(--gap-6);
+
+                //&::after{
+                //    content: '';
+                //    position: absolute;
+                //    top: 50%;
+                //    right: 0;
+                //    transform: translateY(-50%) rotate(180deg);
+                //    display: block;
+                //    width: var(--icon-size-medium);
+                //    height: var(--icon-size-medium);
+                //    @include icon('back.svg');
+                //}
+
+            }
+            .img-wrap{
+                @include img-response(60%);
+                flex-shrink: 0;
+                width: 100%;
+                border-radius: var(--border-radius-large);
+                img{
+                    object-fit: cover;
+                }
+            }
+            .txt-wrap{
+                padding-top: 2rem;
+            }
+        }
+    }
+    &.detail{
+        .img-wrap{
+            margin-top: var(--gap-6);
         }
     }
 }

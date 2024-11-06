@@ -79,7 +79,7 @@ function Home() {
                     <p>마음을 선물해요</p>
                     <Button
                         tag="a"
-                        url="/"
+                        url="/event"
                         text="전체보기"
                         addClass="small text"
                         children={<i className="icon icon-arrow right"></i>}

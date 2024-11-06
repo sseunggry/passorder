@@ -3,6 +3,7 @@
 @mixin pc-variable(){
     --badge-border-radius: var(--border-radius-small);
     --badge-padding: var(--space-1) var(--space-2);
+    --badge-text-size: var(--font-xsmall);
     --badge-color-blue-text: var(--color-text-blue);
     --badge-color-blue-bg: var(--color-bg-blue);
     --badge-color-pink-text: var(--color-text-pink);
@@ -24,8 +25,9 @@
     @include pc-variable();
 
     padding: var(--badge-padding);
-    border-radius: var(--badge-border-radius);
     color: var(--badge-color-default-text);
+    font-size: var(--badge-text-size);
+    border-radius: var(--badge-border-radius);
     background-color: var(--badge-color-default-bg);
 
     &.blue{

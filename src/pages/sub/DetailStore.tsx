@@ -17,12 +17,15 @@ function DetailStore({id}: DetailStoreProps) {
     }
 
     return (
-        <Layout headerCon={{back: true, cart: true}} addClass="detail-store" bottomMenu={false}>
+        <Layout
+            headerCon={{addClass: 'white', back: true, like: true, cart: true, share: true}}
+            addClass="detail-store"
+            bottomMenu={false}
+        >
             {storeData && (
                 <>
                     <DetailStoreInfo data={storeData} />
                     <hr className="divider"/>
-                    {/*<DetailProductList data={storeData}/>*/}
                     {(storeData.id && storeData.productList) && <DetailProductList id={storeData.id} productList={storeData.productList}/>}
                     <NoticeList
                         list={

@@ -43,6 +43,9 @@ html{
     .btn{
         margin-left: auto;
     }
+    .badge{
+        margin-left: auto;
+    }
 }
 .tit{
     &-xl{
@@ -126,4 +129,15 @@ hr{
     //padding: 2rem;
     border: var(--border-width) solid var(--color-border-dark);
     border-radius: var(--border-radius-large);
+}
+
+/* space */
+$position: (t:top, b:bottom, r:right, l: left);
+$total: 10;
+
+@each $abbr, $pos in $position {
+    @for $i from 0 to $total {
+        .m#{$abbr}-#{$i} {margin-#{$pos}: $i*10px !important;}
+        .p#{$abbr}-#{$i} {padding-#{$pos}: $i*10px !important;}
+    }
 }

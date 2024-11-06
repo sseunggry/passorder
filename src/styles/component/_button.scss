@@ -100,6 +100,7 @@
         $icon-size: small, medium, large;
         @each $size in $icon-size {
             &.#{$size}{
+                padding: 0;
                 height: fit-content;
                 .icon{
                     width: var(--btn-icon-size-#{$size});

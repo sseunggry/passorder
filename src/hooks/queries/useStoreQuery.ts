@@ -59,8 +59,10 @@ export interface storeListDataPros {
 export interface EventListDataPros {
     id?: string;
     txt?: string;
+    period?: string;
     img?: string;
     link?: string;
+    detailImg?: string;
 }
 
 // export const useStoreListData = (id = '') => {

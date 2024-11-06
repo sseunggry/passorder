@@ -17,7 +17,7 @@ function SearchPage() {
     return (
         <Layout headerCon={{back: true, search: true}} bottomMenu={false}>
             {recentSearchList.length !== 0 && (
-                <section className="recent-search">
+                <section className="recent-search mt-4">
                     <div className="sec-tit">
                         <h2>최근 검색어</h2>
                         <Button

@@ -5,26 +5,34 @@ import Button from "components/Button";
 import {MouseEvent, MouseEventHandler} from "react";
 
 export interface HeaderProps{
+    addClass?: string;
     select?: boolean;
     alarm?: boolean;
     cart?: boolean;
+    like?: boolean;
+    share?: boolean;
     back?: boolean;
+    backOnClick?: () => void;
     title?: string;
     search?: boolean;
     searchOnClick?: MouseEventHandler<HTMLElement>;
 }
 
-function Header({select, alarm, cart, back, title, search, searchOnClick} : HeaderProps) {
+function Header({addClass = '', select, alarm, cart, like, share, back, backOnClick, title, search, searchOnClick} : HeaderProps) {
     const navigate = useNavigate();
     const backBtnOnClick = () => {
-        navigate(-1);
+        if(backOnClick){
+            backOnClick();
+        }else{
+            navigate(-1);
+        }
     };
     return (
-        <header className="header">
+        <header className={`header ${addClass}`}>
             {back && (
                 <Button
                     onClick={backBtnOnClick}
-                    addClass="btn-back"
+                    addClass="btn-icon btn-back"
                     children={
                         <>
                             <span className="blind">뒤로 이동</span>
@@ -50,24 +58,31 @@ function Header({select, alarm, cart, back, title, search, searchOnClick} : Head
                 <h2 className="tit">{title}</h2>
             )}
     
-            {(alarm || cart) && (
+            {(alarm || cart || like || share) && (
                 <div className="util">
                     {alarm && (
-                        <>
-                            <Button
-                                // url="/"
-                                addClass="btn-icon"
-                                children={
-                                    <>
-                                        <span className="blind">알림</span>
-                                        <i className="icon icon-alarm"></i>
-                                    </>
-                                }
-                            />
-                            {/*<Link to="/" className="btn-icon alarm">*/}
-                            {/*    <span className="blind">알림</span>*/}
-                            {/*</Link>*/}
-                        </>
+                        <Button
+                            // url="/"
+                            addClass="btn-icon"
+                            children={
+                                <>
+                                    <span className="blind">알림</span>
+                                    <i className="icon icon-alarm"></i>
+                                </>
+                            }
+                        />
+                    )}
+                    {like && (
+                        <Button
+                            addClass="btn-icon"
+                            children={
+                                <>
+                                    <span className="blind">좋아요</span>
+                                    <i className="icon icon-like"></i>
+                                </>
+                            }
+                            // onClick={}
+                        />
                     )}
                     {cart && (
                         <Button
@@ -81,9 +96,18 @@ function Header({select, alarm, cart, back, title, search, searchOnClick} : Head
                                 </>
                             }
                         />
-                        // <Link to="/cart" className="btn-icon icon-cart">
-                        //     <span className="blind">장바구니</span>
-                        // </Link>
+                    )}
+                    {share && (
+                        <Button
+                            addClass="btn-icon"
+                            children={
+                                <>
+                                    <span className="blind">공유하기</span>
+                                    <i className="icon icon-share"></i>
+                                </>
+                            }
+                            // onClick={}
+                        />
                     )}
                 </div>
             )}
