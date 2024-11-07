@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/passorder/static/css/main.a5eba176.css",
+    "main.css": "/passorder/static/css/main.d5efb760.css",
     "main.js": "/passorder/static/js/main.516a3c79.js",
     "static/media/AppleSDGothicNeoB.woff2": "/passorder/static/media/AppleSDGothicNeoB.e3774e0c99fb28460f32.woff2",
     "static/media/AppleSDGothicNeoR.woff2": "/passorder/static/media/AppleSDGothicNeoR.bf7df0deab61e85edf6a.woff2",
@@ -33,11 +33,11 @@
     "static/media/icon_arrow.svg": "/passorder/static/media/icon_arrow.bd2ff4a407ecd98ae48f.svg",
     "static/media/icon_plus.svg": "/passorder/static/media/icon_plus.ffd033a0183f84bed752.svg",
     "static/media/icon_minus.svg": "/passorder/static/media/icon_minus.54b63277fe24f757caad.svg",
-    "main.a5eba176.css.map": "/passorder/static/css/main.a5eba176.css.map",
+    "main.d5efb760.css.map": "/passorder/static/css/main.d5efb760.css.map",
     "main.516a3c79.js.map": "/passorder/static/js/main.516a3c79.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5eba176.css",
+    "static/css/main.d5efb760.css",
     "static/js/main.516a3c79.js"
   ]
 }
