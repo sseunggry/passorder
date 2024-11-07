@@ -14,7 +14,7 @@
 
 .tab{
     @include pc-variable();
-    [role="tab-list"]{
+    [role="tablist"]{
         overflow: auto;
         display: flex;
         gap: var(--tab-list-gap);
