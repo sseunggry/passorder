@@ -11,7 +11,7 @@ function Event() {
     }
     
     return (
-        <Layout headerCon={{backOnClick: onBackBtnClick,back: true, title: '이벤트'}} addClass="event" bottomMenu={false}>
+        <Layout headerCon={{backOnClick: onBackBtnClick, back: true, title: '이벤트'}} addClass="event" bottomMenu={false}>
             <section>
                 <ul className="event-list">
                     {eventList?.map((event, idx) => (

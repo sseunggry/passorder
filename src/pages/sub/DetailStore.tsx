@@ -4,6 +4,7 @@ import Loading from "components/Loading";
 import NoticeList from "templates/NoticeList";
 import DetailStoreInfo from "templates/DetailStoreInfo";
 import DetailProductList from "templates/DetailProductList";
+import {useNavigate} from "react-router-dom";
 
 interface DetailStoreProps {
     id: string;
@@ -11,6 +12,10 @@ interface DetailStoreProps {
 
 function DetailStore({id}: DetailStoreProps) {
     const {data: storeData, isLoading: storeDataIsLoading, isError: storeDataIsError} = useStoreData(id);
+    const navigate = useNavigate();
+    const onPageBtnClick = () => {
+        navigate('/');
+    };
     
     if(storeDataIsLoading) {
         return <Loading />
@@ -18,7 +23,7 @@ function DetailStore({id}: DetailStoreProps) {
 
     return (
         <Layout
-            headerCon={{addClass: 'white', back: true, like: true, cart: true, share: true}}
+            headerCon={{addClass: 'white', backOnClick: onPageBtnClick, back: true, like: true, cart: true, share: true}}
             addClass="detail-store"
             bottomMenu={false}
         >
