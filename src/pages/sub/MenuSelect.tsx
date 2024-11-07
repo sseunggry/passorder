@@ -9,7 +9,7 @@ import {generateRandomId, numberComma} from "hooks/common";
 import {addToCart} from "reducer/cartList";
 import React, {useEffect, useState} from "react";
 import {AppDispatch, RootState, selectorCount, selectorInfo} from "reducer";
-import {setOptionList} from "../../reducer/optionList";
+import {setOptionList} from "reducer/optionList";
 
 function MenuSelect() {
     const {id, categoryId, productId} = useParams();
@@ -34,7 +34,7 @@ function MenuSelect() {
     const [totalPrice, setTotalPrice] = useState<number>(0);
     useEffect(() => {
         setTotalPrice(((productItem?.price ?? 0) + optionPrice) * count );
-    }, [count, optionPrice]);
+    }, [count, optionPrice, productItem?.price]);
     
     const addToCartOnClick = () => {
         const cartData = {

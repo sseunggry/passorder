@@ -1,8 +1,8 @@
 import Select from "components/Select";
 import Search from "components/Search";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Button from "components/Button";
-import {MouseEvent, MouseEventHandler} from "react";
+import {MouseEventHandler} from "react";
 
 export interface HeaderProps{
     addClass?: string;

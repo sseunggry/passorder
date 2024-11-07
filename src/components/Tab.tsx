@@ -1,4 +1,4 @@
-import {MouseEventHandler, useState} from "react";
+import {useState} from "react";
 
 interface TabProps {
     addClass?: string;
@@ -14,11 +14,13 @@ function Tab({addClass = '', list} : TabProps) {
     
     return (
         <div className={`tab ${addClass}`}>
-            <ul role="tab-list">
+            <ul role="tablist">
                 {list.map((txt, idx) => (
                     <li
                         key={idx}
                         id={`tabInfo${idx+1}`}
+                        role="tab"
+                        aria-selected="true"
                         aria-controls={`tabPanelInfo${idx+1}`}
                     >
                         <button
@@ -35,4 +37,7 @@ function Tab({addClass = '', list} : TabProps) {
     )
 }
 
+// <div role="tabpanel" id="panel1" aria-labelledby="tab1">
+//     <!-- Tab 1 content -->
+// </div>
 export default Tab;

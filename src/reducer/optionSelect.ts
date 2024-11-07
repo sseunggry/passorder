@@ -1,5 +1,4 @@
 import {calcOptionsPrice} from "hooks/common";
-import {ProductOptionList} from "../hooks/queries/useStoreQuery";
 
 //type
 export interface OptionsInfoTypeProps {

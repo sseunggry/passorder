@@ -4,7 +4,6 @@ import optionSelect from "reducer/optionSelect";
 import cartList from "reducer/cartList";
 import {configureStore, createSelector} from "@reduxjs/toolkit";
 import optionSetList from "reducer/optionList";
-import {ProductOptionList} from "../hooks/queries/useStoreQuery";
 
 const rootReducer = combineReducers({
     counter,

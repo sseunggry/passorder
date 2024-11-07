@@ -8,9 +8,9 @@ import Button from "components/Button";
 import NoticeList from "templates/NoticeList";
 import Select from "components/Select";
 import {removeFromCart, updateCartItemOptions} from "reducer/cartList";
-import BottomSheet from "../../templates/BottomSheet";
-import OptionListInput from "../../templates/OptionListInput";
-import {InputOptionsTypeProps} from "../../reducer/optionSelect";
+import BottomSheet from "templates/BottomSheet";
+import OptionListInput from "templates/OptionListInput";
+import {InputOptionsTypeProps} from "reducer/optionSelect";
 
 function Cart() {
     const [productId, setProductId] = useState('');

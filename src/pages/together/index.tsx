@@ -3,10 +3,10 @@ import {useStoreData} from "hooks/queries/useStoreQuery";
 import Layout from "templates/Layout";
 import Loading from "components/Loading";
 import React from "react";
-import Select from "../../components/Select";
-import {numberComma} from "../../hooks/common";
-import NoticeList from "../../templates/NoticeList";
-import Button from "../../components/Button";
+import Select from "components/Select";
+import {numberComma} from "hooks/common";
+import NoticeList from "templates/NoticeList";
+import Button from "components/Button";
 
 function TogetherOrder(){
     const {id} = useParams();

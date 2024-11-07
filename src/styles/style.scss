@@ -329,7 +329,7 @@
             .txt-wrap{
                 width: 100%;
                 .name{
-                    padding-right: calc(100% - $btn-delete-size - var(--gap-6));
+                    padding-right: calc(100% - #{$btn-delete-size} - var(--gap-6));
                     font-size: var(--typo-body-medium);
                 }
                 .option-list{

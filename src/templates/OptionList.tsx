@@ -1,14 +1,7 @@
-import {useDispatch, useSelector} from "react-redux";
-import Checkbox from "components/Checkbox";
-import Radio from "components/Radio";
 import Counter from "components/Counter";
 import OptionListInput from "templates/OptionListInput";
 import {numberComma} from "hooks/common";
 import {ProductOptionList} from "hooks/queries/useStoreQuery";
-import {OptionsInfoTypeProps, checkOption} from "reducer/optionSelect";
-import {AppDispatch, RootState, selectorCount, selectorInfo} from "../reducer";
-import {useContext, useEffect} from "react";
-import OptionListContext from "../context/OptionListContext";
 
 interface OptionListProps {
     id: string;

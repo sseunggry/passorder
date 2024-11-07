@@ -10,15 +10,15 @@ import MyPage from "pages/mypage";
 import SearchPage from "pages/search";
 import DetailPage from "pages/sub/Detail";
 import TogetherOrder from "pages/together";
-import MenuSelect from "./pages/sub/MenuSelect";
-import EventPage from "./pages/sub/Event";
+import MenuSelect from "pages/sub/MenuSelect";
+import EventPage from "pages/sub/Event";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
       <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
               <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/cart" element={<Cart />} />
@@ -31,7 +31,7 @@ function App() {
                   <Route path="/event/" element={<EventPage />} />
                   <Route path="/event/:id" element={<DetailPage />} />
                   <Route path="/together/:id" element={<TogetherOrder />} />
-                  {/*<Route path="*" element={<Navigate replace to="/" />} />*/}
+                  <Route path="*" element={<Navigate replace to="/" />} />
               </Routes>
           </BrowserRouter>
       </QueryClientProvider>
