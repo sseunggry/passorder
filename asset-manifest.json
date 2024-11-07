@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/passorder/static/css/main.a5eba176.css",
+    "main.js": "/passorder/static/js/main.fcd17159.js",
+    "static/media/AppleSDGothicNeoB.woff2": "/passorder/static/media/AppleSDGothicNeoB.e3774e0c99fb28460f32.woff2",
+    "static/media/AppleSDGothicNeoR.woff2": "/passorder/static/media/AppleSDGothicNeoR.bf7df0deab61e85edf6a.woff2",
+    "static/media/AppleSDGothicNeoSB.woff2": "/passorder/static/media/AppleSDGothicNeoSB.b8aae9233eca27c79794.woff2",
+    "static/media/AppleSDGothicNeoM.woff2": "/passorder/static/media/AppleSDGothicNeoM.bbfca1e23f511f01c82a.woff2",
+    "static/media/Pretendard-Bold.woff": "/passorder/static/media/Pretendard-Bold.1f1dbbbf311ffffcc770.woff",
+    "static/media/Pretendard-SemiBold.woff": "/passorder/static/media/Pretendard-SemiBold.9f6b39f88e7e6a3fd0b2.woff",
+    "static/media/Pretendard-Medium.woff": "/passorder/static/media/Pretendard-Medium.edd5e28caa1cc4a9e0b7.woff",
+    "static/media/Pretendard-Regular.woff": "/passorder/static/media/Pretendard-Regular.303253288b0ba99db532.woff",
+    "static/media/icon_star_fill.svg": "/passorder/static/media/icon_star_fill.c5c1a6060484b3643ced.svg",
+    "static/media/icon_like.svg": "/passorder/static/media/icon_like.f0d282ffe5d9c9eec6ef.svg",
+    "static/media/icon_qr.svg": "/passorder/static/media/icon_qr.35050b20f312d4ceb4b2.svg",
+    "static/media/icon_call.svg": "/passorder/static/media/icon_call.cfd323da903047e6a7cb.svg",
+    "static/media/icon_alarm.svg": "/passorder/static/media/icon_alarm.9e9ae398d739648c65c8.svg",
+    "static/media/icon_home.svg": "/passorder/static/media/icon_home.340a64e23dbcd16913b5.svg",
+    "index.html": "/passorder/index.html",
+    "static/media/icon_cart.svg": "/passorder/static/media/icon_cart.dc263cc4bac7c10fa01f.svg",
+    "static/media/icon_time.svg": "/passorder/static/media/icon_time.ad41ac11548d9109a002.svg",
+    "static/media/icon_delivery.svg": "/passorder/static/media/icon_delivery.88b2ff353d7314c8b00a.svg",
+    "static/media/icon_order.svg": "/passorder/static/media/icon_order.0b96f63020955dc294f6.svg",
+    "static/media/icon_location.svg": "/passorder/static/media/icon_location.6e27c4209df041c23de2.svg",
+    "static/media/icon_delete-fill.svg": "/passorder/static/media/icon_delete-fill.108210b4066c375e623b.svg",
+    "static/media/icon_back.svg": "/passorder/static/media/icon_back.1fd6d6a43fc47d0a607c.svg",
+    "static/media/icon_my.svg": "/passorder/static/media/icon_my.d0d2e3642093a546a1f0.svg",
+    "static/media/icon_share.svg": "/passorder/static/media/icon_share.0876a0dd7beb5efefce7.svg",
+    "static/media/icon_together.svg": "/passorder/static/media/icon_together.156732d8f8bf12c671cb.svg",
+    "static/media/icon_search.svg": "/passorder/static/media/icon_search.e1b3745134743bca955c.svg",
+    "static/media/icon_delete.svg": "/passorder/static/media/icon_delete.e681b37744e116f8bed4.svg",
+    "static/media/icon_check.svg": "/passorder/static/media/icon_check.5403a68cd2e266dd7942.svg",
+    "static/media/icon_arrow.svg": "/passorder/static/media/icon_arrow.bd2ff4a407ecd98ae48f.svg",
+    "static/media/icon_plus.svg": "/passorder/static/media/icon_plus.ffd033a0183f84bed752.svg",
+    "static/media/icon_minus.svg": "/passorder/static/media/icon_minus.54b63277fe24f757caad.svg",
+    "main.a5eba176.css.map": "/passorder/static/css/main.a5eba176.css.map",
+    "main.fcd17159.js.map": "/passorder/static/js/main.fcd17159.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a5eba176.css",
+    "static/js/main.fcd17159.js"
+  ]
+}
