@@ -48,10 +48,13 @@ export interface storeListDataPros {
     imgVisual?: string;
     tel?: string;
     detailInfo?: {
+        name?: string;
         delivery?: string;
         location?: string;
         location2?: string;
         time?: string;
+        closed?: string;
+        introduce?: string;
     };
     productList?: storeProductList[];
 }

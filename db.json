@@ -3,10 +3,10 @@
         {
             "id":  "paris",
             "logo": "logo_paris",
-            "brand": "파리바게트 수원역점",
+            "brand": "파리바게트 신풍역점",
             "infoList": {
-                "rating": 4.25,
-                "review": 87,
+                "rating": 4.9,
+                "review": 388,
                 "distance": "50m"
             },
             "badge": [
@@ -22,10 +22,148 @@
             "imgVisual": "img_detail_store_visual.jpg",
             "tel": "02-233-1243",
             "detailInfo": {
-                "delivery": "5~10분",
-                "location": "경기 수원시 팔달구 경수대로604번길 19",
-                "location2": "경기도 수원시 팔달구 우만동 559-17",
-                "time": "매일 10:00 ~ 23:00"
+                "name": "파리바게트 신풍역점",
+                "delivery": "13~28분",
+                "location": "서울특별시 영등포구 신길동 4950",
+                "location2": "신길동, 래미안에스티움 신길7구역 상가 A동 지하2층 105호",
+                "time": "매일 10:00 ~ 23:00",
+                "closed": "연중무휴",
+                "introduce": "파리바게뜨 픽업 서비스는 점포별 운영 정책에 따라 실제 매장에 판매되는 가격보다 낮거나, 높을 수 있습니다."
+            },
+            "productList": [
+                {
+                    "categoryId": "bakery",
+                    "category": "크림/소보루/팥 옛날빵",
+                    "list": [
+                        {
+                            "productId": "1",
+                            "name": "후레쉬크림샌드빵",
+                            "desc": "부드럽고 달콤한 크림을 먹기 좋은 크기로 샌드한 간식용빵",
+                            "price": 5700,
+                            "thumbImg": "img_detail_thumb_1.png",
+                            "visualImg": "img_detail_visual_1.png"
+                        },
+                        {
+                            "productId": "2",
+                            "name": "소보루빵",
+                            "desc": "고소한 소보루 가루가 뿌려진 기본 간식빵",
+                            "price": 1900,
+                            "thumbImg": "img_detail_thumb_2.png"
+                        },
+                        {
+                            "productId": "3",
+                            "name": "단팥빵",
+                            "desc": "단팥앙금이 부드러운 빵 안에 들어있어 달콤하게 즐길 수 있는 간식용빵",
+                            "price": 1900,
+                            "thumbImg": "img_detail_thumb_3.png"
+                        },
+                        {
+                            "productId": "4",
+                            "name": "슈크림빵",
+                            "desc": "부드러운 슈크림이 들어있는 간식 빵",
+                            "price": 1900,
+                            "thumbImg": "img_detail_thumb_4.png"
+                        }
+                    ]
+                },
+                {
+                    "categoryId": "bakery2",
+                    "category": "치즈/소세지/고로케/도넛",
+                    "list": [
+                        {
+                            "productId": "1",
+                            "name": "추억의 소시지빵",
+                            "desc": "부드러운 빵과 롱소시지, 옥수수마요 토핑이 조화로운 아는 맛이 더 무서운 추억의 소시지 빵",
+                            "price": 3300,
+                            "thumbImg": "img_detail_thumb_5.png"
+                        },
+                        {
+                            "productId": "2",
+                            "name": "치즈소시지 페스츄리",
+                            "desc": "'사이즈 UP 더 커진 소시지' 탱글짭조름한 소시지가 통으로 사이즈 업, 더 맛있어진 치즈소시지페스츄리",
+                            "price": 3700,
+                            "thumbImg": "img_detail_thumb_6.png",
+                            "remainCount": 3
+                        },
+                        {
+                            "productId": "3",
+                            "name": "명품고기잡채고로케",
+                            "desc": "파리바게뜨의 대표고로케. 고소한 잡채 안에 돼지고기와 소고기를 넣어 더 맛있는 고로케",
+                            "price": 3300,
+                            "thumbImg": "img_detail_thumb_7.png"
+                        },
+                        {
+                            "productId": "4",
+                            "name": "쫀득치즈스틱(3개입)",
+                            "desc": "쫄깃쫄깃 은은한 치즈풍미가 매력적인 쫄깃담백 치즈스틱",
+                            "price": 3000,
+                            "thumbImg": "img_detail_thumb_8.png"
+                        }
+                    ]
+                },
+                {
+                    "categoryId": "bakery3",
+                    "category": "베이글/소금빵/페스츄리/바게뜨",
+                    "list": [
+                        {
+                            "productId": "1",
+                            "name": "두 번 쫄깃 플레인베이글",
+                            "desc": "겉과 속이 두 번 쫄깃한 플레인 베이글",
+                            "price": 2800,
+                            "thumbImg": "img_detail_thumb_9.png"
+                        },
+                        {
+                            "productId": "2",
+                            "name": "크림치즈 프레즐",
+                            "desc": "쫄깃 담백한 프레즐에 크림치즈를 듬뿍 넣어 꾸덕한 식감이 매력적인 크림치즈 프레즐",
+                            "price": 1900,
+                            "thumbImg": "img_detail_thumb_10.png",
+                            "remainCount": 2
+                        },
+                        {
+                            "productId": "3",
+                            "name": "발효버터 소금빵",
+                            "desc": "발효버터를 넣은 반죽을 고온에 구워 속은 촉촉, 빵 밑면은 바삭 두 가지 식감과 고소한 풍미를 느낄 수 있는 소금빵",
+                            "price": 3000,
+                            "thumbImg": "img_detail_thumb_11.png"
+                        },
+                        {
+                            "productId": "4",
+                            "name": "촉촉한 몽블랑",
+                            "desc": "겹겹이 쌓인 결 사이로 버터풍미 가득한, 촉촉하게 즐기는 버터 몽블랑",
+                            "price": 5400,
+                            "thumbImg": "img_detail_thumb_12.png"
+                        }
+                    ]
+                }
+            ],
+            "recent": true
+        },
+        {
+            "id":  "tencent",
+            "logo": "logo_tencent",
+            "brand": "텐퍼센트 보라매타운점",
+            "infoList": {
+                "rating": 4.85,
+                "review": 11,
+                "distance": "82m"
+            },
+            "badge": [
+                {
+                    "text": "할인",
+                    "color": "blue"
+                }
+            ],
+            "imgVisual": "img_detail_store_visual.jpg",
+            "tel": "02-233-1243",
+            "detailInfo": {
+                "name": "텐퍼센트 보라매타운점(Ten Percent)",
+                "delivery": "13~37분",
+                "location": "서울특별시 동작구 신대방동 395-66 상가동 1층 101-2호",
+                "location2": "신대방동, 보라매삼성쉐르빌",
+                "time": "주말 10:00 ~ 18:00, 평일 13:00 ~ 19:00",
+                "closed": "연중무휴",
+                "introduce": "안녕하세요. 텐퍼센트커피 보라매타운점 입니다. 가게 위치는 보라매로5길 43에 있습니다. 언제나 신선하고 좋은 재로를 사용하여 맛있는 음식을 선보이겠습니다."
             },
             "productList": [
                 {
@@ -34,12 +172,27 @@
                     "list": [
                         {
                             "productId": "1",
-                            "name": "아메리카노(ICED)",
+                            "name": "아메리카노",
                             "desc": "진하게 로스팅한 커피 원두에서 에스프레소를 추출하여 원두 풍미를 느낄 수 있습니다.",
                             "price": 4000,
                             "thumbImg": "img_detail_thumb_1.png",
                             "visualImg": "img_detail_visual_1.png",
                             "optionList": [
+                                {
+                                    "id": "0",
+                                    "tit": "종류",
+                                    "required": true,
+                                    "radioList": [
+                                        {
+                                                "option": "HOT",
+                                            "price": 0
+                                        },
+                                        {
+                                            "option": "ICE",
+                                            "price": 0
+                                        }
+                                    ]
+                                },
                                 {
                                     "id": "1",
                                     "tit": "얼음 양",
@@ -89,25 +242,6 @@
                                         },
                                         {
                                             "option": "시나몬 시럽추가",
-                                            "price": 1000
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "4",
-                                    "tit": "우유변경",
-                                    "required": false,
-                                    "checkList": [
-                                        {
-                                            "option": "저지방우유",
-                                            "price": 500
-                                        },
-                                        {
-                                            "option": "락토프리우유",
-                                            "price": 800
-                                        },
-                                        {
-                                            "option": "오트밀두유",
                                             "price": 1000
                                         }
                                     ]
@@ -116,11 +250,103 @@
                         },
                         {
                             "productId": "2",
-                            "name": "아메리카노(HOT)",
+                            "name": "카페라떼",
                             "desc": "진하게 로스팅한 커피 원두에서 에스프레소를 추출하여 원두 풍미를 느낄 수 있습니다.",
                             "price": 4000,
                             "thumbImg": "img_detail_thumb_2.png",
                             "optionList": [
+                                {
+                                    "id": "0",
+                                    "tit": "종류",
+                                    "required": true,
+                                    "radioList": [
+                                        {
+                                            "option": "HOT",
+                                            "price": 0
+                                        },
+                                        {
+                                            "option": "ICE",
+                                            "price": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "1",
+                                    "tit": "얼음 양",
+                                    "required": true,
+                                    "radioList": [
+                                        {
+                                            "option": "적게",
+                                            "price": 0
+                                        },
+                                        {
+                                            "option": "중간",
+                                            "price": 0
+                                        },
+                                        {
+                                            "option": "많이",
+                                            "price": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "2",
+                                    "tit": "샷양",
+                                    "required": true,
+                                    "radioList": [
+                                        {
+                                            "option": "기본",
+                                            "price": 0
+                                        },
+                                        {
+                                            "option": "샷 추가",
+                                            "price": 500
+                                        },
+                                        {
+                                            "option": "샷 추가(2번)",
+                                            "price": 800
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "3",
+                                    "tit": "시럽추가",
+                                    "required": false,
+                                    "checkList": [
+                                        {
+                                            "option": "헤이즐럿 시럽추가",
+                                            "price": 800
+                                        },
+                                        {
+                                            "option": "시나몬 시럽추가",
+                                            "price": 1000
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "productId": "3",
+                            "name": "카페모카",
+                            "desc": "진한 초콜릿 모카 시럽과 풍부하고 진한 농도의 에스프레소를 혼합하여 달달하게 즐길 수 있습니다.",
+                            "price": 5800,
+                            "thumbImg": "img_detail_thumb_3.png",
+                            "optionList": [
+                                {
+                                    "id": "0",
+                                    "tit": "종류",
+                                    "required": true,
+                                    "radioList": [
+                                        {
+                                            "option": "HOT",
+                                            "price": 0
+                                        },
+                                        {
+                                            "option": "ICE",
+                                            "price": 0
+                                        }
+                                    ]
+                                },
                                 {
                                     "id": "1",
                                     "tit": "얼음 양",
@@ -196,18 +422,130 @@
                             ]
                         },
                         {
-                            "productId": "3",
-                            "name": "카페모카(ICED)",
+                            "productId": "4",
+                            "name": "아인슈페너",
                             "desc": "진한 초콜릿 모카 시럽과 풍부하고 진한 농도의 에스프레소를 혼합하여 달달하게 즐길 수 있습니다.",
-                            "price": 5600,
-                            "thumbImg": "img_detail_thumb_3.png"
+                            "price": 5300,
+                            "thumbImg": "img_detail_thumb_4.png",
+                            "optionList": [
+                                {
+                                    "id": "0",
+                                    "tit": "종류",
+                                    "required": true,
+                                    "radioList": [
+                                        {
+                                            "option": "HOT",
+                                            "price": 0
+                                        },
+                                        {
+                                            "option": "ICE",
+                                            "price": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "1",
+                                    "tit": "얼음 양",
+                                    "required": true,
+                                    "radioList": [
+                                        {
+                                            "option": "적게",
+                                            "price": 0
+                                        },
+                                        {
+                                            "option": "중간",
+                                            "price": 0
+                                        },
+                                        {
+                                            "option": "많이",
+                                            "price": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "2",
+                                    "tit": "샷양",
+                                    "required": true,
+                                    "radioList": [
+                                        {
+                                            "option": "기본",
+                                            "price": 0
+                                        },
+                                        {
+                                            "option": "샷 추가",
+                                            "price": 500
+                                        },
+                                        {
+                                            "option": "샷 추가(2번)",
+                                            "price": 800
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "3",
+                                    "tit": "시럽추가",
+                                    "required": false,
+                                    "checkList": [
+                                        {
+                                            "option": "헤이즐럿 시럽추가",
+                                            "price": 800
+                                        },
+                                        {
+                                            "option": "시나몬 시럽추가",
+                                            "price": 1000
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "4",
+                                    "tit": "우유변경",
+                                    "required": false,
+                                    "checkList": [
+                                        {
+                                            "option": "저지방우유",
+                                            "price": 500
+                                        },
+                                        {
+                                            "option": "락토프리우유",
+                                            "price": 800
+                                        },
+                                        {
+                                            "option": "오트밀두유",
+                                            "price": 1000
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "categoryId": "coldbrew",
+                    "category": "콜드브루",
+                    "list": [
+                        {
+                            "productId": "1",
+                            "name": "콜드브루",
+                            "price": 5000,
+                            "thumbImg": "img_detail_thumb_5.png"
+                        },
+                        {
+                            "productId": "2",
+                            "name": "디카페인 콜드브루",
+                            "price": 5000,
+                            "thumbImg": "img_detail_thumb_6.png"
+                        },
+                        {
+                            "productId": "3",
+                            "name": "콜드브루 라떼",
+                            "price": 5500,
+                            "thumbImg": "img_detail_thumb_7.png"
                         },
                         {
                             "productId": "4",
-                            "name": "카페모카(HOT)",
-                            "desc": "진한 초콜릿 모카 시럽과 풍부하고 진한 농도의 에스프레소를 혼합하여 달달하게 즐길 수 있습니다.",
-                            "price": 5600,
-                            "thumbImg": "img_detail_thumb_4.png"
+                            "name": "디카페인 콜드브루 라떼",
+                            "price": 5500,
+                            "thumbImg": "img_detail_thumb_8.png"
                         }
                     ]
                 },
@@ -246,23 +584,6 @@
                             "remainCount": 2
                         }
                     ]
-                }
-            ],
-            "recent": true
-        },
-        {
-            "id":  "tencent",
-            "logo": "logo_tencent",
-            "brand": "텐센트 커피",
-            "infoList": {
-                "rating": 3.25,
-                "review": 50,
-                "distance": "82m"
-            },
-            "badge": [
-                {
-                    "text": "할인",
-                    "color": "blue"
                 }
             ],
             "recent": true

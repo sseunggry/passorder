@@ -30,8 +30,12 @@ function DetailStore({id}: DetailStoreProps) {
             {storeData && (
                 <>
                     <DetailStoreInfo data={storeData} />
-                    <hr className="divider"/>
-                    {(storeData.id && storeData.productList) && <DetailProductList id={storeData.id} productList={storeData.productList}/>}
+                    {(storeData.id && storeData.productList) && (
+                        <>
+                            <hr className="divider"/>
+                            <DetailProductList id={storeData.id} productList={storeData.productList}/>
+                        </>
+                    )}
                     <NoticeList
                         list={
                             [

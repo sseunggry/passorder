@@ -1,5 +1,5 @@
-import Button from "../components/Button";
-import {storeListDataPros} from "../hooks/queries/useStoreQuery";
+import Button from "components/Button";
+import {storeListDataPros} from "hooks/queries/useStoreQuery";
 import {useState} from "react";
 
 interface DetailStoreInfoProps {

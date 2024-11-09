@@ -12,6 +12,7 @@ import DetailPage from "pages/sub/Detail";
 import TogetherOrder from "pages/together";
 import MenuSelect from "pages/sub/MenuSelect";
 import EventPage from "pages/sub/Event";
+import StoreInfo from "pages/sub/StoreInfo";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ function App() {
                   <Route path="/search" element={<SearchPage />} />
                   <Route path="/store/:id" element={<DetailPage />} />
                   <Route path="/store/:id/menu/:categoryId/:productId" element={<MenuSelect />} />
+                  <Route path="/store/:id/info" element={<StoreInfo />} />
                   <Route path="/event/" element={<EventPage />} />
                   <Route path="/event/:id" element={<DetailPage />} />
                   <Route path="/together/:id" element={<TogetherOrder />} />
