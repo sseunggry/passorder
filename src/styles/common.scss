@@ -1,47 +1,82 @@
 @import "./base/index.scss";
 @import "./component";
 
-//store-info-list
-.store-info-list{
-    --store-info-font-size: var(--typo-body-xsmall);
-    --store-info-color: var(--color-text-gray-light);
-    --store-info-line-margin-x: var(--gap-2);
-    --store-info-line-width: var(--border-width);
-    --store-info-line-height: 0.8rem;
-    --store-info-line-color: var(--color-border-dark);
-
-    --store-info-rating-size: var(--icon-size-xsmall);
-    --store-info-rating-color: var(--icon-color-gray);
-
+//loading
+.loading-wrap{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: var(--store-item-gap-info-badge);
-    font-size: var(--store-info-font-size);
-    color: var(--store-info-color);
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
 
-    li{
-        display: flex;
-        align-items: center;
-        &::after{
-            content: '';
-            display: inline-block;
-            margin: 0 var(--store-info-line-margin-x);
-            width: var(--store-info-line-width);
-            height: var(--store-info-line-height);
-            background-color: var(--store-info-line-color);
-        }
-        &:last-child{
-            &::after{
-                display: none;
+    &::before{
+        content: '';
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    .loading{
+        .spinner{
+            position: relative;
+            margin: 0 auto;
+            width: 6rem;
+            height: 6rem;
+            animation: loading 2s linear infinite;
+            z-index: 20;
+
+            .circle{
+                position: absolute;
+                top: 0;
+                display: flex;
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 100%;
+                background-color: var(--color-bg-primary);
+                animation: bounce 2s ease-in-out infinite;
+
+                &:nth-child(2){
+                    top: auto;
+                    bottom: 0;
+                    animation-delay: -1s;
+                }
+                //@for $i from 1 through 3{
+                //    $delay: -($i - 1);
+                //    &:nth-child(#{$i}){
+                //        animation: bounce 2s #{$delay}s ease-in-out infinite alternate;
+                //    }
+                //}
             }
         }
+        p{
+            position: relative;
+            z-index: 20;
+            margin-top: 4rem;
+            font-size: var(--font-small);
+            color: var(--color-text-primary);
+            text-align: center;
+        }
     }
-    .rating{
-        &::before{
-            content: '';
-            display: inline-block;
-            @include icon('star_fill.svg', $size: var(--store-info-rating-size), $color: var(--store-info-rating-color));
+
+    @keyframes loading {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes bounce {
+        0%,
+        100% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1);
         }
     }
 }

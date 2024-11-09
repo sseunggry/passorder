@@ -23,7 +23,56 @@
     }
 }
 
-//검색page
+//store-info-list
+.store-info-list{
+    --store-info-font-size: var(--typo-body-xsmall);
+    --store-info-color: var(--color-text-gray-light);
+    --store-info-line-margin-x: var(--gap-2);
+    --store-info-line-width: var(--border-width);
+    --store-info-line-height: 0.8rem;
+    --store-info-line-color: var(--color-border-dark);
+
+    --store-info-rating-size: var(--icon-size-xsmall);
+    --store-info-rating-color: var(--icon-color-gray);
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--store-item-gap-info-badge);
+    font-size: var(--store-info-font-size);
+    color: var(--store-info-color);
+
+    li{
+        display: flex;
+        align-items: center;
+        &::after{
+            content: '';
+            display: inline-block;
+            margin: 0 var(--store-info-line-margin-x);
+            width: var(--store-info-line-width);
+            height: var(--store-info-line-height);
+            background-color: var(--store-info-line-color);
+        }
+        &:last-child{
+            &::after{
+                display: none;
+            }
+        }
+    }
+    .rating{
+        &::before{
+            content: '';
+            display: inline-block;
+            @include icon('star_fill.svg', $size: var(--store-info-rating-size), $color: var(--store-info-rating-color));
+        }
+    }
+
+    ~ .badge-wrap{
+        margin-top: var(--gap-2);
+    }
+}
+
+//검색 page
 .recent-search{
     .tag-list{
         display: flex;
@@ -79,7 +128,6 @@
         }
     }
 }
-
 
 //detail
 .detail-store{

@@ -2,7 +2,9 @@
 
 .input-wrap{
     &.bg-white{
-        background-color: var(--input-bg-color-white);
+        .input{
+            background-color: var(--input-bg-color-white);
+        }
     }
 
     label{

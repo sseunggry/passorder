@@ -22,8 +22,9 @@ function Home() {
     
     return (
         <Layout addClass="bg-gray main" headerCon={{select:true, alarm:true, cart:true}}>
+            {(storeDataIsLoading || eventDataIsLoading) ? <Loading /> : ''}
             <section>
-                <Search onClick={searchOnClick}/>
+                <Search addClass="bg-white" onClick={searchOnClick}/>
                 <SwiperBanner
                     addClass="main-swiper"
                     option={{ pagination: {type: 'fraction'}, navigation: true }}
@@ -46,12 +47,12 @@ function Home() {
                     />
                 </h2>
     
-                {storeDataIsLoading ? <Loading /> : (
-                    <CardList
-                        addClass="card-row"
-                        itemList={recentStoreList}
-                    />
-                )}
+                <CardList
+                    addClass="card-row"
+                    itemList={recentStoreList}
+                />
+                {/*{storeDataIsLoading ? <Loading /> : (*/}
+                {/*)}*/}
             </section>
 
             <section>
@@ -66,12 +67,12 @@ function Home() {
                     />
                 </h2>
     
-                {storeDataIsLoading ? <Loading /> : (
-                    <CardList
-                        addClass="card-column"
-                        itemList={nearbyStoreList}
-                    />
-                )}
+                <CardList
+                    addClass="card-column"
+                    itemList={nearbyStoreList}
+                />
+                {/*{storeDataIsLoading ? <Loading /> : (*/}
+                {/*)}*/}
             </section>
 
             <section>
@@ -86,12 +87,12 @@ function Home() {
                     />
                 </h2>
     
-                {eventDataIsLoading ? <Loading /> : (
-                    <CardList
-                        addClass="card-event"
-                        eventList={eventData}
-                    />
-                )}
+                <CardList
+                    addClass="card-event"
+                    eventList={eventData}
+                />
+                {/*{eventDataIsLoading ? <Loading /> : (*/}
+                {/*)}*/}
             </section>
         </Layout>
     )
