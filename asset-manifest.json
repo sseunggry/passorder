@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/passorder/static/css/main.1cdc9ef4.css",
-    "main.js": "/passorder/static/js/main.308d09b4.js",
+    "main.css": "/passorder/static/css/main.812acbee.css",
+    "main.js": "/passorder/static/js/main.5b94e7a0.js",
     "static/media/AppleSDGothicNeoB.woff2": "/passorder/static/media/AppleSDGothicNeoB.e3774e0c99fb28460f32.woff2",
     "static/media/AppleSDGothicNeoR.woff2": "/passorder/static/media/AppleSDGothicNeoR.bf7df0deab61e85edf6a.woff2",
     "static/media/AppleSDGothicNeoSB.woff2": "/passorder/static/media/AppleSDGothicNeoSB.b8aae9233eca27c79794.woff2",
@@ -33,11 +33,11 @@
     "static/media/icon_arrow.svg": "/passorder/static/media/icon_arrow.bd2ff4a407ecd98ae48f.svg",
     "static/media/icon_plus.svg": "/passorder/static/media/icon_plus.ffd033a0183f84bed752.svg",
     "static/media/icon_minus.svg": "/passorder/static/media/icon_minus.54b63277fe24f757caad.svg",
-    "main.1cdc9ef4.css.map": "/passorder/static/css/main.1cdc9ef4.css.map",
-    "main.308d09b4.js.map": "/passorder/static/js/main.308d09b4.js.map"
+    "main.812acbee.css.map": "/passorder/static/css/main.812acbee.css.map",
+    "main.5b94e7a0.js.map": "/passorder/static/js/main.5b94e7a0.js.map"
   },
   "entrypoints": [
-    "static/css/main.1cdc9ef4.css",
-    "static/js/main.308d09b4.js"
+    "static/css/main.812acbee.css",
+    "static/js/main.5b94e7a0.js"
   ]
 }
