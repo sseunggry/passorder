@@ -13,11 +13,9 @@ function StoreInfo() {
         return <Loading />
     }
     
-    console.log(storeData?.detailInfo, detailInfo);
-    
     return (
         <>
-            <Layout headerCon={{back: true, title: '가게 정보'}} bottomMenu={false}>
+            <Layout headerCon={{back: true, title: '가게 정보'}} bottomMenu={false} addClass="store-info">
                 <section>
                     <h2 className="sec-tit">{storeData?.brand}</h2>
                     {detailInfo && (

@@ -10,9 +10,10 @@ interface DetailProductListProps {
 
 function DetailProductList({id, productList}: DetailProductListProps){
     const categories = productList.map(item => item.category);
+    console.log(productList.length);
     return (
         <div className="product-list">
-            <Tab list={categories} />
+            <Tab list={categories} addClass="full" />
             {productList.map((product, idx) => (
                 <div className="product" key={idx}>
                     <h2 className="product-tit">{product.category}</h2>

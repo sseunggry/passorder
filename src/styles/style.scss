@@ -257,6 +257,18 @@
                     border-radius: var(--border-radius-large);
                 }
             }
+
+            + .product{
+                &::before{
+                    content: '';
+                    display: block;
+                    overflow: auto hidden;
+                    margin: 0 calc(var(--padding-layout-x)* -1);
+                    padding: 0 var(--padding-layout-x);
+                    height: var(--border-width-large);
+                    background-color: var(--color-border-basic);
+                }
+            }
         }
     }
 }
@@ -514,4 +526,9 @@
             margin-top: var(--gap-6);
         }
     }
+}
+
+//store-info
+.store-info{
+    font-size: var(--typo-body-small);
 }

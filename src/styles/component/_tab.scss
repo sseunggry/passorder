@@ -14,11 +14,17 @@
 
 .tab{
     @include pc-variable();
+    border-bottom: var(--tab-list-border-wdith) solid var(--tab-list-border-color);
+
+    &.full{
+        margin: 0 calc(var(--padding-layout-x) * -1);
+        padding: 0 var(--padding-layout-x);
+    }
+
     [role="tablist"]{
         overflow: auto;
         display: flex;
         gap: var(--tab-list-gap);
-        border-bottom: var(--tab-list-border-wdith) solid var(--tab-list-border-color);
 
         li{
             flex-shrink: 0;

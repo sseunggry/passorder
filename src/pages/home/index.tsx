@@ -51,8 +51,6 @@ function Home() {
                     addClass="card-row"
                     itemList={recentStoreList}
                 />
-                {/*{storeDataIsLoading ? <Loading /> : (*/}
-                {/*)}*/}
             </section>
 
             <section>
@@ -71,8 +69,6 @@ function Home() {
                     addClass="card-column"
                     itemList={nearbyStoreList}
                 />
-                {/*{storeDataIsLoading ? <Loading /> : (*/}
-                {/*)}*/}
             </section>
 
             <section>
@@ -91,8 +87,6 @@ function Home() {
                     addClass="card-event"
                     eventList={eventData}
                 />
-                {/*{eventDataIsLoading ? <Loading /> : (*/}
-                {/*)}*/}
             </section>
         </Layout>
     )

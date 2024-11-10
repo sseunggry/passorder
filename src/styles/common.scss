@@ -80,3 +80,19 @@
         }
     }
 }
+
+//store-info
+.info-list{
+    padding: var(--gap-6) 0;
+    border-bottom: var(--border-width) solid var(--color-border-light);
+
+    dt{
+        margin-bottom: var(--gap-2);
+        //font-weight: 500;
+        font-size: var(--typo-title-xsmall);
+        color: var(--color-text-gray);
+    }
+    dd{
+        font-size: var(--typo-body-small);
+    }
+}
