@@ -13,6 +13,7 @@ import TogetherOrder from "pages/together";
 import MenuSelect from "pages/sub/MenuSelect";
 import EventPage from "pages/sub/Event";
 import StoreInfo from "pages/sub/StoreInfo";
+import ScrollToTop from "utils/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ function App() {
   return (
       <QueryClientProvider client={queryClient}>
           <BrowserRouter basename={process.env.PUBLIC_URL}>
+              <ScrollToTop />
               <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/cart" element={<Cart />} />

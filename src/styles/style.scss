@@ -184,9 +184,11 @@
                 display: flex;
                 align-items: center;
                 gap: var(--gap-2);
+                text-align: left;
                 &::after{
                     content: '';
                     display: inline-block;
+                    flex-shrink: 0;
                     @include icon('arrow.svg', $size: var(--icon-size-small), $color: var(--icon-color-gray));
                 }
             }

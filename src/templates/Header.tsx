@@ -3,6 +3,8 @@ import Search from "components/Search";
 import {useNavigate} from "react-router-dom";
 import Button from "components/Button";
 import {MouseEventHandler} from "react";
+import {useSelector} from "react-redux";
+import {selectorCartList} from "reducer/index";
 
 export interface HeaderProps{
     addClass?: string;
@@ -27,6 +29,8 @@ function Header({addClass = '', select, alarm, cart, like, share, back, backOnCl
             navigate(-1);
         }
     };
+    const { cartItems } = useSelector(selectorCartList);
+    
     return (
         <header className={`header ${addClass}`}>
             {back && (
@@ -93,6 +97,7 @@ function Header({addClass = '', select, alarm, cart, like, share, back, backOnCl
                                 <>
                                     <span className="blind">장바구니</span>
                                     <i className="icon icon-cart"></i>
+                                    {cartItems.length > 0 && <span className="count">{cartItems.length}</span>}
                                 </>
                             }
                         />

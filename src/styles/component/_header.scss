@@ -37,9 +37,25 @@
         }
     }
     .btn-icon{
+        position: relative;
         .icon{
             width: var(--header-icon-size);
             height: var(--header-icon-size);
+        }
+        .count{
+            position: absolute;
+            bottom: -0.2rem;
+            right: -0.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.4rem;
+            height: 1.4rem;
+            font-size: var(--typo-body-xxsmall);
+            font-weight: 700;
+            color: var(--color-text-white);
+            border-radius: 50%;
+            background-color: var(--color-bg-primary);
         }
     }
 
@@ -75,7 +91,6 @@
         font-weight: 500;
         text-align: center;
     }
-
     .input-wrap.search{
         width: 100%;
     }

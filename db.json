@@ -48,21 +48,24 @@
                             "name": "소보루빵",
                             "desc": "고소한 소보루 가루가 뿌려진 기본 간식빵",
                             "price": 1900,
-                            "thumbImg": "img_detail_thumb_2.png"
+                            "thumbImg": "img_detail_thumb_2.png",
+                            "visualImg": "img_detail_visual_2.png"
                         },
                         {
                             "productId": "3",
                             "name": "단팥빵",
                             "desc": "단팥앙금이 부드러운 빵 안에 들어있어 달콤하게 즐길 수 있는 간식용빵",
                             "price": 1900,
-                            "thumbImg": "img_detail_thumb_3.png"
+                            "thumbImg": "img_detail_thumb_3.png",
+                            "visualImg": "img_detail_visual_3.png"
                         },
                         {
                             "productId": "4",
                             "name": "슈크림빵",
                             "desc": "부드러운 슈크림이 들어있는 간식 빵",
                             "price": 1900,
-                            "thumbImg": "img_detail_thumb_4.png"
+                            "thumbImg": "img_detail_thumb_4.png",
+                            "visualImg": "img_detail_visual_4.png"
                         }
                     ]
                 },
@@ -75,7 +78,8 @@
                             "name": "추억의 소시지빵",
                             "desc": "부드러운 빵과 롱소시지, 옥수수마요 토핑이 조화로운 아는 맛이 더 무서운 추억의 소시지 빵",
                             "price": 3300,
-                            "thumbImg": "img_detail_thumb_5.png"
+                            "thumbImg": "img_detail_thumb_5.png",
+                            "visualImg": "img_detail_visual_5.png"
                         },
                         {
                             "productId": "2",
@@ -83,6 +87,7 @@
                             "desc": "'사이즈 UP 더 커진 소시지' 탱글짭조름한 소시지가 통으로 사이즈 업, 더 맛있어진 치즈소시지페스츄리",
                             "price": 3700,
                             "thumbImg": "img_detail_thumb_6.png",
+                            "visualImg": "img_detail_visual_6.png",
                             "remainCount": 3
                         },
                         {
@@ -90,14 +95,16 @@
                             "name": "명품고기잡채고로케",
                             "desc": "파리바게뜨의 대표고로케. 고소한 잡채 안에 돼지고기와 소고기를 넣어 더 맛있는 고로케",
                             "price": 3300,
-                            "thumbImg": "img_detail_thumb_7.png"
+                            "thumbImg": "img_detail_thumb_7.png",
+                            "visualImg": "img_detail_visual_7.png"
                         },
                         {
                             "productId": "4",
                             "name": "쫀득치즈스틱(3개입)",
                             "desc": "쫄깃쫄깃 은은한 치즈풍미가 매력적인 쫄깃담백 치즈스틱",
                             "price": 3000,
-                            "thumbImg": "img_detail_thumb_8.png"
+                            "thumbImg": "img_detail_thumb_8.png",
+                            "visualImg": "img_detail_visual_8.png"
                         }
                     ]
                 },
@@ -110,7 +117,8 @@
                             "name": "두 번 쫄깃 플레인베이글",
                             "desc": "겉과 속이 두 번 쫄깃한 플레인 베이글",
                             "price": 2800,
-                            "thumbImg": "img_detail_thumb_9.png"
+                            "thumbImg": "img_detail_thumb_9.png",
+                            "visualImg": "img_detail_visual_9.png"
                         },
                         {
                             "productId": "2",
@@ -118,6 +126,7 @@
                             "desc": "쫄깃 담백한 프레즐에 크림치즈를 듬뿍 넣어 꾸덕한 식감이 매력적인 크림치즈 프레즐",
                             "price": 1900,
                             "thumbImg": "img_detail_thumb_10.png",
+                            "visualImg": "img_detail_visual_10.png",
                             "remainCount": 2
                         },
                         {
@@ -125,14 +134,16 @@
                             "name": "발효버터 소금빵",
                             "desc": "발효버터를 넣은 반죽을 고온에 구워 속은 촉촉, 빵 밑면은 바삭 두 가지 식감과 고소한 풍미를 느낄 수 있는 소금빵",
                             "price": 3000,
-                            "thumbImg": "img_detail_thumb_11.png"
+                            "thumbImg": "img_detail_thumb_11.png",
+                            "visualImg": "img_detail_visual_11.png"
                         },
                         {
                             "productId": "4",
                             "name": "촉촉한 몽블랑",
                             "desc": "겹겹이 쌓인 결 사이로 버터풍미 가득한, 촉촉하게 즐기는 버터 몽블랑",
                             "price": 5400,
-                            "thumbImg": "img_detail_thumb_12.png"
+                            "thumbImg": "img_detail_thumb_12.png",
+                            "visualImg": "img_detail_visual_12.png"
                         }
                     ]
                 }
@@ -254,6 +265,7 @@
                             "desc": "진하게 로스팅한 커피 원두에서 에스프레소를 추출하여 원두 풍미를 느낄 수 있습니다.",
                             "price": 4000,
                             "thumbImg": "img_detail_thumb_2.png",
+                            "visualImg": "img_detail_visual_2.png",
                             "optionList": [
                                 {
                                     "id": "0",
@@ -331,6 +343,7 @@
                             "desc": "진한 초콜릿 모카 시럽과 풍부하고 진한 농도의 에스프레소를 혼합하여 달달하게 즐길 수 있습니다.",
                             "price": 5800,
                             "thumbImg": "img_detail_thumb_3.png",
+                            "visualImg": "img_detail_visual_3.png",
                             "optionList": [
                                 {
                                     "id": "0",
@@ -427,6 +440,7 @@
                             "desc": "진한 초콜릿 모카 시럽과 풍부하고 진한 농도의 에스프레소를 혼합하여 달달하게 즐길 수 있습니다.",
                             "price": 5300,
                             "thumbImg": "img_detail_thumb_4.png",
+                            "visualImg": "img_detail_visual_4.png",
                             "optionList": [
                                 {
                                     "id": "0",
@@ -527,25 +541,29 @@
                             "productId": "1",
                             "name": "콜드브루",
                             "price": 5000,
-                            "thumbImg": "img_detail_thumb_5.png"
+                            "thumbImg": "img_detail_thumb_5.png",
+                            "visualImg": "img_detail_visual_5.png"
                         },
                         {
                             "productId": "2",
                             "name": "디카페인 콜드브루",
                             "price": 5000,
-                            "thumbImg": "img_detail_thumb_6.png"
+                            "thumbImg": "img_detail_thumb_6.png",
+                            "visualImg": "img_detail_visual_6.png"
                         },
                         {
                             "productId": "3",
                             "name": "콜드브루 라떼",
                             "price": 5500,
-                            "thumbImg": "img_detail_thumb_7.png"
+                            "thumbImg": "img_detail_thumb_7.png",
+                            "visualImg": "img_detail_visual_7.png"
                         },
                         {
                             "productId": "4",
                             "name": "디카페인 콜드브루 라떼",
                             "price": 5500,
-                            "thumbImg": "img_detail_thumb_8.png"
+                            "thumbImg": "img_detail_thumb_8.png",
+                            "visualImg": "img_detail_visual_8.png"
                         }
                     ]
                 },
@@ -558,14 +576,16 @@
                             "name": "크랜베리 크림치즈 스콘",
                             "desc": "진한 크림치즈와 크랜베리의 새콤달콤 풍미가 조화롭게 어울리는 스콘",
                             "price": 5600,
-                            "thumbImg": "img_detail_thumb_5.png"
+                            "thumbImg": "img_detail_thumb_9.png",
+                            "visualImg": "img_detail_visual_9.png"
                         },
                         {
                             "productId": "2",
                             "name": "데니쉬 큐브식빵 플레인",
                             "desc": "바삭하고 부드러운 페스츄리 식빵",
                             "price": 5500,
-                            "thumbImg": "img_detail_thumb_6.png",
+                            "thumbImg": "img_detail_thumb_10.png",
+                            "visualImg": "img_detail_visual_10.png",
                             "remainCount": 5
                         },
                         {
@@ -573,14 +593,16 @@
                             "name": "클래식 초코 머핀",
                             "desc": "겹겹이 쌓인 결 사이로 고소한 버터 풍미가 가득차 겉은 바삭하고 속은 부드러운 머핀",
                             "price": 4300,
-                            "thumbImg": "img_detail_thumb_7.png"
+                            "thumbImg": "img_detail_thumb_11.png",
+                            "visualImg": "img_detail_visual_11.png"
                         },
                         {
                             "productId": "4",
                             "name": "올리브 바질 베이글",
                             "desc": "은은한 바질향이 산뜻하게 풍기는 베이글",
                             "price": 4800,
-                            "thumbImg": "img_detail_thumb_8.png",
+                            "thumbImg": "img_detail_thumb_12.png",
+                            "visualImg": "img_detail_visual_12.png",
                             "remainCount": 2
                         }
                     ]
@@ -741,8 +763,8 @@
                             "name": "겉바속촉 체리쉘 세트",
                             "desc": "체리쉘+요거트 아이스크림",
                             "price": 6000,
-                            "thumbImg": "img_detail_thumb_1.png",
-                            "visualImg": "img_detail_visual_1.png",
+                            "thumbImg": "img_detail_thumb_2.png",
+                            "visualImg": "img_detail_visual_2.png",
                             "optionList": [
                                 {
                                     "id": "0",
